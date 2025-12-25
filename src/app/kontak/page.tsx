@@ -1,0 +1,286 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Code2, Phone, Mail, MapPin, MessageCircle, Facebook, Send, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+
+export default function Kontak() {
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-900/80 backdrop-blur-md border-b border-amber-500/20">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-2"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-stone-900" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                KAMUNARA
+              </span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="hidden md:flex items-center gap-8"
+            >
+              <Link href="/home" className="text-stone-300 hover:text-amber-400 transition-colors font-medium">
+                Home
+              </Link>
+              <Link href="/produk" className="text-stone-300 hover:text-amber-400 transition-colors font-medium">
+                Produk
+              </Link>
+              <Link href="/tentang" className="text-stone-300 hover:text-amber-400 transition-colors font-medium">
+                Tentang
+              </Link>
+              <Link href="/kontak" className="text-amber-400 hover:text-amber-300 transition-colors font-medium">
+                Kontak
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Header Section */}
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Hubungi
+              <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                Kami
+              </span>
+            </h1>
+            <p className="text-xl text-stone-300 max-w-3xl mx-auto">
+              Jangan ragu untuk menghubungi kami. Kami siap membantu Anda dalam transformasi digital
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="space-y-8"
+            >
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Informasi Kontak
+                </h2>
+                <p className="text-stone-300 text-lg">
+                  Kami dapat dihubungi melalui berbagai platform. Pilih cara yang paling nyaman untuk Anda.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-center gap-4 p-6 bg-gradient-to-br from-stone-800 to-stone-900 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 transition-all"
+                >
+                  <div className="bg-amber-500/20 rounded-xl p-4">
+                    <Phone className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">Telepon</h3>
+                    <p className="text-stone-300">+62 812 3456 7890</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-center gap-4 p-6 bg-gradient-to-br from-stone-800 to-stone-900 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 transition-all"
+                >
+                  <div className="bg-amber-500/20 rounded-xl p-4">
+                    <Mail className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">Email</h3>
+                    <p className="text-stone-300">info@kamunara.com</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-center gap-4 p-6 bg-gradient-to-br from-stone-800 to-stone-900 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 transition-all"
+                >
+                  <div className="bg-amber-500/20 rounded-xl p-4">
+                    <MapPin className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">Alamat</h3>
+                    <p className="text-stone-300">Jakarta, Indonesia</p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Social Media */}
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-white">Media Sosial</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.a
+                    href="https://wa.me/6281234567890"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 p-6 bg-gradient-to-r from-green-600 to-green-700 rounded-2xl text-white hover:from-green-700 hover:to-green-800 transition-all"
+                  >
+                    <MessageCircle className="w-6 h-6" />
+                    <span className="font-bold">WhatsApp</span>
+                  </motion.a>
+
+                  <motion.a
+                    href="https://instagram.com/kamunara"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 p-6 bg-gradient-to-r from-pink-600 to-purple-700 rounded-2xl text-white hover:from-pink-700 hover:to-purple-800 transition-all"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span className="font-bold">Instagram</span>
+                  </motion.a>
+
+                  <motion.a
+                    href="https://facebook.com/kamunara"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 p-6 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl text-white hover:from-blue-700 hover:to-blue-800 transition-all"
+                  >
+                    <Facebook className="w-6 h-6" />
+                    <span className="font-bold">Facebook</span>
+                  </motion.a>
+
+                  <motion.a
+                    href="mailto:info@kamunara.com"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 p-6 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl text-white hover:from-red-700 hover:to-orange-700 transition-all"
+                  >
+                    <Mail className="w-6 h-6" />
+                    <span className="font-bold">Email</span>
+                  </motion.a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-gradient-to-br from-stone-800 to-stone-900 rounded-3xl p-8 border border-amber-500/20 hover:border-amber-500/50 transition-all"
+            >
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Kirim Pesan
+              </h2>
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-stone-300 mb-2 font-medium">
+                    Nama Lengkap
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="Masukkan nama lengkap"
+                  />
+                </div>
+                <div>
+                  <label className="block text-stone-300 mb-2 font-medium">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="Masukkan email"
+                  />
+                </div>
+                <div>
+                  <label className="block text-stone-300 mb-2 font-medium">
+                    Subjek
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                    placeholder="Masukkan subjek"
+                  />
+                </div>
+                <div>
+                  <label className="block text-stone-300 mb-2 font-medium">
+                    Pesan
+                  </label>
+                  <textarea
+                    rows={5}
+                    className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                    placeholder="Masukkan pesan Anda"
+                  />
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 font-bold py-4 rounded-xl hover:from-amber-500 hover:to-amber-700 transition-all flex items-center justify-center gap-2"
+                >
+                  Kirim Pesan
+                  <Send className="w-5 h-5" />
+                </motion.button>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-3xl p-12 text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
+              Siap Memulai Proyek?
+            </h2>
+            <p className="text-stone-800 text-lg max-w-2xl mx-auto mb-8">
+              Hubungi kami sekarang dan mari diskusikan bagaimana kami dapat membantu transformasi digital bisnis Anda
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-stone-900 text-amber-400 font-bold px-10 py-4 rounded-lg hover:bg-stone-800 transition-all flex items-center gap-2 mx-auto"
+            >
+              Chat WhatsApp
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-stone-900 border-t border-amber-500/20 py-8 px-4">
+        <div className="container mx-auto text-center">
+          <p className="text-stone-400">
+            © 2024 Kamunara. All rights reserved. Holding by DS Company.
+          </p>
+        </div>
+      </footer>
+    </main>
+  )
+}
