@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code2, Rocket, Sparkles, ArrowRight } from 'lucide-react'
+import { Rocket, Sparkles, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function LandingPage() {
@@ -103,7 +104,17 @@ export default function LandingPage() {
                     }}
                     className="text-center"
                   >
-                    <Code2 className="w-24 h-24 mx-auto text-amber-400 mb-4" />
+                    {/* Logo Kamunara - pengganti Code2 */}
+                    <div className="relative w-24 h-24 mx-auto mb-6">
+                      <Image
+                        src="/images/logo_kamunara.png"
+                        alt="Logo Kamunara"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
+
                     <div className="space-y-2">
                       <div className="flex items-center justify-center gap-2">
                         <motion.div
@@ -122,7 +133,7 @@ export default function LandingPage() {
                           className="w-3 h-3 bg-amber-600 rounded-full"
                         />
                       </div>
-                      <p className="text-amber-400 font-medium">Building Digital Excellence</p>
+                      <p className="text-amber-400 font-medium">KAMUNARA</p>
                     </div>
                   </motion.div>
                 </motion.div>
