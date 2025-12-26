@@ -123,7 +123,7 @@ export default function Tentang() {
             </motion.div>
           </motion.div>
 
-          {/* Mission Section */}
+          {/* ── Visi & Misi Section ── */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,31 +132,71 @@ export default function Tentang() {
           >
             <div className="bg-gradient-to-r from-amber-500/10 to-amber-600/10 rounded-3xl p-12 border border-amber-500/20">
               <div className="flex flex-col lg:flex-row items-center gap-12">
+                {/* Bagian kiri - Icon & Judul */}
                 <div className="lg:w-1/3">
                   <div className="bg-amber-500/20 rounded-2xl p-8 text-center">
                     <Target className="w-24 h-24 mx-auto text-amber-400 mb-4" />
-                    <h3 className="text-2xl font-bold text-amber-400">Misi Kami</h3>
+                    <h3 className="text-2xl font-bold text-amber-400">Visi & Misi</h3>
                   </div>
                 </div>
-                <div className="lg:w-2/3 space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    Tujuan dan Visi Kamunara
-                  </h2>
-                  <p className="text-lg text-stone-300 leading-relaxed">
-                    Kami bertekad untuk menjadi mitra strategis dalam transformasi digital bagi organisasi dan perusahaan di Indonesia. Melalui solusi perangkat lunak yang inovatif dan berkualitas, kami membantu meningkatkan efisiensi, produktivitas, dan daya saing dalam era digital.
-                  </p>
+
+                {/* Bagian kanan - Isi Visi dan Misi */}
+                <div className="lg:w-2/3 space-y-10">
+                  {/* Visi */}
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                      <p className="text-stone-300">Menyediakan solusi digital yang relevan dan sesuai kebutuhan</p>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                      <p className="text-stone-300">Memberikan layanan berkualitas tinggi dengan standar profesional</p>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <CheckCircle className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                      <p className="text-stone-300">Berinovasi terus menerus dalam pengembangan teknologi</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                      Visi Kami
+                    </h2>
+                    <p className="text-xl text-amber-300 font-medium italic leading-relaxed">
+                      "Menjadi mitra pengembangan dan transformasi digital pilihan global, yang menghubungkan talenta terbaik untuk menciptakan solusi yang berdampak bagi kemajuan bersama."
+                    </p>
+                  </div>
+
+                  {/* Misi */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                      Misi Kami
+                    </h2>
+                    <div className="space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="mt-2 flex-shrink-0">
+                          
+                        </div>
+                        <p className="text-lg text-stone-200 leading-relaxed">
+                          <span className="text-amber-300 font-semibold">Membangun Jembatan Digital</span> 
+                         <br /> Menyediakan solusi IT outsourcing yang andal dan tim developer berkualitas untuk membantu perusahaan di seluruh Indonesia mencapai tujuan digital mereka.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="mt-2 flex-shrink-0">
+                          
+                        </div>
+                        <p className="text-lg text-stone-200 leading-relaxed">
+                          <span className="text-amber-300 font-semibold">Berkolaborasi, Bukan Hanya Bekerja</span> 
+                          <br />Menerapkan filosofi "Karya Kita Bersama" dalam setiap kemitraan, memastikan klien merasa sebagai bagian integral dari proses pengembangan.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="mt-2 flex-shrink-0">
+                         
+                        </div>
+                        <p className="text-lg text-stone-200 leading-relaxed">
+                          <span className="text-amber-300 font-semibold">Memberdayakan Energi Muda</span> 
+                          <br />Menciptakan ekosistem kerja yang dinamis dan inovatif bagi talenta muda untuk berkembang, belajar, dan memberikan ide-ide terbaiknya.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="mt-2 flex-shrink-0">
+                         
+                        </div>
+                        <p className="text-lg text-stone-200 leading-relaxed">
+                          <span className="text-amber-300 font-semibold">Beradaptasi dengan Perubahan</span> 
+                          <br />Menjadi perusahaan yang lincah (agile) dalam menghadapi tren teknologi, memastikan solusi yang kami berikan relevan dan futuristik.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -336,7 +376,7 @@ export default function Tentang() {
       <footer className="bg-stone-900 border-t border-amber-500/20 py-8 px-4">
         <div className="container mx-auto text-center">
           <p className="text-stone-400">
-            © 2024 Kamunara. All rights reserved. Holding by DS Company.
+            © 2025 Kamunara. All rights reserved. Holding by DS Company.
           </p>
         </div>
       </footer>
