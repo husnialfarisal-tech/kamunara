@@ -60,9 +60,9 @@ export default function KontakPage() {
                 {/* Contact Cards – lebih ringkas, hover x:10 tetap */}
                 <div className="space-y-6">
                   {[
-                    { icon: Phone, label: 'Telepon', value: '+62 812 3456 7890', href: 'tel:+6281234567890' },
+                    { icon: Phone, label: 'Telepon', value: '+62 82271029268', href: 'tel:+6282271029268' },
                     { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
-                    { icon: MapPin, label: 'Alamat', value: 'Jakarta, Indonesia', href: '#' },
+                    { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97711, Indonesia', href: '#' },
                   ].map((item, i) => (
                     <motion.a
                       key={i}
@@ -87,7 +87,7 @@ export default function KontakPage() {
                   <div className="grid grid-cols-2 gap-4">
                     {/* WhatsApp – prioritas utama di Indonesia */}
                     <motion.a
-                      href="https://wa.me/6281234567890"
+                      href="https://wa.me/6282271029268"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
@@ -100,7 +100,7 @@ export default function KontakPage() {
 
                     {/* Instagram */}
                     <motion.a
-                      href="https://instagram.com/kamunara"
+                      href="https://instagram.com/kamunara.group"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
@@ -116,7 +116,7 @@ export default function KontakPage() {
 
                     {/* Facebook & Email – tetap */}
                     <motion.a
-                      href="https://facebook.com/kamunara"
+                      href="https://facebook.com/RIZKY"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
@@ -213,7 +213,7 @@ export default function KontakPage() {
           title="Siap Memulai Proyek?"
           description="Hubungi kami sekarang dan mari diskusikan bagaimana kami dapat membantu transformasi digital bisnis Anda"
           buttonText="Chat WhatsApp"
-          href="https://wa.me/6281234567890"  // Bisa external link
+          href="https://wa.me/6282271029268"  // Bisa external link
         />
       </main>
 

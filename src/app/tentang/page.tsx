@@ -88,7 +88,7 @@ export default function TentangPage() {
                   <div className="flex flex-wrap gap-4 justify-center">
                     {/* WhatsApp */}
                     <Link
-                      href="https://wa.me/6281234567890"
+                      href="https://wa.me/6282271029268"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 rounded-xl text-white hover:from-green-500 hover:to-green-600 transition-all shadow-md"
