@@ -113,7 +113,7 @@ export default function TentangPage() {
 
                     {/* Facebook */}
                     <Link
-                      href="https://facebook.com/kamunara"
+                      href="https://facebook.com/kamunara.group"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl text-white hover:from-blue-500 hover:to-blue-600 transition-all shadow-md"
