@@ -23,16 +23,25 @@ export default function ClientMap({ markers }: ClientMapProps) {
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return
 
-    // Initialize map
-    const map = L.map(mapContainerRef.current).setView([-2.5489, 118.0149], 5)
+    // Inisialisasi peta dengan ukuran besar
+    const map = L.map(mapContainerRef.current, {
+      // Default: matikan interaksi agar tidak ganggu scroll
+      dragging: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      boxZoom: false,
+      keyboard: false
+    }).setView([-2.5489, 118.0149], 5)
 
-    // Add OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19
+    // Tile layer: WARNA PUTIH KE ABU-ABUAN (light & minimalis)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 19,
+      subdomains: 'abcd'
     }).addTo(map)
 
-    // Custom marker icon
+    // Custom marker icon (tetap seperti asli)
     const customIcon = L.divIcon({
       className: 'custom-marker',
       html: `
@@ -61,11 +70,10 @@ export default function ClientMap({ markers }: ClientMapProps) {
       popupAnchor: [0, -32]
     })
 
-    // Add markers
+    // Tambahkan marker
     markers.forEach((markerData) => {
       const marker = L.marker([markerData.lat, markerData.lng], { icon: customIcon }).addTo(map)
 
-      // Create popup content
       const popupContent = `
         <div style="
           font-family: system-ui, -apple-system, sans-serif;
@@ -109,13 +117,10 @@ export default function ClientMap({ markers }: ClientMapProps) {
         </div>
       `
 
-      marker.bindPopup(popupContent, {
-        maxWidth: 300,
-        className: 'custom-popup'
-      })
+      marker.bindPopup(popupContent, { maxWidth: 300 })
     })
 
-    // Fit map to show all markers
+    // Fit bounds agar semua marker terlihat
     if (markers.length > 0) {
       const bounds = L.latLngBounds(markers.map(m => [m.lat, m.lng]))
       map.fitBounds(bounds, { padding: [50, 50] })
@@ -123,7 +128,33 @@ export default function ClientMap({ markers }: ClientMapProps) {
 
     mapRef.current = map
 
+    // Aktifkan interaksi saat tekan Ctrl (desktop)
+    const enableInteraction = () => {
+      map.dragging.enable()
+      map.touchZoom.enable()
+      map.doubleClickZoom.enable()
+      map.scrollWheelZoom.enable()
+    }
+
+    const disableInteraction = () => {
+      map.dragging.disable()
+      map.touchZoom.disable()
+      map.doubleClickZoom.disable()
+      map.scrollWheelZoom.disable()
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey) enableInteraction()
+    }
+
+    const handleKeyUp = () => disableInteraction()
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+
     return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
       map.remove()
       mapRef.current = null
     }
@@ -134,11 +165,12 @@ export default function ClientMap({ markers }: ClientMapProps) {
       ref={mapContainerRef}
       style={{
         width: '100%',
-        height: '600px',
+        height: '700px',  // Ukuran lebih besar & fixed
         borderRadius: '16px',
         overflow: 'hidden',
         border: '2px solid rgba(251, 191, 36, 0.3)',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)'
+        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
+        touchAction: 'pan-x pan-y pinch-zoom'  // 2 jari tetap jalan di mobile
       }}
     />
   )

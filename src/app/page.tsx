@@ -39,28 +39,62 @@ export default function LandingPage() {
                 Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital baik berbasis website maupun mobile. Holding pada perusahaan DS, kami hadir sebagai mitra terpercaya untuk solusi teknologi Anda.
               </p>
 
+              {/* CTA BUTTONS */}
               <div className="flex flex-col sm:flex-row gap-4">
+
+                {/*  CTA 1 : MELUNCUR
+                    Fungsi:
+                    - Tombol utama (primary CTA)
+                    - Mengarahkan user dari landing (/) ke halaman Home (/home)
+                */}
                 <Link href="/home">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 font-bold px-8 py-4 rounded-lg hover:from-amber-500 hover:to-amber-700 transition-all flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.05 }}   // animasi saat hover
+                    whileTap={{ scale: 0.95 }}     // animasi saat klik
+                    className="
+                      bg-gradient-to-r from-amber-400 to-amber-600
+                      text-stone-900
+                      font-bold
+                      px-8 py-4
+                      rounded-lg
+                      hover:from-amber-500 hover:to-amber-700
+                      transition-all
+                      flex items-center justify-center gap-2
+                    "
                   >
                     Meluncur...
                     <Rocket className="w-5 h-5" />
                   </motion.button>
                 </Link>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-amber-500 text-amber-400 font-bold px-8 py-4 rounded-lg hover:bg-amber-500/10 transition-all flex items-center justify-center gap-2"
-                >
-                  Pelajari Lebih Lanjut
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </div>
-            </motion.div>
 
+                {/* CTA 2 : PELAJARI LEBIH LANJUT
+                    Fungsi:
+                    - Secondary CTA
+                    - Mengarahkan user ke halaman Tentang (/tentang)
+                */}
+                <Link href="/tentang">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}   // animasi saat hover
+                    whileTap={{ scale: 0.95 }}     // animasi saat klik
+                    className="
+                      border-2 border-amber-500
+                      text-amber-400
+                      font-bold
+                      px-8 py-4
+                      rounded-lg
+                      hover:bg-amber-500/10
+                      transition-all
+                      flex items-center justify-center gap-2
+                    "
+                  >
+                    Pelajari Lebih Lanjut
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                </Link>
+
+              </div>
+              {/*  Stop disini */}
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
