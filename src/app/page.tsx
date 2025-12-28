@@ -1,32 +1,40 @@
 'use client'
 
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Rocket, Sparkles, ArrowRight } from 'lucide-react'
-import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { Rocket, Sparkles, ArrowRight, Cpu } from 'lucide-react'
 import Link from 'next/link'
 
 export default function LandingPage() {
-  /* ───────── MOUSE PARALLAX SETUP ───────── */
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 })
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 })
-
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [12, -12])
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-16, 16])
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    mouseX.set(x)
-    mouseY.set(y)
-  }
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden">
-      <section className="pt-20 pb-24 px-4">
+    <main className="min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden relative selection:bg-amber-500/30">
+      
+      {/* AMBIENT BACKGROUND PARTICLES (Diperbaiki agar tanpa Error) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(25)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-amber-200 rounded-full"
+            // Memperbaiki posisi awal untuk mencegah hydration mismatch
+            initial={{ 
+              x: `${Math.random() * 100}vw`,
+              y: '100vh', 
+              opacity: 0,
+            }}
+            animate={{
+              y: '-20vh',
+              opacity: [0, 0.8, 0],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "linear"
+            }}
+          />
+        ))}
+      </div>
+
+      <section className="pt-20 pb-24 px-4 relative z-10">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -42,6 +50,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-5 py-2"
+                /* BACKDROP BLUR DIHAPUS DI SINI */
               >
                 <Sparkles className="w-4 h-4 text-amber-400" />
                 <span className="text-amber-400 text-sm font-medium">
@@ -73,6 +82,7 @@ export default function LandingPage() {
                       px-8 py-4 rounded-xl
                       flex items-center gap-2
                       shadow-lg shadow-amber-600/30
+                      hover:shadow-amber-600/50 transition-shadow
                     "
                   >
                     Meluncur
@@ -85,11 +95,12 @@ export default function LandingPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="
-                      border-2 border-amber-500
+                      border-2 border-amber-500/50 hover:border-amber-500
                       text-amber-400 font-bold
                       px-8 py-4 rounded-xl
                       hover:bg-amber-500/10
                       flex items-center gap-2
+                      /* BACKDROP BLUR DIHAPUS DI SINI */
                     "
                   >
                     Pelajari Lebih Lanjut
@@ -99,97 +110,137 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* ───────────────────── INTERACTIVE 3D LOGO ───────────────────── */}
-            <div
-              onMouseMove={handleMouseMove}
-              onMouseLeave={() => {
-                mouseX.set(0)
-                mouseY.set(0)
-              }}
-              className="relative perspective-[1800px]"
+            {/* ───────────────────── 3D GYRO-CORE ANIMATION (NO BLUR) ───────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
+              className="relative perspective-[2000px] flex items-center justify-center"
             >
-              <div className="relative h-[420px] lg:h-[560px] flex items-center justify-center">
+              <div className="relative h-[420px] lg:h-[560px] w-full flex items-center justify-center">
 
-                {/* Ambient glow */}
+                {/* 2. THE 3D GYROSCOPE CONTAINER */}
                 <motion.div
-                  animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.5, 0.25] }}
-                  transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-                  className="
-                    absolute inset-0
-                    bg-gradient-radial from-stone-300/20 via-stone-500/10 to-transparent
-                    blur-[110px]
-                  "
-                />
-
-                {/* 3D Object */}
-                <motion.div
-                  style={{ rotateX, rotateY }}
-                  className="relative preserve-3d"
+                  animate={{
+                    rotateX: [15, 20, 15],
+                    rotateY: [-15, -10, -15],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px] flex items-center justify-center"
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
-                  {/* Depth shadow */}
-                  <div className="absolute inset-0 translate-x-[18px] translate-y-[22px] opacity-40 blur-xl">
-                    <Image
-                      src="/images/logo_kamunara.png"
-                      alt=""
-                      fill
-                      className="object-contain grayscale"
-                    />
-                  </div>
-
-                  {/* Mid depth */}
-                  <div className="absolute inset-0 translate-x-[9px] translate-y-[11px] opacity-65 blur-[2px]">
-                    <Image
-                      src="/images/logo_kamunara.png"
-                      alt=""
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-
-                  {/* Main logo */}
+                  
+                  {/* --- RING 1: OUTER DASHED RING --- */}
                   <motion.div
-                    animate={{ rotateZ: [0.6, -0.6, 0.6] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-                    className="relative w-[260px] h-[260px] lg:w-[340px] lg:h-[340px]"
+                    animate={{ rotateY: [0, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    className="absolute inset-0 border-2 border-dashed border-amber-100/80 rounded-full"
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <Image
-                      src="/images/logo_kamunara.png"
-                      alt="Logo Kamunara"
-                      fill
-                      priority
-                      className="
-                        object-contain
-                        drop-shadow-[0_30px_45px_rgba(0,0,0,0.65)]
-                      "
-                    />
-
-                    {/* Specular highlight */}
-                    <div
-                      className="
-                        absolute inset-0
-                        bg-gradient-to-tr
-                        from-white/12 via-white/6 to-transparent
-                        mix-blend-screen
-                        rounded-full
-                      "
-                    />
+                    {/* Orbital Points */}
+                    {[0, 90, 180, 270].map((deg) => (
+                      <div
+                        key={deg}
+                        className="absolute top-1/2 left-1/2 w-3 h-3 bg-amber-50 rounded-full border border-amber-200"
+                        style={{
+                          transform: `rotateY(${deg}deg) translateZ(220px)`, 
+                        }}
+                      />
+                    ))}
                   </motion.div>
+
+                  {/* --- RING 2: MIDDLE TECH RING (BLUR DIHAPUS & BORDER DIPERJELAS) --- */}
+                  <motion.div
+                    animate={{ rotateX: [0, -360] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                    /* Perubahan: backdrop-blur dihapus, border diubah jadi putih solid & lebih tebal */
+                    className="absolute inset-[10%] border-2 border-white rounded-full bg-white/5"
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    {/* Tech details */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-2 bg-amber-200" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-8 h-2 bg-amber-200" />
+                  </motion.div>
+
+                  {/* --- RING 3: INNER FAST RING --- */}
+                  <motion.div
+                    animate={{ rotate: [360, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                    className="absolute inset-[25%] border border-dotted border-white rounded-full"
+                  />
+
+                  {/* --- THE CORE (Inti Energi) --- */}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 90, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: 'easeInOut'
+                    }}
+                    className="relative w-24 h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-white to-amber-100 rounded-full z-10 flex items-center justify-center border-2 border-white"
+                    style={{ 
+                      transformStyle: 'preserve-3d',
+                    }}
+                  >
+                    {/* Icon di tengah Core */}
+                    <Cpu className="text-amber-600 w-12 h-12 lg:w-16 lg:h-16 relative z-20" />
+                  </motion.div>
+
+                  {/* --- FLOATING DATA BITS --- */}
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{
+                        translateY: [0, -30, 0],
+                        translateX: [0, (i % 2 === 0 ? 10 : -10), 0],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 3 + i * 0.5,
+                        repeat: Infinity,
+                        delay: i * 0.8,
+                        ease: 'easeInOut'
+                      }}
+                      className="absolute w-1.5 h-1.5 bg-white rounded-full"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transform: `rotate(${i * 60}deg) translate(100px) rotate(-${i * 60}deg)`,
+                      }}
+                    />
+                  ))}
+
                 </motion.div>
 
-                {/* Brand name */}
+                {/* BRAND LABEL BELOW */}
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 }}
-                  className="absolute bottom-6 text-center"
+                  transition={{ delay: 0.8, duration: 1 }}
+                  className="absolute bottom-4 lg:bottom-10 text-center z-20"
                 >
-                  <p className="text-stone-300 font-semibold tracking-[0.35em] text-lg">
+                  <p className="text-stone-300 font-bold tracking-[0.5em] text-sm lg:text-base">
                     KAMUNARA
                   </p>
+                  {/* Animated Underline */}
+                  <div className="h-[1px] w-full mx-auto mt-2 overflow-hidden">
+                    <motion.div 
+                      animate={{ x: ['-100%', '100%'] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+                      className="h-full w-[50%] bg-gradient-to-r from-transparent via-amber-400 to-transparent"
+                    />
+                  </div>
                 </motion.div>
 
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

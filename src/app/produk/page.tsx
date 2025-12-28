@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+
 // Dynamic import ClientMap – hanya load di client-side
 const ClientMap = dynamic(() => import('@/components/ClientMap'), {
   ssr: false,
@@ -20,6 +21,7 @@ const ClientMap = dynamic(() => import('@/components/ClientMap'), {
     </div>
   )
 })
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
@@ -39,341 +41,364 @@ export default function ProdukPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
-        {/* Hero Section */}
-        <section className="pb-16 px-4 text-center">
-          <div className="container mx-auto max-w-4xl">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              Produk
-              <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-                Kami
-              </span>
-            </motion.h1>
-            <p className="text-xl text-stone-300 max-w-3xl mx-auto">
-              Solusi digital terintegrasi yang dirancang untuk memenuhi kebutuhan bisnis modern
-            </p>
-          </div>
-        </section>
+      
+      {/* 
+         BACKGROUND UPDATE (DISAMAKAN DENGAN HOME PAGE):
+         - Base color diganti ke 'neutral-950'.
+         - Glow effects ditambahkan untuk kesan modern & elegan.
+         - Konten utama dibungkus relative z-10.
+      */}
+      <main className="relative pt-32 min-h-screen bg-neutral-950 overflow-hidden">
+        
+        {/* Elemen Dekorasi Background (Glow Effects) */}
+        {/* Cahaya Amber hangat di kiri atas */}
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        {/* Cahaya Indigo/Deep Blue di kanan bawah */}
+        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+        
+        {/* Gradient Overlay untuk tekstur halus (Vignette) */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
-        {/* Section Produk: PIPOS & KKNKU */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto">
-                    {/* PIPOS */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+        {/* Content Wrapper dengan z-index agar berada di atas dekorasi */}
+        <div className="relative z-10 pb-12">
+          
+          {/* Hero Section */}
+          <section className="pb-16 px-4 text-center">
+            <div className="container mx-auto max-w-4xl">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              >
+                Produk
+                <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                  Kami
+                </span>
+              </motion.h1>
+              <p className="text-xl text-stone-300 max-w-3xl mx-auto">
+                Solusi digital terintegrasi yang dirancang untuk memenuhi kebutuhan bisnis modern
+              </p>
+            </div>
+          </section>
+
+          {/* Section Produk: PIPOS & KKNKU */}
+          <section className="py-16 px-4">
+            <div className="container mx-auto">
+              
+              {/* PIPOS */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{
-                  y: -8,
-                  scale: 1.04,
-                  boxShadow: '0 15px 30px -8px rgba(245, 158, 11, 0.45)',
-                  transition: { duration: 0.14, ease: 'easeOut' }
-                }}
-                className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 overflow-hidden"
+                transition={{ duration: 0.7 }}
+                className="mb-16"
               >
-                {/* Glow untuk badge */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-150 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 to-transparent blur-xl scale-110" />
-                </div>
-                <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
-                <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">
-                  Manajemen Database
-                </span>
-              </motion.div>
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div className="space-y-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      whileHover={{
+                        y: -8,
+                        scale: 1.04,
+                        boxShadow: '0 15px 30px -8px rgba(245, 158, 11, 0.45)',
+                        transition: { duration: 0.14, ease: 'easeOut' }
+                      }}
+                      className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 overflow-hidden"
+                    >
+                      {/* Glow untuk badge */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-150 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 to-transparent blur-xl scale-110" />
+                      </div>
+                      <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
+                      <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">
+                        Manajemen Database
+                      </span>
+                    </motion.div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
-              <p className="text-lg text-stone-300 leading-relaxed">
-                Sistem Manajemen Database yang komprehensif untuk membantu organisasi mengelola data dengan efisien. PIPOS menyediakan antarmuka intuitif dan fitur canggih.
-              </p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
+                    <p className="text-lg text-stone-300 leading-relaxed">
+                      Sistem Manajemen Database yang komprehensif untuk membantu organisasi mengelola data dengan efisien. PIPOS menyediakan antarmuka intuitif dan fitur canggih.
+                    </p>
 
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-stone-300">
-                  <Shield className="w-5 h-5 text-amber-400" />
-                  <span>Keamanan data berlapis</span>
-                </div>
-                <div className="flex items-center gap-3 text-stone-300">
-                  <Zap className="w-5 h-5 text-amber-400" />
-                  <span>Akses cepat dan responsif</span>
-                </div>
-                <div className="flex items-center gap-3 text-stone-300">
-                  <Database className="w-5 h-5 text-amber-400" />
-                  <span>Backup dan restore otomatis</span>
-                </div>
-              </div>
-            </div>
-
-            {/* === KOTAK PIPOS (HOVER DISAMAKAN DENGAN HOME) === */}
-            <motion.div
-              whileHover={{
-                y: -14,
-                scale: 1.045,
-                boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                transition: { duration: 0.14, ease: 'easeOut' }
-              }}
-              className="group relative bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-3xl p-8 border border-amber-500/20 hover:border-amber-500/70 overflow-hidden"
-            >
-              {/* Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
-              </div>
-
-              <div className="bg-stone-700/50 rounded-2xl p-10 text-center relative z-10">
-                <Database className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
-                <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
-                  PIPOS
-                </h3>
-                <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
-                  Professional Information & Process Operation System
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-
-            {/* KKNKU */}
-<motion.div
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.7 }}
-  className="mb-16"
->
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    {/* === KOTAK KKNKU (HOVER DISAMAKAN DENGAN HOME) === */}
-    <motion.div
-      whileHover={{
-        y: -14,
-        scale: 1.045,
-        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-        transition: { duration: 0.14, ease: 'easeOut' }
-      }}
-      className="group relative bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-3xl p-8 border border-amber-500/20 hover:border-amber-500/70 overflow-hidden order-2 lg:order-1"
-    >
-      {/* Glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
-      </div>
-
-      <div className="bg-stone-700/50 rounded-2xl p-10 text-center relative z-10">
-        <Smartphone className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
-        <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
-          KKNKU
-        </h3>
-        <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
-          Kartu Kredit Nasional Kartu Universitas
-        </p>
-      </div>
-    </motion.div>
-
-    {/* TEKS KKNKU (TIDAK DIUBAH) */}
-    <div className="space-y-6 order-1 lg:order-2">
-      <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2">
-        <Smartphone className="w-4 h-4 text-amber-400" />
-        <span className="text-amber-400 text-sm font-medium">Aplikasi Mobile</span>
-      </div>
-
-      <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
-      <p className="text-lg text-stone-300 leading-relaxed">
-        Aplikasi mobile inovatif untuk manajemen dan akses informasi kartu kredit nasional kampus. Memudahkan mahasiswa dan staf dengan mudah & aman.
-      </p>
-
-      <div className="space-y-3">
-        <div className="flex items-center gap-3 text-stone-300">
-          <Shield className="w-5 h-5 text-amber-400" />
-          <span>Transaksi aman dan terenkripsi</span>
-        </div>
-        <div className="flex items-center gap-3 text-stone-300">
-          <Zap className="w-5 h-5 text-amber-400" />
-          <span>Antarmuka user-friendly</span>
-        </div>
-        <div className="flex items-center gap-3 text-stone-300">
-          <Smartphone className="w-5 h-5 text-amber-400" />
-          <span>Tersedia untuk iOS dan Android</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</motion.div>
-
-
-            {/* Peta interaktif */}
-            <div className="h-[400px] md:h-[600px] w-full rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
-              <ClientMap markers={clientLocations} />
-            </div>
-
-            {/* Statistics */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12"
-            >
-              {[
-                { label: "Total Instansi", value: "6+", icon: Building2 },
-                { label: "Kota Tercover", value: "6", icon: MapPin },
-                { label: "PIPOS", value: "4", icon: Database },
-                { label: "KKNKU", value: "3", icon: Smartphone }
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  whileHover={{
-                    y: -14,
-                    scale: 1.045,
-                    boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                    transition: { duration: 0.14, ease: 'easeOut' }
-                  }}
-                  className="group relative p-6 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl border border-amber-500/20 hover:border-amber-500/70 text-center overflow-hidden"
-                >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
-                  </div>
-
-                  <stat.icon className="w-8 h-8 text-amber-400 mx-auto mb-3 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
-                  
-                  <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-2 transition-colors duration-150 group-hover:text-amber-200">
-                    {stat.value}
-                  </div>
-                  
-                  <p className="text-stone-300 text-sm transition-colors duration-150 group-hover:text-stone-100">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Daftar Instansi - dengan hover pada card lokasi */}
-            <div className="grid lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Universitas Negeri A",
-                  location: "Jakarta",
-                  product: "PIPOS",
-                  description: "Sistem manajemen database untuk menyimpan data mahasiswa dan akademik dengan efisien",
-                  applications: ["Data Mahasiswa", "Nilai Akademik", "Keuangan", "Perpustakaan"]
-                },
-                {
-                  name: "Pemerintah Daerah B",
-                  location: "Bandung",
-                  product: "PIPOS & KKNKU",
-                  description: "Integrasi sistem untuk manajemen data kependudukan dan layanan keuangan digital",
-                  applications: ["Kependudukan", "Layanan Publik", "Pembayaran Digital", "Administrasi"]
-                },
-                {
-                  name: "Rumah Sakit C",
-                  location: "Surabaya",
-                  product: "PIPOS",
-                  description: "Sistem database terpadu untuk rekam medis dan manajemen pasien",
-                  applications: ["Rekam Medis", "Jadwal Dokter", "Farmasi", "Administrasi RS"]
-                },
-                {
-                  name: "Perusahaan Swasta D",
-                  location: "Medan",
-                  product: "KKNKU",
-                  description: "Aplikasi mobile untuk manajemen benefit karyawan dan kartu kredit perusahaan",
-                  applications: ["Manajemen Karyawan", "Benefit", "Penggajian", "Laporan"]
-                },
-                {
-                  name: "Sekolah Swasta E",
-                  location: "Yogyakarta",
-                  product: "PIPOS",
-                  description: "Sistem informasi sekolah terpadu untuk manajemen data siswa dan guru",
-                  applications: ["Data Siswa", "Data Guru", "Jadwal Pelajaran", "Nilai"]
-                },
-                {
-                  name: "Instansi Pemerintah F",
-                  location: "Semarang",
-                  product: "PIPOS & KKNKU",
-                  description: "Solusi digital untuk manajemen data pegawai dan layanan keuangan",
-                  applications: ["Data Pegawai", "Absensi", "Penggajian", "Laporan"]
-                }
-              ].map((instansi, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{
-                    y: -14,
-                    scale: 1.045,
-                    boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                    transition: { duration: 0.14, ease: 'easeOut' }
-                  }}
-                  className="group relative bg-gradient-to-br from-stone-800 to-stone-900 rounded-2xl p-6 border border-amber-500/20 hover:border-amber-500/70 overflow-hidden transition-all"
-                >
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
-                  </div>
-
-                  <div className="flex items-center gap-3 mb-4 relative z-10">
-                    <div className="bg-amber-500/10 rounded-xl p-3">
-                      <Building2 className="w-6 h-6 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Shield className="w-5 h-5 text-amber-400" />
+                        <span>Keamanan data berlapis</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Zap className="w-5 h-5 text-amber-400" />
+                        <span>Akses cepat dan responsif</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Database className="w-5 h-5 text-amber-400" />
+                        <span>Backup dan restore otomatis</span>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white transition-colors duration-150 group-hover:text-amber-200">
-                        {instansi.name}
+                  </div>
+
+                  {/* === KOTAK PIPOS (HOVER DISAMAKAN DENGAN HOME) === */}
+                  <motion.div
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+                  >
+                    {/* Glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                    </div>
+
+                    <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
+                      <Database className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                      <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
+                        PIPOS
                       </h3>
-                      <p className="text-stone-400 text-sm flex items-center gap-1 transition-colors duration-150 group-hover:text-stone-100">
-                        <MapPin className="w-3 h-3" /> {instansi.location}
+                      <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
+                        Professional Information & Process Operation System
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
+                </div>
+              </motion.div>
 
-                  <div className="mb-4 relative z-10">
-                    <span className="inline-block bg-amber-500/10 text-amber-400 text-sm px-3 py-1 rounded-full transition-colors duration-150 group-hover:bg-amber-500/20 group-hover:text-amber-200">
-                      {instansi.product}
-                    </span>
-                  </div>
 
-                  <p className="text-stone-300 mb-4 relative z-10 transition-colors duration-150 group-hover:text-stone-100">
-                    {instansi.description}
-                  </p>
+              {/* KKNKU */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="mb-16"
+              >
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* === KOTAK KKNKU (HOVER DISAMAKAN DENGAN HOME) === */}
+                  <motion.div
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden order-2 lg:order-1"
+                  >
+                    {/* Glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                    </div>
 
-                  <div className="border-t border-stone-700 pt-4 relative z-10">
-                    <h4 className="text-amber-400 text-sm font-medium mb-3 transition-colors duration-150 group-hover:text-amber-200">
-                      Aplikasi yang Digunakan:
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {instansi.applications.map((app, i) => (
-                        <span key={i} className="bg-stone-700 text-stone-300 text-xs px-2 py-1 rounded transition-colors duration-150 group-hover:bg-stone-600 group-hover:text-stone-100">
-                          {app}
-                        </span>
-                      ))}
+                    <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
+                      <Smartphone className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                      <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
+                        KKNKU
+                      </h3>
+                      <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
+                        Kartu Kredit Nasional Kartu Universitas
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* TEKS KKNKU (TIDAK DIUBAH) */}
+                  <div className="space-y-6 order-1 lg:order-2">
+                    <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2">
+                      <Smartphone className="w-4 h-4 text-amber-400" />
+                      <span className="text-amber-400 text-sm font-medium">Aplikasi Mobile</span>
+                    </div>
+
+                    <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
+                    <p className="text-lg text-stone-300 leading-relaxed">
+                      Aplikasi mobile inovatif untuk manajemen dan akses informasi kartu kredit nasional kampus. Memudahkan mahasiswa dan staf dengan mudah & aman.
+                    </p>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Shield className="w-5 h-5 text-amber-400" />
+                        <span>Transaksi aman dan terenkripsi</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Zap className="w-5 h-5 text-amber-400" />
+                        <span>Antarmuka user-friendly</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-stone-300">
+                        <Smartphone className="w-5 h-5 text-amber-400" />
+                        <span>Tersedia untuk iOS dan Android</span>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </div>
+              </motion.div>
 
-        {/* CTA */}
-        <CTA
-          title="Tertarik dengan Produk Kami?"
-          description="Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat"
-          buttonText="Hubungi Kami"
-          href="/kontak"
-        />
+
+              {/* Peta interaktif */}
+              <div className="h-[400px] md:h-[600px] w-full rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
+                <ClientMap markers={clientLocations} />
+              </div>
+
+              {/* Statistics */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12"
+              >
+                {[
+                  { label: "Total Instansi", value: "6+", icon: Building2 },
+                  { label: "Kota Tercover", value: "6", icon: MapPin },
+                  { label: "PIPOS", value: "4", icon: Database },
+                  { label: "KKNKU", value: "3", icon: Smartphone }
+                ].map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative p-6 bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 text-center overflow-hidden rounded-2xl"
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                    </div>
+
+                    <stat.icon className="w-8 h-8 text-amber-400 mx-auto mb-3 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                    
+                    <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-2 transition-colors duration-150 group-hover:text-amber-200">
+                      {stat.value}
+                    </div>
+                    
+                    <p className="text-stone-300 text-sm transition-colors duration-150 group-hover:text-stone-100">
+                      {stat.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Daftar Instansi - dengan hover pada card lokasi */}
+              <div className="grid lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Universitas Negeri A",
+                    location: "Jakarta",
+                    product: "PIPOS",
+                    description: "Sistem manajemen database untuk menyimpan data mahasiswa dan akademik dengan efisien",
+                    applications: ["Data Mahasiswa", "Nilai Akademik", "Keuangan", "Perpustakaan"]
+                  },
+                  {
+                    name: "Pemerintah Daerah B",
+                    location: "Bandung",
+                    product: "PIPOS & KKNKU",
+                    description: "Integrasi sistem untuk manajemen data kependudukan dan layanan keuangan digital",
+                    applications: ["Kependudukan", "Layanan Publik", "Pembayaran Digital", "Administrasi"]
+                  },
+                  {
+                    name: "Rumah Sakit C",
+                    location: "Surabaya",
+                    product: "PIPOS",
+                    description: "Sistem database terpadu untuk rekam medis dan manajemen pasien",
+                    applications: ["Rekam Medis", "Jadwal Dokter", "Farmasi", "Administrasi RS"]
+                  },
+                  {
+                    name: "Perusahaan Swasta D",
+                    location: "Medan",
+                    product: "KKNKU",
+                    description: "Aplikasi mobile untuk manajemen benefit karyawan dan kartu kredit perusahaan",
+                    applications: ["Manajemen Karyawan", "Benefit", "Penggajian", "Laporan"]
+                  },
+                  {
+                    name: "Sekolah Swasta E",
+                    location: "Yogyakarta",
+                    product: "PIPOS",
+                    description: "Sistem informasi sekolah terpadu untuk manajemen data siswa dan guru",
+                    applications: ["Data Siswa", "Data Guru", "Jadwal Pelajaran", "Nilai"]
+                  },
+                  {
+                    name: "Instansi Pemerintah F",
+                    location: "Semarang",
+                    product: "PIPOS & KKNKU",
+                    description: "Solusi digital untuk manajemen data pegawai dan layanan keuangan",
+                    applications: ["Data Pegawai", "Absensi", "Penggajian", "Laporan"]
+                  }
+                ].map((instansi, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-2xl p-6 overflow-hidden transition-all"
+                  >
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                    </div>
+
+                    <div className="flex items-center gap-3 mb-4 relative z-10">
+                      <div className="bg-amber-500/10 rounded-xl p-3">
+                        <Building2 className="w-6 h-6 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white transition-colors duration-150 group-hover:text-amber-200">
+                          {instansi.name}
+                        </h3>
+                        <p className="text-stone-400 text-sm flex items-center gap-1 transition-colors duration-150 group-hover:text-stone-100">
+                          <MapPin className="w-3 h-3" /> {instansi.location}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mb-4 relative z-10">
+                      <span className="inline-block bg-amber-500/10 text-amber-400 text-sm px-3 py-1 rounded-full transition-colors duration-150 group-hover:bg-amber-500/20 group-hover:text-amber-200">
+                        {instansi.product}
+                      </span>
+                    </div>
+
+                    <p className="text-stone-300 mb-4 relative z-10 transition-colors duration-150 group-hover:text-stone-100">
+                      {instansi.description}
+                    </p>
+
+                    <div className="border-t border-stone-700 pt-4 relative z-10">
+                      <h4 className="text-amber-400 text-sm font-medium mb-3 transition-colors duration-150 group-hover:text-amber-200">
+                        Aplikasi yang Digunakan:
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {instansi.applications.map((app, i) => (
+                          <span key={i} className="bg-neutral-800 text-stone-300 text-xs px-2 py-1 rounded transition-colors duration-150 group-hover:bg-neutral-700 group-hover:text-stone-100">
+                            {app}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <CTA
+            title="Tertarik dengan Produk Kami?"
+            description="Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat"
+            buttonText="Hubungi Kami"
+            href="/kontak"
+          />
+        </div>
       </main>
       <Footer />
     </>
