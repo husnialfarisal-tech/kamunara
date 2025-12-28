@@ -1,7 +1,8 @@
-import type { Metadata, Viewport } from "next";  // <-- TAMBAH Viewport di import
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "next-themes"; // ← WAJIB untuk dark/light mode
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Metadata SEO (tanpa themeColor)
+// Metadata SEO (tanpa themeColor, karena dipindah ke viewport)
 export const metadata: Metadata = {
   title: "Kamunara - Solusi Digital Terpercaya | Web & Mobile Development",
   description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital baik berbasis website maupun mobile. Holding pada perusahaan DS.",
@@ -33,13 +34,13 @@ export const metadata: Metadata = {
   },
 };
 
-// TAMBAHKAN INI: export viewport untuk themeColor & pengaturan mobile
+// Export viewport (tempat yang benar untuk themeColor dan pengaturan mobile)
 export const viewport: Viewport = {
-  themeColor: '#1c1917', // Warna gelap match tema website kamu (stone-900)
+  themeColor: '#1c1917', // Warna gelap sesuai tema utama (stone-900)
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false, // Opsional: lock zoom kalau mau
+  userScalable: false, // Opsional: lock zoom supaya tidak berubah ukuran di HP
 };
 
 export default function RootLayout({
@@ -49,11 +50,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
-        {children}
-        <Toaster />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+        {/* ThemeProvider mengelola dark/light mode */}
+        <ThemeProvider
+          attribute="class"              // Pakai class dark untuk Tailwind
+          defaultTheme="system"          // Otomatis ikut mode sistem user (dark/light)
+          enableSystem                   // Dukung mode sistem
+          disableTransitionOnChange      // Matikan animasi transisi biar switch cepat
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
