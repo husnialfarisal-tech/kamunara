@@ -58,28 +58,50 @@ export default function KontakPage() {
                 </div>
 
                 {/* Contact Cards – lebih ringkas, hover x:10 tetap */}
-                <div className="space-y-6">
-                  {[
-                    { icon: Phone, label: 'Telepon', value: '+62 82271029268', href: 'tel:+6282271029268' },
-                    { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
-                    { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97711, Indonesia', href: '#' },
-                  ].map((item, i) => (
-                    <motion.a
-                      key={i}
-                      href={item.href}
-                      whileHover={{ x: 10 }}
-                      className="flex items-center gap-4 p-6 bg-gradient-to-br from-stone-800 to-stone-900 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 transition-all"
-                    >
-                      <div className="bg-amber-500/20 rounded-xl p-4">
-                        <item.icon className="w-6 h-6 text-amber-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-white font-bold mb-1">{item.label}</h3>
-                        <p className="text-stone-300">{item.value}</p>
-                      </div>
-                    </motion.a>
-                  ))}
-                </div>
+                            <div className="space-y-6">
+              {[
+                { icon: Phone, label: 'Telepon', value: '+62 82271029268', href: 'tel:+6282271029268' },
+                { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
+                { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97711, Indonesia', href: '#' },
+              ].map((item, i) => (
+                <motion.a
+                  key={i}
+                  href={item.href}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  whileHover={{
+                    y: -12,
+                    scale: 1.045,
+                    boxShadow: '0 20px 40px -12px rgba(245, 158, 11, 0.55)',
+                    transition: { duration: 0.14, ease: 'easeOut' }
+                  }}
+                  className="group relative flex items-center gap-4 p-6 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl border border-amber-500/20 hover:border-amber-500/70 transition-all overflow-hidden"
+                >
+                  {/* Glow background */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
+                  </div>
+
+                  {/* Icon */}
+                  <div className="bg-amber-500/20 rounded-xl p-4 transition-all duration-150 group-hover:bg-amber-500/30 group-hover:scale-110">
+                    <item.icon className="w-6 h-6 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <h3 className="text-white font-bold mb-1 transition-colors duration-150 group-hover:text-amber-200">
+                      {item.label}
+                    </h3>
+                    <p className="text-stone-300 transition-colors duration-150 group-hover:text-stone-100">
+                      {item.value}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
 
                 {/* Social Media – tetap 4 tombol, tapi lebih rapi */}
                 <div className="space-y-4">

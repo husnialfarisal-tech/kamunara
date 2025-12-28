@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer' // ← TAMBAHKAN INI biar ada footer seperti halaman lain
+import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
 import { Zap, ShieldCheck, Smartphone } from 'lucide-react'
 
@@ -38,7 +38,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Benefit/Teaser Section */}
+        {/* Benefit Section */}
         <section className="py-16 px-4">
           <div className="container mx-auto max-w-5xl grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -62,13 +62,33 @@ export default function HomePage() {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 transition-all text-center group"
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{
+                  y: -14,
+                  scale: 1.045,
+                  boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                  transition: {
+                    duration: 0.14,
+                    ease: 'easeOut'
+                  }
+                }}
+                className="group relative p-8 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl border border-amber-500/20 hover:border-amber-500/70 text-center overflow-hidden"
               >
-                <item.icon className="w-12 h-12 text-amber-400 mx-auto mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-stone-400">{item.desc}</p>
+                {/* Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
+                </div>
+
+                <item.icon className="w-12 h-12 text-amber-400 mx-auto mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+
+                <h3 className="text-xl font-bold text-white mb-3 transition-colors duration-150 group-hover:text-amber-200">
+                  {item.title}
+                </h3>
+
+                <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -83,7 +103,6 @@ export default function HomePage() {
         />
       </main>
 
-      {/* Footer – tambahkan ini biar konsisten dengan halaman lain */}
       <Footer />
     </>
   )
