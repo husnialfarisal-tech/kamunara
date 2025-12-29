@@ -1,35 +1,60 @@
-# TODO - Update PIPOS Description
+# TODO: Add PIPOS Subscription Products
 
-## Task: Mengubah deskripsi PIPOS dari Sistem Manajemen Database menjadi Sistem Manajemen Kasir
+## Task Overview
+Add PIPOS subscription section with 3 tiers (Standar, Profesional, Exclusive) both monthly and yearly pricing, displayed after the existing PIPOS product information and before the KKNKU section.
 
-### Steps yang perlu diselesaikan:
-- [x] 1. Update Deskripsi Hero Section PIPOS - ganti "Sistem Manajemen Database" menjadi "Sistem Manajemen Kasir" dengan penjelasan 3 role (Owner, Admin, Kasir)
-- [x] 2. Update Badge/Tag dari "Manajemen Database" menjadi "Manajemen Kasir"
-- [x] 3. Update Deskripsi di Kartu Produk PIPOS - ganti tagline menjadi "Point of Sale System dengan 3 Role Akses"
-- [x] 4. Update fitur-fitur PIPOS agar sesuai dengan sistem kasir (3 Level akses, transaksi real-time, laporan bisnis)
-- [x] 5. Update Deskripsi Instansi di daftar klien - ganti semua deskripsi PIPOS agar konsisten dengan konsep kasir:
-   - Universitas Negeri A: Sistem kasir untuk pembayaran UKT dan administrasi
-   - Rumah Sakit C: Sistem kasirRS untuk pembayaran pasien
-   - Sekolah Swasta E: Sistem kasir sekolah untuk pembayaran SPP
-   - Instansi Pemerintah F: Sistem kasir untuk layanan publik
+## Plan
 
-## Status: ✅ COMPLETED (PIPOS)
+### 1. Information Gathered
+- Current produk page structure analyzed
+- PIPOS section exists with description and features
+- KKNKU section exists and should remain below the new subscription section
+- Design follows amber/gold color scheme with glassmorphism effects
+- Responsive design with motion animations
 
----
+### 2. Implementation Plan
+- Add new subscription section between PIPOS product display and KKNKU section
+- Create 3 subscription tiers with pricing structure:
+  * **Standar**: Rp.100.000/bulan atau Rp.1.080.000/tahun (hemat 10%)
+  * **Profesional**: Rp.400.000/bulan atau Rp.4.320.000/tahun (hemat 10%)
+  * **Exclusive**: Rp.1.000.000/bulan atau Rp.10.800.000/tahun (hemat 10%)
+- Each tier displays:
+  * Tier name and pricing
+  * Key features list
+  * Purchase button
+- Follow existing design patterns and hover effects
 
-# TODO - Update KKNKU Description
+### 3. Technical Implementation
+- Use motion animations matching existing style
+- Implement glassmorphism effects with amber accents
+- Create responsive grid layout for 3 tiers
+- Add toggle between monthly/yearly pricing
+- Include purchase buttons for each tier
 
-## Task: Mengubah deskripsi KKNKU untuk Universitas Khairun Ternate - Manajemen Kuliah Kerja Nyata (KKN)
+### 4. Features for Each Tier
+**Standar**: Basic POS features, single store, basic reports
+**Profesional**: Multi-store support, advanced analytics, priority support
+**Exclusive**: Unlimited stores, API access, custom integrations, 24/7 support
 
-### Steps yang perlu diselesaikan:
-- [x] 1. Update Deskripsi Hero Section KKNKU - ganti menjadi website untuk manajemen KKN Universitas Khairun Ternate
-- [x] 2. Update Badge/Tag untuk KKNKU menjadi "Manajemen KKN"
-- [x] 3. Update Tagline kartu produk KKNKU menjadi "Kuliah Kerja Nyata Universitas Khairun"
-- [x] 4. Update fitur-fitur KKNKU (pendaftaran, berkas, lokasi KKN, dll)
-- [x] 5. Update Deskripsi Instance yang menggunakan KKNKU:
-   - Perusahaan Swasta D (Medan): Website KKN untuk manajemen mahasiswa KKN
-   - Menteri Koordinator B (Bandung): Integrasi sistem kasir dan website KKN
-   - Universitas Khairun (Ternate): Sistem terintegrasi kasir dan KKN
-- [x] 6. Update data clientLocations untuk peta interaktif sesuai dengan perubahan instance
+### 5. Follow-up Steps
+- Test responsiveness across devices
+- Verify pricing calculations (10% discount for yearly)
+- Ensure smooth animations and hover effects
+- Validate integration with existing design
 
-## Status: ✅ COMPLETED (PIPOS & KKNKU)
+## Status: ✅ IMPLEMENTATION COMPLETED
+
+### Completed Features:
+- ✅ Added subscription section between PIPOS and KKNKU sections
+- ✅ 3 subscription tiers with pricing structure:
+  * Standar: Rp.100.000/bulan, Rp.1.080.000/tahun (hemat 10%)
+  * Profesional: Rp.400.000/bulan, Rp.4.320.000/tahun (hemat 10%)
+  * Exclusive: Rp.1.000.000/bulan, Rp.10.800.000/tahun (hemat 10%)
+- ✅ Features list for each tier with detailed specifications
+- ✅ Purchase buttons for each subscription tier
+- ✅ Design matches existing amber/gold theme
+- ✅ Glassmorphism effects and smooth animations
+- ✅ "POPULER" badge on Professional tier
+- ✅ Responsive grid layout
+- ✅ Monthly/yearly pricing toggle display
+- ✅ All requirements fulfilled as requested

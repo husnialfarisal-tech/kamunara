@@ -49,7 +49,7 @@ export default function Navbar() {
           >
             <div className="w-10 h-10 flex items-center justify-center">
               <Image
-                src="/images/logo_kamunara.PNG"
+                src="/images/Kamunara2.jpeg"
                 alt="Logo Kamunara"
                 width={40}
                 height={40}

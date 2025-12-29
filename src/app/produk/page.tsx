@@ -168,6 +168,236 @@ export default function ProdukPage() {
                 </div>
               </motion.div>
 
+              {/* Section PIPOS Subscription */}
+              <section className="py-16 px-4">
+                <div className="container mx-auto">
+                  
+                  {/* Section Header */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className="text-center mb-16"
+                  >
+                    <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
+                      <Database className="w-4 h-4 text-amber-400" />
+                      <span className="text-amber-400 text-sm font-medium">Berlangganan PIPOS</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                      Pilih Paket yang Tepat
+                    </h2>
+                    <p className="text-lg text-stone-300 max-w-3xl mx-auto">
+                      Dapatkan akses penuh ke fitur PIPOS dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
+                    </p>
+                  </motion.div>
+
+                  {/* Pricing Toggle */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="flex justify-center mb-12"
+                  >
+                    <div className="bg-neutral-900/60 backdrop-blur-sm border border-white/10 rounded-full p-2 flex items-center gap-2">
+                      <button className="px-6 py-2 bg-amber-500 text-white rounded-full text-sm font-medium transition-all">
+                        Bulanan
+                      </button>
+                      <span className="px-3 text-stone-400 text-sm">Tahunan</span>
+                      <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">Hemat 10%</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Subscription Cards */}
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    
+                    {/* Standar Package */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      whileHover={{
+                        y: -14,
+                        scale: 1.045,
+                        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                        transition: { duration: 0.14, ease: 'easeOut' }
+                      }}
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                      </div>
+
+                      <div className="relative z-10">
+                        <div className="text-center mb-8">
+                          <h3 className="text-2xl font-bold text-white mb-2">Standar</h3>
+                          <p className="text-stone-400 text-sm">Cocok untuk toko kecil</p>
+                          
+                          <div className="mt-6">
+                            <div className="text-4xl font-bold text-white">
+                              Rp 100.000
+                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
+                            </div>
+                            <div className="text-sm text-stone-500 mt-1">
+                              Rp 1.080.000/tahun
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          {[
+                            '1 Toko',
+                            'Kasir Penjualan',
+                            'Manajemen Stok Dasar',
+                            'Laporan Harian',
+                            '3 User Account',
+                            'Support Email'
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-3 text-stone-300">
+                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
+                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                              </div>
+                              <span className="text-sm">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
+                          Pilih Standar
+                        </button>
+                      </div>
+                    </motion.div>
+
+                    {/* Profesional Package */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      whileHover={{
+                        y: -14,
+                        scale: 1.045,
+                        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                        transition: { duration: 0.14, ease: 'easeOut' }
+                      }}
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-amber-500/50 hover:border-amber-400 rounded-3xl p-8 overflow-hidden transform lg:scale-105"
+                    >
+                      <div className="absolute top-4 right-4 bg-amber-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+                        POPULER
+                      </div>
+                      
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                      </div>
+
+                      <div className="relative z-10">
+                        <div className="text-center mb-8">
+                          <h3 className="text-2xl font-bold text-white mb-2">Profesional</h3>
+                          <p className="text-stone-400 text-sm">Ideal untuk bisnis berkembang</p>
+                          
+                          <div className="mt-6">
+                            <div className="text-4xl font-bold text-white">
+                              Rp 400.000
+                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
+                            </div>
+                            <div className="text-sm text-stone-500 mt-1">
+                              Rp 4.320.000/tahun
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          {[
+                            '5 Toko',
+                            'Kasir Penjualan Advanced',
+                            'Manajemen Stok Lengkap',
+                            'Laporan Analisis',
+                            '15 User Account',
+                            'Priority Support',
+                            'Integrasi Payment Gateway',
+                            'Backup Otomatis'
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-3 text-stone-300">
+                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
+                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                              </div>
+                              <span className="text-sm">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
+                          Pilih Profesional
+                        </button>
+                      </div>
+                    </motion.div>
+
+                    {/* Exclusive Package */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      whileHover={{
+                        y: -14,
+                        scale: 1.045,
+                        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                        transition: { duration: 0.14, ease: 'easeOut' }
+                      }}
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                      </div>
+
+                      <div className="relative z-10">
+                        <div className="text-center mb-8">
+                          <h3 className="text-2xl font-bold text-white mb-2">Exclusive</h3>
+                          <p className="text-stone-400 text-sm">Solusi enterprise lengkap</p>
+                          
+                          <div className="mt-6">
+                            <div className="text-4xl font-bold text-white">
+                              Rp 1.000.000
+                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
+                            </div>
+                            <div className="text-sm text-stone-500 mt-1">
+                              Rp 10.800.000/tahun
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          {[
+                            'Unlimited Toko',
+                            'Full POS Features',
+                            'Manajemen Stok Advanced',
+                            'Laporan Business Intelligence',
+                            'Unlimited User Account',
+                            '24/7 Premium Support',
+                            'API Access & Integrations',
+                            'Custom Development',
+                            'White Label Solution',
+                            'Multi-currency Support'
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-3 text-stone-300">
+                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
+                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                              </div>
+                              <span className="text-sm">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
+                          Pilih Exclusive
+                        </button>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </section>
 
               {/* KKNKU */}
               <motion.div
