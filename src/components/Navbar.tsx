@@ -49,7 +49,7 @@ export default function Navbar() {
           >
             <div className="w-10 h-10 flex items-center justify-center">
               <Image
-                src="/images/logo_kamunara.png"
+                src="/images/logo_kamunara.PNG"
                 alt="Logo Kamunara"
                 width={40}
                 height={40}
@@ -72,7 +72,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`
-                    font-medium transition-colors
+                    font-bold transition-colors
                     ${isActive ? 'text-amber-400 font-bold' : 'text-stone-300 hover:text-amber-400'}
                   `}
                 >
@@ -162,7 +162,7 @@ export default function Navbar() {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                       }}
                       className={`
-                        text-xl font-medium transition-colors
+                        text-xl font-bold transition-colors
                         ${isActive ? 'text-amber-400 font-bold' : 'text-stone-300 hover:text-amber-400'}
                       `}
                     >
