@@ -31,11 +31,11 @@ export default function ProdukPage() {
   // Data marker untuk peta
   const clientLocations = [
     { nama: 'Universitas Negeri A', produk: 'PIPOS', kota: 'Jakarta', lat: -6.2088, lng: 106.8456 },
-    { nama: 'Pemerintah Daerah B', produk: 'PIPOS & KKNKU', kota: 'Bandung', lat: -6.9175, lng: 107.6191 },
+    { nama: 'Menteri Koordinator B', produk: 'PIPOS & KKNKU', kota: 'Bandung', lat: -6.9175, lng: 107.6191 },
     { nama: 'Rumah Sakit C', produk: 'PIPOS', kota: 'Surabaya', lat: -7.2575, lng: 112.7521 },
     { nama: 'Perusahaan Swasta D', produk: 'KKNKU', kota: 'Medan', lat: 3.5952, lng: 98.6722 },
     { nama: 'Sekolah Swasta E', produk: 'PIPOS', kota: 'Yogyakarta', lat: -7.7956, lng: 110.3695 },
-    { nama: 'Instansi Pemerintah F', produk: 'PIPOS & KKNKU', kota: 'Semarang', lat: -6.9667, lng: 110.4167 }
+    { nama: 'Universitas Khairun', produk: 'PIPOS & KKNKU', kota: 'Ternate', lat: 1.8047, lng: 127.3821 }
   ]
 
   return (
@@ -115,27 +115,27 @@ export default function ProdukPage() {
                       </div>
                       <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
                       <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">
-                        Manajemen Database
+                        Manajemen Kasir
                       </span>
                     </motion.div>
 
                     <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
                     <p className="text-lg text-stone-300 leading-relaxed">
-                      Sistem Manajemen Database yang komprehensif untuk membantu organisasi mengelola data dengan efisien. PIPOS menyediakan antarmuka intuitif dan fitur canggih.
+                      Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPOS menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian. Dilengkapi dengan fitur canggih untuk pelaporan dan analisis bisnis.
                     </p>
 
                     <div className="space-y-3">
                       <div className="flex items-center gap-3 text-stone-300">
                         <Shield className="w-5 h-5 text-amber-400" />
-                        <span>Keamanan data berlapis</span>
+                        <span>3 Level akses: Owner, Admin, Kasir</span>
                       </div>
                       <div className="flex items-center gap-3 text-stone-300">
                         <Zap className="w-5 h-5 text-amber-400" />
-                        <span>Akses cepat dan responsif</span>
+                        <span>Transaksi penjualan real-time</span>
                       </div>
                       <div className="flex items-center gap-3 text-stone-300">
                         <Database className="w-5 h-5 text-amber-400" />
-                        <span>Backup dan restore otomatis</span>
+                        <span>Laporan dan analisis bisnis lengkap</span>
                       </div>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function ProdukPage() {
                         PIPOS
                       </h3>
                       <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
-                        Professional Information & Process Operation System
+                        Point of Sale System dengan 3 Role Akses
                       </p>
                     </div>
                   </motion.div>
@@ -199,7 +199,7 @@ export default function ProdukPage() {
                         KKNKU
                       </h3>
                       <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
-                        Kartu Kredit Nasional Kartu Universitas
+                        Kuliah Kerja Nyata Universitas Khairun
                       </p>
                     </div>
                   </motion.div>
@@ -208,26 +208,26 @@ export default function ProdukPage() {
                   <div className="space-y-6 order-1 lg:order-2">
                     <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2">
                       <Smartphone className="w-4 h-4 text-amber-400" />
-                      <span className="text-amber-400 text-sm font-medium">Aplikasi Mobile</span>
+                      <span className="text-amber-400 text-sm font-medium">Manajemen KKN</span>
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
                     <p className="text-lg text-stone-300 leading-relaxed">
-                      Aplikasi mobile inovatif untuk manajemen dan akses informasi kartu kredit nasional kampus. Memudahkan mahasiswa dan staf dengan mudah & aman.
+                      Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
                     </p>
 
                     <div className="space-y-3">
                       <div className="flex items-center gap-3 text-stone-300">
                         <Shield className="w-5 h-5 text-amber-400" />
-                        <span>Transaksi aman dan terenkripsi</span>
+                        <span>Pendaftaran dan verifikasi mahasiswa</span>
                       </div>
                       <div className="flex items-center gap-3 text-stone-300">
                         <Zap className="w-5 h-5 text-amber-400" />
-                        <span>Antarmuka user-friendly</span>
+                        <span>Manajemen berkas dan dokumen KKN</span>
                       </div>
                       <div className="flex items-center gap-3 text-stone-300">
                         <Smartphone className="w-5 h-5 text-amber-400" />
-                        <span>Tersedia untuk iOS dan Android</span>
+                        <span>Pemilihan dan pengelolaan lokasi KKN</span>
                       </div>
                     </div>
                   </div>
@@ -291,43 +291,43 @@ export default function ProdukPage() {
                     name: "Universitas Negeri A",
                     location: "Jakarta",
                     product: "PIPOS",
-                    description: "Sistem manajemen database untuk menyimpan data mahasiswa dan akademik dengan efisien",
-                    applications: ["Data Mahasiswa", "Nilai Akademik", "Keuangan", "Perpustakaan"]
+                    description: "Sistem kasir terpadu untuk pembayaran UKT, semester, dan layanan administrasi mahasiswa dengan 3 level akses",
+                    applications: ["Pembayaran UKT", "Kasir Administrasi", "Laporan Keuangan", "Manajemen User"]
                   },
                   {
-                    name: "Pemerintah Daerah B",
+                    name: "Menteri Koordinator B",
                     location: "Bandung",
                     product: "PIPOS & KKNKU",
-                    description: "Integrasi sistem untuk manajemen data kependudukan dan layanan keuangan digital",
-                    applications: ["Kependudukan", "Layanan Publik", "Pembayaran Digital", "Administrasi"]
+                    description: "Integrasi sistem kasir dan website KKN untukUniversitas Khairun Ternate - mengelola layanan publik dan program Kuliah Kerja Nyata",
+                    applications: ["Kasir Layanan", "Pendaftaran KKN", "Manajemen Lokasi", "Pelaporan"]
                   },
                   {
                     name: "Rumah Sakit C",
                     location: "Surabaya",
                     product: "PIPOS",
-                    description: "Sistem database terpadu untuk rekam medis dan manajemen pasien",
-                    applications: ["Rekam Medis", "Jadwal Dokter", "Farmasi", "Administrasi RS"]
+                    description: "Sistem kasirRS untuk pembayaran pasien, layanan kesehatan, dan manajemen administrasi rumah sakit dengan kontrol akses",
+                    applications: ["Kasir Pasien", "Pembayaran Tindakan", "Laporan Keuangan", "Manajemen Admin"]
                   },
                   {
                     name: "Perusahaan Swasta D",
                     location: "Medan",
                     product: "KKNKU",
-                    description: "Aplikasi mobile untuk manajemen benefit karyawan dan kartu kredit perusahaan",
-                    applications: ["Manajemen Karyawan", "Benefit", "Penggajian", "Laporan"]
+                    description: "Website KKN untuk Universitas Khairun Ternate - sistem manajemen mahasiswa yang akan melaksanakan Kuliah Kerja Nyata dengan fitur pendaftaran dan seleksi",
+                    applications: ["Pendaftaran KKN", "Seleksi Mahasiswa", "Manajemen Lokasi", "Tracking Progress"]
                   },
                   {
                     name: "Sekolah Swasta E",
                     location: "Yogyakarta",
                     product: "PIPOS",
-                    description: "Sistem informasi sekolah terpadu untuk manajemen data siswa dan guru",
-                    applications: ["Data Siswa", "Data Guru", "Jadwal Pelajaran", "Nilai"]
+                    description: "Sistem kasir sekolah untuk pembayaran SPP, kegiatan, dan administrasi sekolah dengan sistem user management",
+                    applications: ["Kasir SPP", "Pembayaran Kegiatan", "Laporan Keuangan", "Manajemen User"]
                   },
                   {
-                    name: "Instansi Pemerintah F",
-                    location: "Semarang",
+                    name: "Universitas Khairun",
+                    location: "Ternate",
                     product: "PIPOS & KKNKU",
-                    description: "Solusi digital untuk manajemen data pegawai dan layanan keuangan",
-                    applications: ["Data Pegawai", "Absensi", "Penggajian", "Laporan"]
+                    description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata",
+                    applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"]
                   }
                 ].map((instansi, index) => (
                   <motion.div

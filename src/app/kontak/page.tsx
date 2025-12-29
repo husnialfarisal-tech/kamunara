@@ -75,7 +75,7 @@ export default function KontakPage() {
                   {/* Contact Cards – lebih ringkas, hover x:10 tetap */}
                               <div className="space-y-6">
                 {[
-                  { icon: Phone, label: 'Telepon', value: '+62 82271029268', href: 'tel:+6282271029268' },
+                  { icon: Phone, label: 'Telepon', value: '+62 8131415160', href: 'tel:+628131415160' },
                   { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
                   { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97711, Indonesia', href: '#' },
                 ].map((item, i) => (
@@ -120,11 +120,11 @@ export default function KontakPage() {
 
                   {/* Social Media – tetap 4 tombol, tapi lebih rapi */}
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-white">Media Sosial</h3>
+                    <h3 className="text-2xl font-bold text-white">Hubungi Kami</h3>
                     <div className="grid grid-cols-2 gap-4">
                       {/* WhatsApp – prioritas utama di Indonesia */}
                       <motion.a
-                        href="https://wa.me/6282271029268"
+                        href="https://wa.me/628131415160"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
@@ -250,7 +250,7 @@ export default function KontakPage() {
             title="Siap Memulai Proyek?"
             description="Hubungi kami sekarang dan mari diskusikan bagaimana kami dapat membantu transformasi digital bisnis Anda"
             buttonText="Chat WhatsApp"
-            href="https://wa.me/6282271029268"  // Bisa external link
+            href="https://wa.me/628131415160"  // Bisa external link
           />
         </div> {/* End of Content Wrapper */}
       </main>
