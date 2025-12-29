@@ -30,12 +30,12 @@ import 'leaflet/dist/leaflet.css'
 export default function ProdukPage() {
   // Data marker untuk peta
   const clientLocations = [
-    { nama: 'Universitas Negeri A', produk: 'PIPOS', kota: 'Jakarta', lat: -6.2088, lng: 106.8456 },
-    { nama: 'Menteri Koordinator B', produk: 'PIPOS & KKNKU', kota: 'Bandung', lat: -6.9175, lng: 107.6191 },
-    { nama: 'Rumah Sakit C', produk: 'PIPOS', kota: 'Surabaya', lat: -7.2575, lng: 112.7521 },
-    { nama: 'Perusahaan Swasta D', produk: 'KKNKU', kota: 'Medan', lat: 3.5952, lng: 98.6722 },
-    { nama: 'Sekolah Swasta E', produk: 'PIPOS', kota: 'Yogyakarta', lat: -7.7956, lng: 110.3695 },
-    { nama: 'Universitas Khairun', produk: 'PIPOS & KKNKU', kota: 'Ternate', lat: 1.8047, lng: 127.3821 }
+  { nama: 'Toko Makmur', produk: 'PIPOS', kota: 'Sagea', lat: 0.464371, lng: 128.096860 }, 
+  { nama: 'Toko Rizky', produk: 'PIPOS', kota: 'Saketa', lat: -0.356588, lng: 127.846552 },
+  { nama: 'Toko Sembako', produk: 'PIPOS', kota: 'Sofifi', lat: 0.75, lng: 127.55 },
+  { nama: 'Toko Peralatan', produk: 'PIPOS', kota: 'Tobelo', lat: 1.73, lng: 127.99 },
+  { nama: 'Jati Mart', produk: 'PIPOS', kota: 'Buli', lat: 0.83, lng: 128.27},
+  { nama: 'Universitas Khairun', produk: 'KKNKU', kota: 'Ternate', lat: 0.7890, lng: 127.3890 }
   ]
 
   return (
@@ -248,7 +248,7 @@ export default function ProdukPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12"
               >
                 {[
-                  { label: "Total Instansi", value: "6+", icon: Building2 },
+                  { label: "Total Instansi", value: "6", icon: Building2 },
                   { label: "Kota Tercover", value: "6", icon: MapPin },
                   { label: "PIPOS", value: "4", icon: Database },
                   { label: "KKNKU", value: "3", icon: Smartphone }
@@ -288,39 +288,39 @@ export default function ProdukPage() {
               <div className="grid lg:grid-cols-3 gap-8">
                 {[
                   {
-                    name: "Universitas Negeri A",
-                    location: "Jakarta",
+                    name: "Toko Makmur",
+                    location: "Sagea, Halmahera Tengah",
                     product: "PIPOS",
-                    description: "Sistem kasir terpadu untuk pembayaran UKT, semester, dan layanan administrasi mahasiswa dengan 3 level akses",
-                    applications: ["Pembayaran UKT", "Kasir Administrasi", "Laporan Keuangan", "Manajemen User"]
+                    description: "Sistem kasir toko untuk pengelolaan penjualan harian, stok barang, dan laporan keuangan secara real-time.",
+                    applications: ["Kasir Penjualan", "Manajemen Stok", "Laporan Harian", "Manajemen User"]
                   },
                   {
-                    name: "Menteri Koordinator B",
-                    location: "Bandung",
-                    product: "PIPOS & KKNKU",
-                    description: "Integrasi sistem kasir dan website KKN untukUniversitas Khairun Ternate - mengelola layanan publik dan program Kuliah Kerja Nyata",
-                    applications: ["Kasir Layanan", "Pendaftaran KKN", "Manajemen Lokasi", "Pelaporan"]
-                  },
-                  {
-                    name: "Rumah Sakit C",
-                    location: "Surabaya",
+                    name: "Toko Rizky",
+                    location: "Saketa, Halmahera Selatan",
                     product: "PIPOS",
-                    description: "Sistem kasirRS untuk pembayaran pasien, layanan kesehatan, dan manajemen administrasi rumah sakit dengan kontrol akses",
-                    applications: ["Kasir Pasien", "Pembayaran Tindakan", "Laporan Keuangan", "Manajemen Admin"]
+                    description: "Aplikasi kasir modern untuk toko sembako dengan fitur pencatatan transaksi dan kontrol stok yang mudah digunakan.",
+                    applications: ["Kasir Sembako", "Manajemen Produk", "Laporan Penjualan", "Riwayat Transaksi"]
                   },
                   {
-                    name: "Perusahaan Swasta D",
-                    location: "Medan",
-                    product: "KKNKU",
-                    description: "Website KKN untuk Universitas Khairun Ternate - sistem manajemen mahasiswa yang akan melaksanakan Kuliah Kerja Nyata dengan fitur pendaftaran dan seleksi",
-                    applications: ["Pendaftaran KKN", "Seleksi Mahasiswa", "Manajemen Lokasi", "Tracking Progress"]
-                  },
-                  {
-                    name: "Sekolah Swasta E",
-                    location: "Yogyakarta",
+                    name: "Toko Sembako",
+                    location: "Sofifi, Halmahera",
                     product: "PIPOS",
-                    description: "Sistem kasir sekolah untuk pembayaran SPP, kegiatan, dan administrasi sekolah dengan sistem user management",
-                    applications: ["Kasir SPP", "Pembayaran Kegiatan", "Laporan Keuangan", "Manajemen User"]
+                    description: "Sistem kasir terintegrasi untuk toko kebutuhan pokok guna mempermudah transaksi dan monitoring stok barang.",
+                    applications: ["Kasir Toko", "Manajemen Stok", "Laporan Bulanan", "Manajemen Harga"]
+                  },
+                  {
+                    name: "Toko Peralatan",
+                    location: "Tobelo, Halmahera Utara",
+                    product: "PIPOS",
+                    description: "Sistem kasir untuk toko peralatan dengan dukungan pencatatan item besar, stok gudang, dan laporan penjualan.",
+                    applications: ["Kasir Peralatan", "Manajemen Gudang", "Laporan Penjualan", "Manajemen Produk"]
+                  },
+                  {
+                    name: "Jati Mart",
+                    location: "Buli, Halmahera Timur",
+                    product: "PIPOS",
+                    description: "Aplikasi kasir untuk minimarket yang mendukung transaksi cepat, stok otomatis, dan laporan keuangan.",
+                    applications: ["Kasir Minimarket", "Manajemen Stok", "Laporan Keuangan", "Manajemen User"]
                   },
                   {
                     name: "Universitas Khairun",
