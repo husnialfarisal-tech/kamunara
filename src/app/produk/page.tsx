@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Smartphone,
   MapPin,
@@ -26,8 +26,38 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
 import 'leaflet/dist/leaflet.css'
+import { useState } from 'react'
+import { Check, X } from 'lucide-react'
 
 export default function ProdukPage() {
+  const [isMonthly, setIsMonthly] = useState(true)
+
+  const packagePrices = {
+    standar: { monthly: 100000, annual: 1080000 },
+    prof: { monthly: 400000, annual: 4320000 },
+    excl: { monthly: 1000000, annual: 10800000 }
+  }
+
+  const formatPrice = (num: number) => `Rp ${num.toLocaleString('id-ID')}`
+
+  const features = [
+    { standar: '1 Toko', prof: '5 Toko', excl: 'Unlimited Toko' },
+    { standar: 'Kasir Penjualan', prof: 'Kasir Penjualan Advanced', excl: 'Full POS Features' },
+    { standar: 'Manajemen Stok Dasar', prof: 'Manajemen Stok Lengkap', excl: 'Manajemen Stok Advanced' },
+    { standar: 'Laporan Harian', prof: 'Laporan Analisis', excl: 'Laporan Business Intelligence' },
+    { standar: '3 User Account', prof: '15 User Account', excl: 'Unlimited User Account' },
+    { standar: 'Support Email', prof: 'Priority Support', excl: '24/7 Premium Support' },
+    { standar: 'Integrasi Payment Gateway', prof: 'Integrasi Payment Gateway', excl: 'API Access & Integrations' },
+    { standar: 'Backup Otomatis', prof: 'Backup Otomatis', excl: 'Custom Development' },
+    { standar: 'API Access & Integrations', prof: 'API Access & Integrations', excl: 'White Label Solution' },
+    { standar: 'Custom Development', prof: 'Custom Development', excl: 'Multi-currency Support' }
+  ]
+
+  const enabledFeatures = {
+    standar: [true, true, true, true, true, true, false, false, false, false],
+    prof: [true, true, true, true, true, true, true, true, false, false],
+    excl: [true, true, true, true, true, true, true, true, true, true]
+  }
   // Data marker untuk peta
   const clientLocations = [
   { nama: 'Toko Makmur', produk: 'PIPOS', kota: 'Sagea', lat: 0.464371, lng: 128.096860 }, 
@@ -201,11 +231,23 @@ export default function ProdukPage() {
                     className="flex justify-center mb-12"
                   >
                     <div className="bg-neutral-900/60 backdrop-blur-sm border border-white/10 rounded-full p-2 flex items-center gap-2">
-                      <button className="px-6 py-2 bg-amber-500 text-white rounded-full text-sm font-medium transition-all">
+                      <button
+                        onClick={() => setIsMonthly(true)}
+                        className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                          isMonthly ? 'bg-amber-500 text-white' : 'text-stone-400 hover:text-white'
+                        }`}
+                      >
                         Bulanan
                       </button>
-                      <span className="px-3 text-stone-400 text-sm">Tahunan</span>
-                      <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">Hemat 10%</span>
+                      <button
+                        onClick={() => setIsMonthly(false)}
+                        className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                          !isMonthly ? 'bg-amber-500 text-white' : 'text-stone-400 hover:text-white'
+                        }`}
+                      >
+                        Tahunan
+                      </button>
+
                     </div>
                   </motion.div>
 
@@ -224,48 +266,78 @@ export default function ProdukPage() {
                         boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
                         transition: { duration: 0.14, ease: 'easeOut' }
                       }}
-                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-6 overflow-hidden"
                     >
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
                       </div>
 
+                      {/* Hemat 10% Badge - Interactive */}
+                      {!isMonthly && (
+                        <motion.div
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                          className="absolute top-4 right-4 z-20"
+                        >
+                          <div className="bg-green-500/20 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:bg-green-500/30 hover:border-green-500/50 transition-all duration-200 cursor-pointer">
+                            Hemat 10%
+                          </div>
+                        </motion.div>
+                      )}
+
                       <div className="relative z-10">
-                        <div className="text-center mb-8">
-                          <h3 className="text-2xl font-bold text-white mb-2">Standar</h3>
+                        <div className="text-center mb-6">
+                          <h3 className="text-2xl font-bold text-white mb-2">Standard</h3>
                           <p className="text-stone-400 text-sm">Cocok untuk toko kecil</p>
-                          
-                          <div className="mt-6">
-                            <div className="text-4xl font-bold text-white">
-                              Rp 100.000
-                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
-                            </div>
-                            <div className="text-sm text-stone-500 mt-1">
-                              Rp 1.080.000/tahun
-                            </div>
+
+                          <div className="mt-4">
+                            {isMonthly ? (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 100.000</div>
+                                  <div>Rp 99.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 1.080.000/tahun
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 1.200.000</div>
+                                  <div>Rp 1.080.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 99.999/bulan
+                                </div>
+                              </>
+                            )}
                           </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
-                          {[
-                            '1 Toko',
-                            'Kasir Penjualan',
-                            'Manajemen Stok Dasar',
-                            'Laporan Harian',
-                            '3 User Account',
-                            'Support Email'
-                          ].map((feature, index) => (
-                            <div key={index} className="flex items-center gap-3 text-stone-300">
-                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
-                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          {features.map((feature, index) => {
+                            const isEnabled = enabledFeatures.standar[index]
+                            return (
+                              <div key={index} className="flex items-center gap-3 text-stone-300">
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isEnabled ? 'bg-green-500/20' : 'bg-red-500/20'}`}>
+                                  {isEnabled ? (
+                                    <Check className="w-3 h-3 text-green-400" />
+                                  ) : (
+                                    <X className="w-3 h-3 text-red-400" />
+                                  )}
+                                </div>
+                                <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
+                                  {feature.standar}
+                                </span>
                               </div>
-                              <span className="text-sm">{feature}</span>
-                            </div>
-                          ))}
+                            )
+                          })}
                         </div>
 
                         <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
-                          Pilih Standar
+                          Pilih Standard
                         </button>
                       </div>
                     </motion.div>
@@ -282,54 +354,85 @@ export default function ProdukPage() {
                         boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
                         transition: { duration: 0.14, ease: 'easeOut' }
                       }}
-                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-amber-500/50 hover:border-amber-400 rounded-3xl p-8 overflow-hidden transform lg:scale-105"
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-amber-500/50 hover:border-amber-400 rounded-3xl p-6 overflow-hidden transform lg:scale-105"
                     >
                       <div className="absolute top-4 right-4 bg-amber-500 text-white text-xs px-3 py-1 rounded-full font-medium">
                         POPULER
                       </div>
-                      
+
+                      {/* Hemat 10% Badge - Interactive */}
+                      {!isMonthly && (
+                        <motion.div
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+                          className="absolute top-12 right-4 z-20"
+                        >
+                          <span className="bg-green-500/20 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:bg-green-500/30 hover:border-green-500/50 transition-all duration-200 cursor-pointer block">
+                            Hemat 10%
+                          </span>
+                        </motion.div>
+                      )}
+
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
                       </div>
 
                       <div className="relative z-10">
                         <div className="text-center mb-8">
-                          <h3 className="text-2xl font-bold text-white mb-2">Profesional</h3>
+                          <h3 className="text-2xl font-bold text-white mb-2">Professional</h3>
                           <p className="text-stone-400 text-sm">Ideal untuk bisnis berkembang</p>
-                          
+
                           <div className="mt-6">
-                            <div className="text-4xl font-bold text-white">
-                              Rp 400.000
-                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
-                            </div>
-                            <div className="text-sm text-stone-500 mt-1">
-                              Rp 4.320.000/tahun
-                            </div>
+                            {isMonthly ? (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 400.000</div>
+                                  <div>Rp 399.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 4.320.000/tahun
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 4.800.000</div>
+                                  <div>Rp 4.320.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 399.999/bulan
+                                </div>
+                              </>
+                            )}
                           </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
-                          {[
-                            '5 Toko',
-                            'Kasir Penjualan Advanced',
-                            'Manajemen Stok Lengkap',
-                            'Laporan Analisis',
-                            '15 User Account',
-                            'Priority Support',
-                            'Integrasi Payment Gateway',
-                            'Backup Otomatis'
-                          ].map((feature, index) => (
-                            <div key={index} className="flex items-center gap-3 text-stone-300">
-                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
-                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          {features.map((feature, index) => {
+                            const isEnabled = enabledFeatures.prof[index]
+                            return (
+                              <div key={index} className="flex items-center gap-3 text-stone-300">
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isEnabled ? 'bg-green-500/20' : 'bg-red-500/20'}`}>
+                                  {isEnabled ? (
+                                    <Check className="w-3 h-3 text-green-400" />
+                                  ) : (
+                                    <X className="w-3 h-3 text-red-400" />
+                                  )}
+                                </div>
+                                <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
+                                  {feature.prof}
+                                </span>
                               </div>
-                              <span className="text-sm">{feature}</span>
-                            </div>
-                          ))}
+                            )
+                          })}
                         </div>
 
-                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
-                          Pilih Profesional
+                        <button
+                          onClick={() => window.open(`https://wa.me/628131415160?text=Halo, saya ingin membeli paket Professional PIPOS`, '_blank')}
+                          className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25"
+                        >
+                          Pilih Professional
                         </button>
                       </div>
                     </motion.div>
@@ -346,48 +449,74 @@ export default function ProdukPage() {
                         boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
                         transition: { duration: 0.14, ease: 'easeOut' }
                       }}
-                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+                      className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-6 overflow-hidden"
                     >
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
                       </div>
 
+                      {/* Hemat 10% Badge - Interactive */}
+                      {!isMonthly && (
+                        <motion.div
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}
+                          className="absolute top-4 right-4 z-20"
+                        >
+                          <span className="bg-green-500/20 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:bg-green-500/30 hover:border-green-500/50 transition-all duration-200 cursor-pointer block">
+                            Hemat 10%
+                          </span>
+                        </motion.div>
+                      )}
+
                       <div className="relative z-10">
                         <div className="text-center mb-8">
                           <h3 className="text-2xl font-bold text-white mb-2">Exclusive</h3>
                           <p className="text-stone-400 text-sm">Solusi enterprise lengkap</p>
-                          
+
                           <div className="mt-6">
-                            <div className="text-4xl font-bold text-white">
-                              Rp 1.000.000
-                              <span className="text-lg text-stone-400 font-normal">/bulan</span>
-                            </div>
-                            <div className="text-sm text-stone-500 mt-1">
-                              Rp 10.800.000/tahun
-                            </div>
+                            {isMonthly ? (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 1.000.000</div>
+                                  <div>Rp 999.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 10.800.000/tahun
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="text-4xl font-bold text-amber-400">
+                                  <div className="line-through text-stone-500 text-2xl">Rp 12.000.000</div>
+                                  <div>Rp 10.800.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                </div>
+                                <div className="text-xs text-stone-500 mt-1">
+                                  Rp 999.999/bulan
+                                </div>
+                              </>
+                            )}
                           </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
-                          {[
-                            'Unlimited Toko',
-                            'Full POS Features',
-                            'Manajemen Stok Advanced',
-                            'Laporan Business Intelligence',
-                            'Unlimited User Account',
-                            '24/7 Premium Support',
-                            'API Access & Integrations',
-                            'Custom Development',
-                            'White Label Solution',
-                            'Multi-currency Support'
-                          ].map((feature, index) => (
-                            <div key={index} className="flex items-center gap-3 text-stone-300">
-                              <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center">
-                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          {features.map((feature, index) => {
+                            const isEnabled = enabledFeatures.excl[index]
+                            return (
+                              <div key={index} className="flex items-center gap-3 text-stone-300">
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isEnabled ? 'bg-green-500/20' : 'bg-red-500/20'}`}>
+                                  {isEnabled ? (
+                                    <Check className="w-3 h-3 text-green-400" />
+                                  ) : (
+                                    <X className="w-3 h-3 text-red-400" />
+                                  )}
+                                </div>
+                                <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
+                                  {feature.excl}
+                                </span>
                               </div>
-                              <span className="text-sm">{feature}</span>
-                            </div>
-                          ))}
+                            )
+                          })}
                         </div>
 
                         <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
@@ -396,6 +525,27 @@ export default function ProdukPage() {
                       </div>
                     </motion.div>
                   </div>
+                </div>
+              </section>
+
+              {/* Proyek Kami Section */}
+              <section className="py-16 px-4">
+                <div className="container mx-auto text-center">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+                  >
+                    Proyek
+                    <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                      Kami
+                    </span>
+                  </motion.h2>
+                  <p className="text-xl text-stone-300 max-w-3xl mx-auto">
+                    Berbagai proyek yang telah kami kerjakan untuk membantu transformasi digital bisnis dan institusi
+                  </p>
                 </div>
               </section>
 
