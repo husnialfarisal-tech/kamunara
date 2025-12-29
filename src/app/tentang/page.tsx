@@ -66,12 +66,12 @@ export default function TentangPage() {
                     <Users className="w-4 h-4 text-amber-400" />
                     <span className="text-amber-400 text-sm font-medium">Tentang Kami</span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white">Apa dan Siapa Kamunara?</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white">Mengenal Kamunara</h2>
                   <p className="text-lg text-stone-300 leading-relaxed">
-                    Kamunara adalah perusahaan outsource IT yang fokus pada pengembangan software website & mobile berkualitas tinggi. Berholding di DS Company, kami hadir sebagai mitra terpercaya untuk transformasi digital organisasi dan perusahaan.
+                    Kamunara adalah perusahaan IT outsourcing yang baru berkembang dan berfokus pada pengembangan website serta aplikasi. Bernaung di bawah DS Company, kami hadir dengan semangat inovasi dan komitmen kualitas untuk mendukung transformasi digital organisasi dan perusahaan.
                   </p>
                   <p className="text-lg text-stone-300 leading-relaxed">
-                    Solusi kami inovatif, efisien, dan dirancang untuk hasil terbaik.
+                    <em>"Kami berfokus pada penyediaan layanan pengembangan dan pembuatan software digital"</em> 
                   </p>
 
                                 {/* Stats Cards – hover sama seperti Home & Produk */}
@@ -83,10 +83,10 @@ export default function TentangPage() {
                   className="grid grid-cols-2 gap-6 mt-10"
                 >
                   {[
-                    { value: "50+", label: "Proyek Selesai" },
-                    { value: "30+", label: "Klien Puas" },
-                    { value: "5+", label: "Tahun Pengalaman" },
-                    { value: "20+", label: "Tim Profesional" }
+                    { value: "2", label: "Proyek Selesai" },
+                    { value: "2", label: "Klien Puas" },
+                    { value: "1", label: "Tahun Pengalaman" },
+                    { value: "10", label: "Tim Profesional" }
                   ].map((stat, i) => (
                     <motion.div
                       key={i}
@@ -338,7 +338,7 @@ export default function TentangPage() {
                         <Users className="w-6 h-6 text-amber-400" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-2">Konsultasi IT</h3>
+                        <h3 className="text-xl font-bold text-white mb-2">Transformasi Digital</h3>
                         <p className="text-stone-400">Strategi digital untuk transformasi bisnis</p>
                       </div>
                     </div>
