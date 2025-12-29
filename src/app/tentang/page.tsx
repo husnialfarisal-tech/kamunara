@@ -218,69 +218,71 @@ export default function TentangPage() {
             </div>
           </section>
 
-          {/* Values Section – grid responsif */}
+                    {/* Values Section – grid responsif */}
           <section className="py-16 px-4">
             <div className="container mx-auto">
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-                  <Heart className="w-4 h-4 text-amber-400" />
-                  <span className="text-amber-400 text-sm font-medium">Nilai Perusahaan</span>
+                <div className="inline-flex items-center gap-2 bg-white/10 border border-white/30 rounded-full px-4 py-2 mb-6">
+                  <Heart className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">Nilai Perusahaan</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Nilai dan Prinsip</h2>
+
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Nilai dan Prinsip
+                </h2>
+
                 <p className="text-stone-300 text-lg max-w-2xl mx-auto">
                   Fondasi dalam setiap langkah kami
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {[
-      { icon: Heart, title: "Integritas", desc: "Kejujuran dan transparansi penuh" },
-      { icon: Zap, title: "Inovasi", desc: "Mengadopsi teknologi terkini" },
-      { icon: Users, title: "Kolaborasi", desc: "Bekerja sama untuk hasil terbaik" },
-      { icon: Award, title: "Kualitas", desc: "Standar terbaik di setiap deliverable" },
-      { icon: Target, title: "Hasil Orientasi", desc: "Fokus pencapaian tujuan klien" },
-      { icon: Code2, title: "Profesionalisme", desc: "Etika tinggi & standar profesional" }
-    ].map((value, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: index * 0.1 }}
-        whileHover={{
-          y: -14,
-          scale: 1.045,
-          boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-          transition: { duration: 0.14, ease: 'easeOut' }
-        }}
-        className="group relative bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl p-8 border border-amber-500/20 hover:border-amber-500/70 text-center overflow-hidden"
-      >
-        {/* Glow background */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/25 to-transparent blur-2xl scale-110" />
-        </div>
+                {[
+                  { icon: Heart, title: "Integritas", desc: "Kejujuran dan transparansi penuh" },
+                  { icon: Zap, title: "Inovasi", desc: "Mengadopsi teknologi terkini" },
+                  { icon: Users, title: "Kolaborasi", desc: "Bekerja sama untuk hasil terbaik" },
+                  { icon: Award, title: "Kualitas", desc: "Standar terbaik di setiap deliverable" },
+                  { icon: Target, title: "Hasil Orientasi", desc: "Fokus pencapaian tujuan klien" },
+                  { icon: Code2, title: "Profesionalisme", desc: "Etika tinggi & standar profesional" }
+                ].map((value, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(255, 255, 255, 0.45)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-2xl p-8 border border-white/20 hover:border-white/70 text-center overflow-hidden"
+                  >
+                    {/* Glow background putih */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/25 to-transparent blur-2xl scale-110" />
+                    </div>
 
-        {/* Icon */}
-        <div className="bg-amber-500/10 rounded-xl p-4 w-fit mx-auto mb-6 transition-all duration-150 group-hover:bg-amber-500/20 group-hover:scale-110">
-          <value.icon className="w-8 h-8 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
-        </div>
+                    {/* Icon putih */}
+                    <div className="bg-white/10 rounded-xl p-4 w-fit mx-auto mb-6 transition-all duration-150 group-hover:bg-white/20 group-hover:scale-110">
+                      <value.icon className="w-8 h-8 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                    </div>
 
-        {/* Title */}
-        <h3 className="text-2xl font-bold text-white mb-3 transition-colors duration-150 group-hover:text-amber-200">
-          {value.title}
-        </h3>
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-white mb-3 transition-colors duration-150 group-hover:text-white">
+                      {value.title}
+                    </h3>
 
-        {/* Description */}
-        <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-200">
-          {value.desc}
-        </p>
-      </motion.div>
-    ))}
-  </div>
-
+                    {/* Description */}
+                    <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-200">
+                      {value.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </section>
-
           {/* Focus Section */}
           <section className="py-16 px-4">
             <div className="container mx-auto">
