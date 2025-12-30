@@ -23,15 +23,28 @@ export default function ClientMap({ markers }: ClientMapProps) {
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return
 
-    // Inisialisasi peta
+    // Detect if it's mobile device
+    const isMobile = window.innerWidth < 768
+    
+    // Set responsive height for map container
+    const container = mapContainerRef.current
+    if (container) {
+      const screenHeight = window.innerHeight
+      const maxHeight = Math.min(screenHeight * 0.6, 700) // 60% of screen height or max 700px
+      const minHeight = isMobile ? 400 : 500
+      container.style.setProperty('--map-height', `${Math.max(maxHeight, minHeight)}px`)
+    }
+
+    // Inisialisasi peta - enable interactions on mobile, desktop with instruction
     const map = L.map(mapContainerRef.current, {
-      dragging: false,
-      touchZoom: false,
-      doubleClickZoom: false,
-      scrollWheelZoom: false,
+      dragging: !isMobile, // Enable on mobile, disable on desktop by default
+      touchZoom: true, // Always enable for mobile pinch-to-zoom
+      doubleClickZoom: true,
+      scrollWheelZoom: !isMobile, // Disable scroll zoom on mobile to avoid accidental zooming
       boxZoom: false,
-      keyboard: false
-    }).setView([-2.5489, 118.0149], 5)
+      keyboard: false,
+      zoomControl: true
+    }).setView([-2.5489, 118.0149], isMobile ? 4 : 5)
 
     // Tile layer - tema terang yang bersih dan profesional
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -130,34 +143,8 @@ export default function ClientMap({ markers }: ClientMapProps) {
 
     mapRef.current = map
 
-    // Kontrol interaksi dengan tombol Ctrl / Cmd
-    const enableInteraction = () => {
-      map.dragging.enable()
-      map.touchZoom.enable()
-      map.doubleClickZoom.enable()
-      map.scrollWheelZoom.enable()
-    }
-
-    const disableInteraction = () => {
-      map.dragging.disable()
-      map.touchZoom.disable()
-      map.doubleClickZoom.disable()
-      map.scrollWheelZoom.disable()
-    }
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey) enableInteraction()
-    }
-
-    const handleKeyUp = () => disableInteraction()
-
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
-
-    // Cleanup
+    // Cleanup function
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('keyup', handleKeyUp)
       if (mapRef.current) {
         mapRef.current.remove()
         mapRef.current = null
@@ -168,18 +155,22 @@ export default function ClientMap({ markers }: ClientMapProps) {
   return (
     <div className="w-full">
       {/* Petunjuk penggunaan - tampil sebelum peta */}
-      <div className="mb-6 p-5 bg-gradient-to-r from-amber-900/20 to-amber-800/10 rounded-xl border border-amber-500/30 backdrop-blur-sm">
-        <h3 className="text-lg font-semibold text-amber-300 mb-3 flex items-center gap-2">
-          <span className="text-xl">ℹ️</span> Cara Menggunakan Peta Ini
+      <div className="mb-6 p-4 sm:p-5 bg-gradient-to-r from-amber-900/20 to-amber-800/10 rounded-xl border border-amber-500/30 backdrop-blur-sm">
+        <h3 className="text-base sm:text-lg font-semibold text-amber-300 mb-3 flex items-center gap-2">
+          <span className="text-lg sm:text-xl">ℹ️</span> Cara Menggunakan Peta Ini
         </h3>
-        <ul className="space-y-2.5 text-stone-300 text-sm leading-relaxed">
+        <ul className="space-y-2.5 text-stone-300 text-xs sm:text-sm leading-relaxed">
           <li className="flex items-start gap-3">
             <span className="text-amber-400 font-bold mt-0.5">1.</span>
             <span>Klik pada <strong>tanda pin berwarna kuning</strong> untuk melihat informasi nama, produk, dan lokasi.</span>
           </li>
-          <li className="flex items-start gap-3">
+          <li className="flex items-start gap-3 hidden sm:block">
             <span className="text-amber-400 font-bold mt-0.5">2.</span>
-            <span>Untuk menggerakkan peta atau memperbesar/kecilkan, tekan dan tahan tombol <strong>Ctrl</strong> (Windows) atau <strong>Cmd</strong> (Mac) sambil menggerakkan mouse atau pinch di layar sentuh.</span>
+            <span>Untuk menggerakkan peta atau memperbesar/kecilkan, tekan dan tahan tombol <strong>Ctrl</strong> (Windows) atau <strong>Cmd</strong> (Mac) sambil menggerakkan mouse.</span>
+          </li>
+          <li className="flex items-start gap-3 sm:hidden">
+            <span className="text-amber-400 font-bold mt-0.5">2.</span>
+            <span>Gerakkan jari di peta untuk menggeser, dan gunakan <strong>pinch-to-zoom</strong> untuk memperbesar atau memperkecil.</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="text-amber-400 font-bold mt-0.5">3.</span>
@@ -193,7 +184,8 @@ export default function ClientMap({ markers }: ClientMapProps) {
         ref={mapContainerRef}
         className="w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/30"
         style={{
-          height: '700px',
+          height: 'var(--map-height, 700px)',
+          minHeight: '350px',
           touchAction: 'pan-x pan-y pinch-zoom'
         }}
       />

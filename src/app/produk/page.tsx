@@ -28,6 +28,7 @@ import CTA from '@/components/CTA'
 import 'leaflet/dist/leaflet.css'
 import { useState } from 'react'
 import { Check, X } from 'lucide-react'
+import { Turret_Road } from 'next/font/google'
 
 export default function ProdukPage() {
   const [isMonthly, setIsMonthly] = useState(true)
@@ -40,23 +41,103 @@ export default function ProdukPage() {
 
   const formatPrice = (num: number) => `Rp ${num.toLocaleString('id-ID')}`
 
-  const features = [
-    { standar: '1 Toko', prof: '5 Toko', excl: 'Unlimited Toko' },
-    { standar: 'Kasir Penjualan', prof: 'Kasir Penjualan Advanced', excl: 'Full POS Features' },
-    { standar: 'Manajemen Stok Dasar', prof: 'Manajemen Stok Lengkap', excl: 'Manajemen Stok Advanced' },
-    { standar: 'Laporan Harian', prof: 'Laporan Analisis', excl: 'Laporan Business Intelligence' },
-    { standar: '3 User Account', prof: '15 User Account', excl: 'Unlimited User Account' },
-    { standar: 'Support Email', prof: 'Priority Support', excl: '24/7 Premium Support' },
-    { standar: 'Integrasi Payment Gateway', prof: 'Integrasi Payment Gateway', excl: 'API Access & Integrations' },
-    { standar: 'Backup Otomatis', prof: 'Backup Otomatis', excl: 'Custom Development' },
-    { standar: 'API Access & Integrations', prof: 'API Access & Integrations', excl: 'White Label Solution' },
-    { standar: 'Custom Development', prof: 'Custom Development', excl: 'Multi-currency Support' }
-  ]
+  const renderFeatureText = (text: string) => {
+    if (text.includes('(Coming Soon)')) {
+      const parts = text.split('(Coming Soon)')
+      return (
+        <>
+          {parts[0]}
+          <span className="text-yellow-400">(Coming Soon)</span>
+        </>
+      )
+    }
+    return text
+  }
 
+    const features = [
+      // Urutan dari tabel pertama (Image ID: 2)
+      { 
+        standar: 'Single User', 
+        prof: 'Multi User (1 Owner, 1 Admin, 4 Kasir)', 
+        excl: 'User (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: '1000 Produk', 
+        prof: '5000 Produk (100 Bergambar)', 
+        excl: 'Produk (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Custom Tampilan dan Fitur', 
+        prof: 'Custom Tampilan dan Fitur', 
+        excl: 'Custom Tampilan dan Fitur (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Laporan Transaksi (Basic)', 
+        prof: 'Laporan Transaksi (Advance)', 
+        excl: 'Laporan Transaksi (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Fitur Diskon Produk', 
+        prof: 'Fitur Diskon Produk', 
+        excl: 'Fitur Diskon Produk (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Scan Barcode', 
+        prof: 'Scan Barcode', 
+        excl: 'Scan Barcode (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Generate Barcode', 
+        prof: 'Generate Barcode', 
+        excl: 'Generate Barcode (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Print Struk', 
+        prof: 'Print Struk', 
+        excl: 'Print Struk (Sesuai kebutuhan)' 
+      },
+
+      // Urutan dari tabel kedua (Image ID: 3) – dilanjutkan langsung
+      { 
+        standar: 'Manajemen Pelanggan', 
+        prof: 'Manajemen Pelanggan', 
+        excl: 'Manajemen Pelanggan (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Pembayaran Digital (Coming Soon)', 
+        prof: 'Pembayaran Digital (Coming Soon)', 
+        excl: 'Pembayaran Digital (Coming Soon)' 
+      },
+      { 
+        standar: 'Pengaturan Operasi Toko', 
+        prof: 'Pengaturan Operasi Toko', 
+        excl: 'Pengaturan Operasi Toko (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Dukungan Multi-Outlet', 
+        prof: 'Dukungan Multi-Outlet (Add-On)', 
+        excl: 'Dukungan Multi-Outlet (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Backup & Recovery Data', 
+        prof: 'Backup & Recovery Data', 
+        excl: 'Backup & Recovery Data (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Analisis & Laporan (Dasar)', 
+        prof: 'Analisis & Laporan (Lengkap)', 
+        excl: 'Analisis & Laporan (Sesuai kebutuhan)' 
+      },
+      { 
+        standar: 'Koneksi Noi Book (Coming Soon)', 
+        prof: 'Koneksi Noi Book (Coming Soon)', 
+        excl: 'Koneksi Noi Book (Coming Soon)' 
+      },
+    ];
   const enabledFeatures = {
-    standar: [true, true, true, true, true, true, false, false, false, false],
-    prof: [true, true, true, true, true, true, true, true, false, false],
-    excl: [true, true, true, true, true, true, true, true, true, true]
+    standar: [true, true, true, false, true, true, true, true, true, true, true, true, true,true, true, true],
+    prof: [true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true],
+    excl: [true, true, true, true, true, true, true, true, true, true, true, true, true,true, true, true]
   }
   // Data marker untuk peta
   const clientLocations = [
@@ -295,21 +376,21 @@ export default function ProdukPage() {
                             {isMonthly ? (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
-                                  <div className="line-through text-stone-500 text-2xl">Rp 100.000</div>
-                                  <div>Rp 99.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                  <div className="line-through text-stone-500 text-2xl">Rp 200.000</div>
+                                  <div>Rp 99.999<span className="text-xs text-stone-500 font-normal">/bulan</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 1.080.000/tahun
+                                  <span className="font-normal">Rp 1.080.000/tahun</span>
                                 </div>
                               </>
                             ) : (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
                                   <div className="line-through text-stone-500 text-2xl">Rp 1.200.000</div>
-                                  <div>Rp 1.080.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                  <div>Rp 1.080.000<span className="text-xs text-stone-500 font-normal">/tahun</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 99.999/bulan
+                                  <span className="font-normal">Rp 99.999/bulan</span>
                                 </div>
                               </>
                             )}
@@ -329,14 +410,17 @@ export default function ProdukPage() {
                                   )}
                                 </div>
                                 <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
-                                  {feature.standar}
+                                  {renderFeatureText(feature.standar)}
                                 </span>
                               </div>
                             )
                           })}
                         </div>
 
-                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
+                        <button 
+                          onClick={() => window.open(`https://wa.me/628131415160?text=Halo, saya ingin membeli paket Standard PIPOS`, '_blank')}
+                          className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25"
+                        >
                           Pilih Standard
                         </button>
                       </div>
@@ -387,21 +471,21 @@ export default function ProdukPage() {
                             {isMonthly ? (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
-                                  <div className="line-through text-stone-500 text-2xl">Rp 400.000</div>
-                                  <div>Rp 399.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                  <div className="line-through text-stone-500 text-2xl">Rp 600.000</div>
+                                  <div>Rp 299.999<span className="text-xs text-stone-500 font-normal">/bulan</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 4.320.000/tahun
+                                  <span className="font-normal">Rp 4.320.000/tahun</span>
                                 </div>
                               </>
                             ) : (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
                                   <div className="line-through text-stone-500 text-2xl">Rp 4.800.000</div>
-                                  <div>Rp 4.320.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                  <div>Rp 4.320.000<span className="text-xs text-stone-500 font-normal">/tahun</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 399.999/bulan
+                                  <span className="font-normal">Rp 399.999/bulan</span>
                                 </div>
                               </>
                             )}
@@ -421,7 +505,7 @@ export default function ProdukPage() {
                                   )}
                                 </div>
                                 <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
-                                  {feature.prof}
+                                  {renderFeatureText(feature.prof)}
                                 </span>
                               </div>
                             )
@@ -478,21 +562,21 @@ export default function ProdukPage() {
                             {isMonthly ? (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
-                                  <div className="line-through text-stone-500 text-2xl">Rp 1.000.000</div>
-                                  <div>Rp 999.999<span className="text-xs text-stone-500">/bulan</span></div>
+                                  <div className="line-through text-stone-500 text-2xl">Rp 1.500.000</div>
+                                  <div>Rp 999.999<span className="text-xs text-stone-500 font-normal">/bulan</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 10.800.000/tahun
+                                  <span className="font-normal">Rp 10.800.000/tahun</span>
                                 </div>
                               </>
                             ) : (
                               <>
                                 <div className="text-4xl font-bold text-amber-400">
                                   <div className="line-through text-stone-500 text-2xl">Rp 12.000.000</div>
-                                  <div>Rp 10.800.000<span className="text-xs text-stone-500">/tahun</span></div>
+                                  <div>Rp 10.800.000<span className="text-xs text-stone-500 font-normal">/tahun</span></div>
                                 </div>
                                 <div className="text-xs text-stone-500 mt-1">
-                                  Rp 999.999/bulan
+                                  <span className="font-normal">Rp 999.999/bulan</span>
                                 </div>
                               </>
                             )}
@@ -512,14 +596,17 @@ export default function ProdukPage() {
                                   )}
                                 </div>
                                 <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
-                                  {feature.excl}
+                                  {renderFeatureText(feature.excl)}
                                 </span>
                               </div>
                             )
                           })}
                         </div>
 
-                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25">
+                        <button 
+                          onClick={() => window.open(`https://wa.me/628131415160?text=Halo, saya ingin membeli paket Exclusive PIPOS`, '_blank')}
+                          className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25"
+                        >
                           Pilih Exclusive
                         </button>
                       </div>
@@ -616,7 +703,7 @@ export default function ProdukPage() {
 
 
               {/* Peta interaktif */}
-              <div className="h-[400px] md:h-[600px] w-full rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
+              <div className="h-[500px] sm:h-[600px] lg:h-[700px] w-full rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
                 <ClientMap markers={clientLocations} />
               </div>
 

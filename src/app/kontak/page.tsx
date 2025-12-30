@@ -190,7 +190,7 @@ export default function KontakPage() {
 
                       {/* Facebook */}
                       <motion.a
-                        href="https://facebook.com/RIZKY"
+                        href="https://facebook.com/Putri Haildaa"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
