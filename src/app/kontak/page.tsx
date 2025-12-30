@@ -75,48 +75,84 @@ export default function KontakPage() {
                     {[
                       { icon: Phone, label: 'Telepon', value: '+62 8131415160', href: 'tel:+628131415160' },
                       { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
-                      { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97711, Indonesia', href: '#' },
+                      { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97723, Indonesia', href: 'https://maps.app.goo.gl/uKn437RHkubrFqJMA' },
                     ].map((item, i) => (
-                      <motion.a
-                        key={i}
-                        href={item.href}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: i * 0.1 }}
-                        // HOVER STYLE SAMA DENGAN HALAMAN HOME
-                        whileHover={{
-                          y: -14,
-                          scale: 1.045,
-                          boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                          transition: {
-                            duration: 0.14,
-                            ease: 'easeOut'
-                          }
-                        }}
-                        // LAYOUT: Horizontal Row (flex items-center gap-4) tapi warna dasar disamakan dengan Home
-                        className="group relative flex items-center gap-4 p-6 bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 transition-all overflow-hidden rounded-2xl"
-                      >
-                        {/* Glow Background (Sama dengan Home) */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-                        </div>
+                      <motion.div key={i}>
+                        <motion.a
+                          href={item.href}
+                          initial={{ opacity: 0, y: 40 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: i * 0.1 }}
+                          whileHover={{
+                            y: -14,
+                            scale: 1.045,
+                            boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                            transition: {
+                              duration: 0.14,
+                              ease: 'easeOut'
+                            }
+                          }}
+                          className="group relative flex items-center gap-4 p-6 bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 transition-all overflow-hidden rounded-2xl"
+                        >
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                          </div>
 
-                        {/* Icon */}
-                        <div className="relative z-10 bg-amber-500/20 rounded-xl p-4 transition-all duration-150 group-hover:bg-amber-500/30 group-hover:scale-110">
-                          <item.icon className="w-6 h-6 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
-                        </div>
+                          <div className="relative z-10 bg-amber-500/20 rounded-xl p-4 transition-all duration-150 group-hover:bg-amber-500/30 group-hover:scale-110">
+                            <item.icon className="w-6 h-6 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
+                          </div>
 
-                        {/* Text */}
-                        <div className="relative z-10">
-                          <h3 className="text-white font-bold mb-1 transition-colors duration-150 group-hover:text-amber-200">
-                            {item.label}
-                          </h3>
-                          <p className="text-stone-300 transition-colors duration-150 group-hover:text-stone-100">
-                            {item.value}
-                          </p>
-                        </div>
-                      </motion.a>
+                          <div className="relative z-10">
+                            <h3 className="text-white font-bold mb-1 transition-colors duration-150 group-hover:text-amber-200">
+                              {item.label}
+                            </h3>
+                            <p className="text-stone-300 transition-colors duration-150 group-hover:text-stone-100">
+                              {item.value}
+                            </p>
+                          </div>
+                        </motion.a>
+                        
+                        {/* Small Map for Address */}
+                        {item.label === 'Alamat' && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="mt-4 ml-4"
+                          >
+                            <div className="bg-neutral-800/80 rounded-xl p-4 border border-amber-500/20">
+                              <div className="rounded-lg overflow-hidden border border-amber-500/30">
+                                <iframe
+                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.415401845929!2d127.38525152206422!3d0.8142791746857311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cb1007a543ab7%3A0x4625131a3c383b17!2sBetarak%20Kota%20Ternate%20Utara!5e0!3m2!1sid!2sid!4v1767053118577!5m2!1sid!2sid"
+                                  width="100%"
+                                  height="320"
+                                  style={{ border: 0 }}
+                                  allowFullScreen
+                                  loading="lazy"
+                                  referrerPolicy="no-referrer-when-downgrade"
+                                  title="Lokasi Kantor Kamunara - Sangaji Utara, Ternate"
+                                ></iframe>
+                              </div>
+
+                              <div className="mt-3 text-center">
+                                <motion.a
+                                  href="https://maps.app.goo.gl/uKn437RHkubrFqJMA"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all"
+                                >
+                                  <MapPin className="w-4 h-4" />
+                                  Buka di Google Maps (Detail Lengkap)
+                                </motion.a>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </motion.div>
                     ))}
                   </div>
 
