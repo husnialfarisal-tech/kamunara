@@ -8,14 +8,14 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden relative selection:bg-amber-500/30">
      
-      {/* AMBIENT BACKGROUND PARTICLES */}
+      {/* AMBIENT BACKGROUND PARTICLES - Fixed overflow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[...Array(25)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-[2px] h-[2px] bg-amber-200 rounded-full"
             initial={{
-              x: `${Math.random() * 100}vw`,
+              x: `${Math.random() * 100}%`,
               y: '100vh',
               opacity: 0,
             }}

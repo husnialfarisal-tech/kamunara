@@ -11,9 +11,12 @@ export default function HomePage() {
       <Navbar />
       <main className="relative pt-32 pb-24 md:pb-32 min-h-screen bg-neutral-950 overflow-hidden">
         
-        {/* Elemen Dekorasi Background (Glow Effects) */}
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+        {/* Elemen Dekorasi Background (Glow Effects) - Fixed overflow */}
+        {/* Top glow - centered and responsive to prevent overflow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Bottom glow - centered and responsive */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(700px,90vw)] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+        {/* Radial gradient overlay - safe for mobile */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
         <div className="relative z-10">
