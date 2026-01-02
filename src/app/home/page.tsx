@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
 import { Zap, ShieldCheck, Smartphone, Code, Layers, BarChart3 } from 'lucide-react'
 
+
 export default function HomePage() {
   return (
     <>
