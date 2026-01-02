@@ -68,12 +68,6 @@ export default function TentangPage() {
           ))}
         </div>
 
-        {/* Glow Effects - Fixed overflow */}
-        {/* Top glow - centered and responsive */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-        {/* Bottom glow - centered and responsive */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(700px,90vw)] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
-
         <div className="relative z-10 pt-32 pb-12">
 
           {/* Hero Section */}

@@ -80,12 +80,9 @@ export default function KontakPage() {
 
       <main className="relative pt-32 min-h-screen bg-neutral-950 overflow-hidden">
         
-        {/* Elemen Dekorasi Background (Glow Effects) - Fixed overflow */}
-        {/* Top glow - centered and responsive */}
+        {/* Elemen Dekorasi Background (Glow Effects) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-        {/* Bottom glow - centered and responsive */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(700px,90vw)] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
-        {/* Radial gradient overlay - safe for mobile */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
         <div className="relative z-10">
@@ -132,21 +129,17 @@ export default function KontakPage() {
                     </p>
                   </div>
 
-                  {/* 
-                    PERUBAHAN KETIGA:
-                    - Layout dikembalikan ke 'space-y-6' (List Vertikal / Horizontal Row).
-                    - Bentuk kartu: Horizontal (Icon kiri, teks kanan).
-                    - HOVER: Disamakan dengan halaman Home (y: -14, scale: 1.045, shadow amber, glow).
-                  */}
                   <div className="space-y-6">
                     {[
-                      { icon: Phone, label: 'Telepon', value: '+62 8131415160', href: 'tel:+628131415160' },
-                      { icon: Mail, label: 'Email', value: 'kamunaragroup@gmail.com', href: 'mailto:kamunaragroup@gmail.com' },
+                      { icon: Phone, label: 'Telepon', value: '+62 8131415160', href: 'https://wa.me/628131415160' },
+                      { icon: Mail, label: 'Email', value: 'kamunaragroup@gmail.com', href: 'mailto:kamunaragroup@gmail.com?subject=Pertanyaan%20dari%20Website' },
                       { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97723, Indonesia', href: 'https://maps.app.goo.gl/uKn437RHkubrFqJMA' },
                     ].map((item, i) => (
                       <motion.div key={i}>
                         <motion.a
                           href={item.href}
+                          target={item.label === 'Telepon' ? '_blank' : undefined}
+                          rel="noopener noreferrer"
                           initial={{ opacity: 0, y: 40 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
@@ -155,10 +148,7 @@ export default function KontakPage() {
                             y: -14,
                             scale: 1.045,
                             boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                            transition: {
-                              duration: 0.14,
-                              ease: 'easeOut'
-                            }
+                            transition: { duration: 0.14, ease: 'easeOut' }
                           }}
                           className="group relative flex items-center gap-4 p-6 bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 transition-all overflow-hidden rounded-2xl"
                         >
@@ -180,37 +170,42 @@ export default function KontakPage() {
                           </div>
                         </motion.a>
                         
-                        {/* Small Map for Address */}
+                        {/* ====================== PETA GOOGLE MAPS FINAL - LEBIH PANJANG KE BAWAH ====================== */}
                         {item.label === 'Alamat' && (
                           <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="mt-4 ml-4"
+                            className="mt-6 ml-4"  // margin atas lebih lega
                           >
                             <div className="bg-neutral-800/80 rounded-xl p-4 border border-amber-500/20">
-                              <div className="rounded-lg overflow-hidden border border-amber-500/30">
-                                <iframe
-                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.415401845929!2d127.38525152206422!3d0.8142791746857311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cb1007a543ab7%3A0x4625131a3c383b17!2sBetarak%20Kota%20Ternate%20Utara!5e0!3m2!1sid!2sid!4v1767053118577!5m2!1sid!2sid"
-                                  width="100%"
-                                  height="320"
-                                  style={{ border: 0 }}
-                                  allowFullScreen
-                                  loading="lazy"
-                                  referrerPolicy="no-referrer-when-downgrade"
-                                  title="Lokasi Kantor Kamunara - Sangaji Utara, Ternate"
-                                ></iframe>
+                              {/* Wrapper kontrol ukuran peta - Responsive Height */}
+                              <div className="rounded-lg overflow-hidden border border-amber-500/30 relative w-full">
+                                <div 
+                                  className="relative w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
+                                >
+                                  <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.415401845929!2d127.38525152206422!3d0.8142791746857311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cb1007a543ab7%3A0x4625131a3c383b17!2sBetarak%20Kota%20Ternate%20Utara!5e0!3m2!1sid!2sid!4v1767053118577!5m2!1sid!2sid"
+                                    className="absolute inset-0 w-full h-full"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Lokasi Kantor Kamunara - Sangaji Utara, Ternate"
+                                  />
+                                </div>
                               </div>
 
-                              <div className="mt-3 text-center">
+                              {/* Tombol buka maps */}
+                              <div className="mt-4 text-center">
                                 <motion.a
                                   href="https://maps.app.goo.gl/uKn437RHkubrFqJMA"
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   whileHover={{ scale: 1.05 }}
                                   whileTap={{ scale: 0.95 }}
-                                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all"
+                                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-amber-500/30"
                                 >
                                   <MapPin className="w-4 h-4" />
                                   Buka di Google Maps (Detail Lengkap)
@@ -219,15 +214,15 @@ export default function KontakPage() {
                             </div>
                           </motion.div>
                         )}
+                        {/* ============================================================================================ */}
                       </motion.div>
                     ))}
                   </div>
 
-                  {/* Social Media – tetap 4 tombol, lebih rapi */}
+                  {/* Social Media */}
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-white">Hubungi Kami</h3>
                     <div className="grid grid-cols-2 gap-4">
-                      {/* WhatsApp */}
                       <motion.a
                         href="https://wa.me/628131415160"
                         target="_blank"
@@ -240,7 +235,6 @@ export default function KontakPage() {
                         <span className="font-bold">WhatsApp</span>
                       </motion.a>
 
-                      {/* Instagram */}
                       <motion.a
                         href="https://instagram.com/kamunara.group"
                         target="_blank"
@@ -255,7 +249,6 @@ export default function KontakPage() {
                         <span className="font-bold">Instagram</span>
                       </motion.a>
 
-                      {/* Facebook */}
                       <motion.a
                         href="https://facebook.com/Putri Haildaa"
                         target="_blank"
@@ -291,7 +284,6 @@ export default function KontakPage() {
                 >
                   <h2 className="text-3xl font-bold text-white mb-6">Kirim Pesan</h2>
 
-                  {/* Feedback Message */}
                   {feedback.message && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
