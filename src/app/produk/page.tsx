@@ -60,9 +60,6 @@ const institutions = [
   { name: "Universitas Khairun", location: "Ternate", product: "PIPOS & KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
 ]
 
-// ============================================
-// COMPONENTS
-// ============================================
 
 function HeroSection() {
   return (
@@ -102,13 +99,10 @@ function PIPOSSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -8, scale: 1.04, boxShadow: '0 15px 30px -8px rgba(245, 158, 11, 0.45)', transition: { duration: 0.14, ease: 'easeOut' } }}
-            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 overflow-hidden"
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2"
           >
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-150 pointer-events-none">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 to-transparent blur-xl scale-110" />
-            </div>
-            <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-6" />
+            <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Manajemen Kasir</span>
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
@@ -121,15 +115,13 @@ function PIPOSSection() {
             <div className="flex items-center gap-3 text-stone-300"><Database className="w-5 h-5 text-amber-400" /><span>Laporan dan analisis bisnis lengkap</span></div>
           </div>
         </div>
+        {/* Piposs */}
         <motion.div
           whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
           className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
         >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-          </div>
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
-            <Database className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+            <Database className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3" />
             <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPOS</h3>
             <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Point of Sale System dengan 3 Role Akses</p>
           </div>
@@ -161,10 +153,16 @@ function SubscriptionSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-            <Database className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-sm font-medium">Berlangganan PIPOS</span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6"
+          >
+            <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Berlangganan PIPOS</span>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pilih Paket yang Tepat</h2>
           <p className="text-lg text-stone-300 max-w-3xl mx-auto">
             Dapatkan akses penuh ke fitur PIPOS dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
@@ -207,76 +205,79 @@ function SubscriptionSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               whileHover={{
-                y: -14,
-                scale: 1.045,
-                boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                y: -8,
+                scale: 1.02,
+                boxShadow: '0 12px 30px -8px rgba(245, 158, 11, 0.4)',
                 transition: { duration: 0.14, ease: 'easeOut' },
               }}
               className={`
-                group relative bg-neutral-900/60 backdrop-blur-sm 
+                group relative bg-neutral-900/80 backdrop-blur-sm 
                 border border-white/5 hover:border-amber-500/30 
-                rounded-3xl overflow-hidden transition-all duration-300
+                rounded-3xl overflow-hidden
                 ${pkg === 'prof' ? 'border-amber-500/50 lg:scale-105' : ''}
-                ${!isMonthly ? 'pt-20 pb-10' : 'pt-6 pb-10'}
               `}
-            >
-              {/* Badge POPULER */}
-              {pkg === 'prof' && (
-                <div className="absolute top-16 right-5 z-20">
-                  <div className="
-                    bg-amber-500/90 backdrop-blur-sm border border-amber-400/30
-                    text-white text-xs font-semibold px-4 py-1.5 rounded-full
-                    shadow-md shadow-amber-900/30
-                  ">
+              >
+              {/* Badges dalam 1 kolom */}
+              <div className="absolute top-5 right-5 z-20 flex flex-col gap-2">
+                {/* Badge POPULER */}
+                {pkg === 'prof' && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    className="
+                      bg-amber-500/90 backdrop-blur-sm border border-amber-400/30
+                      text-white text-xs font-semibold px-4 py-1.5 rounded-full
+                      shadow-md shadow-amber-900/30
+                    "
+                  >
                     POPULER
-                  </div>
-                </div>
-              )}
+                  </motion.div>
+                )}
 
-              {/* Badge Hemat 10% - Posisi aman, tidak akan menumpuk */}
-              {!isMonthly && (
-                <div className="absolute top-5 right-5 z-30">
-                  <div className="
-                    bg-gradient-to-r from-green-600 to-emerald-600
-                    backdrop-blur-md border border-emerald-400/30
-                    text-white text-xs font-semibold px-5 py-2 rounded-full
-                    shadow-lg shadow-green-900/40 transform transition-all duration-300
-                    group-hover:scale-105 group-hover:shadow-green-600/50
-                  ">
+                {/* Badge Hemat 10% - dengan efek masuk */}
+                {!isMonthly && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    className="
+                      bg-gradient-to-r from-green-600 to-emerald-600
+                      backdrop-blur-md border border-emerald-400/30
+                      text-white text-xs font-semibold px-4 py-1.5 rounded-full
+                      shadow-lg shadow-green-900/40
+                    "
+                  >
                     Hemat 10%
-                  </div>
-                </div>
-              )}
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
+                  </motion.div>
+                )}
               </div>
 
-              <div className="relative z-10 px-6">
-                <div className={`text-center mb-8 ${!isMonthly ? 'mt-10' : 'mt-4'}`}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
+              <div className="relative z-10 px-6 pt-8 pb-6">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1 tracking-tight">
                     {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
                   </h3>
-                  <p className="text-stone-400 text-sm md:text-base">
+                  <p className="text-stone-400 text-xs md:text-sm">
                     {pkg === 'standar' ? 'Cocok untuk toko kecil' : pkg === 'prof' ? 'Ideal untuk bisnis berkembang' : 'Solusi enterprise lengkap'}
                   </p>
 
-                  <div className="mt-6">
+                  <div className="mt-5">
                     {isMonthly ? (
-                      <div className="text-4xl md:text-5xl font-bold text-amber-400">
-                        <div className="line-through text-stone-500 text-xl md:text-2xl opacity-70 mb-1">
+                      <div className="text-2xl md:text-3xl font-bold text-amber-400">
+                        <div className="line-through text-stone-500 text-sm md:text-base opacity-70 mb-1">
                           {pkg === 'standar' ? 'Rp 200.000' : pkg === 'prof' ? 'Rp 600.000' : 'Rp 1.500.000'}
                         </div>
                         {formatPrice(packagePrices[pkg as keyof typeof packagePrices].monthly)}
-                        <span className="text-base md:text-lg text-stone-400 font-normal">/bulan</span>
+                        <span className="text-sm text-stone-400 font-normal">/bulan</span>
                       </div>
                     ) : (
-                      <div className="text-4xl md:text-5xl font-bold text-amber-400">
-                        <div className="line-through text-stone-500 text-xl md:text-2xl opacity-70 mb-1">
+                      <div className="text-2xl md:text-3xl font-bold text-amber-400">
+                        <div className="line-through text-stone-500 text-sm md:text-base opacity-70 mb-1">
                           {pkg === 'standar' ? 'Rp 1.200.000' : pkg === 'prof' ? 'Rp 4.800.000' : 'Rp 12.000.000'}
                         </div>
                         {formatPrice(packagePrices[pkg as keyof typeof packagePrices].annual)}
-                        <span className="text-base md:text-lg text-stone-400 font-normal">/tahun</span>
+                        <span className="text-sm text-stone-400 font-normal">/tahun</span>
                       </div>
                     )}
                   </div>
@@ -314,9 +315,9 @@ function SubscriptionSection() {
                   className="
                     w-full bg-gradient-to-r from-amber-500 to-amber-600 
                     hover:from-amber-600 hover:to-amber-700 
-                    text-white font-semibold py-3.5 px-6 rounded-xl 
-                    transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30
-                    transform hover:-translate-y-1 active:scale-95
+                    text-white font-semibold py-3 px-4 rounded-xl 
+                    transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30
+                    transform hover:-translate-y-0.5 active:scale-95 text-sm
                   "
                 >
                   Pilih {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
@@ -366,20 +367,23 @@ function KKNKUSection() {
           whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
           className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden order-2 lg:order-1"
         >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-          </div>
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
-            <Smartphone className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+            <Smartphone className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3" />
             <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">KKNKU</h3>
             <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Kuliah Kerja Nyata Universitas Khairun</p>
           </div>
         </motion.div>
         <div className="space-y-6 order-1 lg:order-2">
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2">
-            <Smartphone className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-sm font-medium">Manajemen KKN</span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2"
+          >
+            <Smartphone className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Manajemen KKN</span>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
           <p className="text-lg text-stone-300 leading-relaxed">
             Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
@@ -430,13 +434,10 @@ function StatisticsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: i * 0.1 }}
-          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(255, 255, 255, 0.45)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative p-6 bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-white/30 text-center overflow-hidden rounded-2xl"
+          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(255, 255, 255, 0.35)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative p-6 bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:border-white/30 text-center overflow-hidden rounded-2xl"
         >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent blur-2xl scale-110" />
-          </div>
-          <stat.icon className="w-8 h-8 text-white mx-auto mb-3 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+          <stat.icon className="w-8 h-8 text-white mx-auto mb-3 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
           <div className="text-3xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-white">{stat.value}</div>
           <p className="text-stone-300 text-sm transition-colors duration-150 group-hover:text-stone-100">{stat.label}</p>
         </motion.div>
@@ -455,15 +456,12 @@ function InstitutionsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(255, 255, 255, 0.45)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-white/30 rounded-2xl p-6 overflow-hidden transition-all"
+          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(255, 255, 255, 0.35)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:border-white/30 rounded-2xl p-6 overflow-hidden"
         >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent blur-2xl scale-110" />
-          </div>
           <div className="flex items-center gap-3 mb-4 relative z-10">
             <div className="bg-white/10 rounded-xl p-3">
-              <Building2 className="w-6 h-6 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+              <Building2 className="w-6 h-6 text-white transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             </div>
             <div>
               <h3 className="text-xl font-bold text-white transition-colors duration-150 group-hover:text-white">{instansi.name}</h3>
