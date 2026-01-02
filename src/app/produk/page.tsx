@@ -13,9 +13,9 @@ import CTA from '@/components/CTA'
 // ============================================
 
 const packagePrices = {
-  standar: { monthly: 100000, annual: 1080000 },
-  prof: { monthly: 400000, annual: 4320000 },
-  excl: { monthly: 1000000, annual: 10800000 }
+  standar: { monthly: 99999, annual: 1080000 },
+  prof: { monthly: 399999, annual: 4320000 },
+  excl: { monthly: 999999, annual: 10800000 }
 }
 
 const features = [

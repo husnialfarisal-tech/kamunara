@@ -1,7 +1,8 @@
 'use client'  // Wajib karena ada framer-motion (animasi & hover)
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, MessageCircle, Facebook, Send } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 
 // Import komponen reusable dari folder components
@@ -10,6 +11,69 @@ import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
 
 export default function KontakPage() {
+  // State untuk form
+  const [formData, setFormData] = useState({
+    nama: '',
+    email: '',
+    subjek: '',
+    pesan: ''
+  })
+  
+  // State untuk loading dan feedback
+  const [isLoading, setIsLoading] = useState(false)
+  const [feedback, setFeedback] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
+
+  // Handler untuk perubahan input
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  // Handler untuk submit form
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setFeedback({ type: null, message: '' })
+
+    try {
+      const response = await fetch('/api/kirim-pesanan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setFeedback({
+          type: 'success',
+          message: data.message
+        })
+        // Reset form setelah berhasil
+        setFormData({ nama: '', email: '', subjek: '', pesan: '' })
+      } else {
+        setFeedback({
+          type: 'error',
+          message: data.message || 'Gagal mengirim pesan. Silakan coba lagi.'
+        })
+      }
+    } catch {
+      setFeedback({
+        type: 'error',
+        message: 'Terjadi kesalahan. Silakan coba lagi nanti.'
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -77,7 +141,7 @@ export default function KontakPage() {
                   <div className="space-y-6">
                     {[
                       { icon: Phone, label: 'Telepon', value: '+62 8131415160', href: 'tel:+628131415160' },
-                      { icon: Mail, label: 'Email', value: 'info@kamunara.com', href: 'mailto:info@kamunara.com' },
+                      { icon: Mail, label: 'Email', value: 'kamunaragroup@gmail.com', href: 'mailto:kamunaragroup@gmail.com' },
                       { icon: MapPin, label: 'Alamat', value: 'Sangaji Utara, Ternate Utara, Kota Ternate, Maluku Utara 97723, Indonesia', href: 'https://maps.app.goo.gl/uKn437RHkubrFqJMA' },
                     ].map((item, i) => (
                       <motion.div key={i}>
@@ -227,13 +291,39 @@ export default function KontakPage() {
                 >
                   <h2 className="text-3xl font-bold text-white mb-6">Kirim Pesan</h2>
 
-                  <form className="space-y-6">
+                  {/* Feedback Message */}
+                  {feedback.message && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`mb-6 p-4 rounded-xl flex items-start gap-3 ${
+                        feedback.type === 'success' 
+                          ? 'bg-green-500/20 border border-green-500/30' 
+                          : 'bg-red-500/20 border border-red-500/30'
+                      }`}
+                    >
+                      {feedback.type === 'success' ? (
+                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      ) : (
+                        <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      )}
+                      <p className={feedback.type === 'success' ? 'text-green-200' : 'text-red-200'}>
+                        {feedback.message}
+                      </p>
+                    </motion.div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label className="block text-stone-300 mb-2 font-medium">Nama Lengkap</label>
                       <input
                         type="text"
-                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                        name="nama"
+                        value={formData.nama}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-stone-500"
                         placeholder="Masukkan nama lengkap"
+                        required
                       />
                     </div>
 
@@ -241,8 +331,12 @@ export default function KontakPage() {
                       <label className="block text-stone-300 mb-2 font-medium">Email</label>
                       <input
                         type="email"
-                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-stone-500"
                         placeholder="Masukkan email"
+                        required
                       />
                     </div>
 
@@ -250,28 +344,51 @@ export default function KontakPage() {
                       <label className="block text-stone-300 mb-2 font-medium">Subjek</label>
                       <input
                         type="text"
-                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors"
+                        name="subjek"
+                        value={formData.subjek}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-stone-500"
                         placeholder="Masukkan subjek"
+                        required
                       />
                     </div>
 
                     <div>
                       <label className="block text-stone-300 mb-2 font-medium">Pesan</label>
                       <textarea
+                        name="pesan"
+                        value={formData.pesan}
+                        onChange={handleChange}
                         rows={5}
-                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                        className="w-full px-4 py-3 bg-stone-700 border border-stone-600 rounded-xl text-white focus:outline-none focus:border-amber-500 transition-colors resize-none placeholder:text-stone-500"
                         placeholder="Masukkan pesan Anda"
+                        required
                       />
                     </div>
 
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: isLoading ? 1 : 1.02 }}
+                      whileTap={{ scale: isLoading ? 1 : 0.98 }}
                       type="submit"
-                      className="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 font-bold py-4 rounded-xl hover:from-amber-500 hover:to-amber-700 transition-all flex items-center justify-center gap-2"
+                      disabled={isLoading}
+                      className={`w-full bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 font-bold py-4 rounded-xl hover:from-amber-500 hover:to-amber-700 transition-all flex items-center justify-center gap-2 ${
+                        isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                      }`}
                     >
-                      Kirim Pesan
-                      <Send className="w-5 h-5" />
+                      {isLoading ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5 text-stone-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          <span>Mengirim...</span>
+                        </>
+                      ) : (
+                        <>
+                          Kirim Pesan
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
                     </motion.button>
                   </form>
                 </motion.div>

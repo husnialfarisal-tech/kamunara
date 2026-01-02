@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
 
-          {/* Logo */}
+          {/* Logo Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -37,7 +37,7 @@ export default function Navbar() {
           >
             <div className="w-12 h-12 flex items-center justify-center">
               <Image
-                src="/images/Kamunara_copy.png"
+                src="/images/kamunara_copy.png"
                 alt="Logo Kamunara"
                 width={48}
                 height={48}
@@ -51,14 +51,14 @@ export default function Navbar() {
             </span>
           </motion.div>
 
-          {/* Menu Desktop (UPDATED SECTION - LIQUID PILL & ULTRA SMOOTH) */}
+          {/* Menu Desktop (FULL BOLD + LIQUID ANIMATION) */}
           <div className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link key={item.href} href={item.href} className="relative group">
                   
-                  {/* IDE BARU: Latar Belakang "Liquid Pill" yang Bercahaya */}
+                  {/* Efek Latar Belakang "Liquid Pill" */}
                   <motion.div
                     className="absolute inset-0 bg-amber-500/10 rounded-full -z-0 border border-amber-500/10 blur-[1px]"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -69,24 +69,23 @@ export default function Navbar() {
                     whileHover={{
                       opacity: 1,
                       scale: 1,
-                      backgroundColor: 'rgba(251, 191, 36, 0.15)' // Sedikit lebih terang saat hover
+                      backgroundColor: 'rgba(251, 191, 36, 0.15)'
                     }}
-                    // KURVA [0.25, 0.8, 0.25, 1] memberikan efek 'smooth' premium
                     transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
                   />
 
-                  {/* Teks dengan efek scale dan letter spacing yang lembut */}
+                  {/* Teks - Menggunakan font-bold secara konsisten */}
                   <motion.span
                     className={`
-                      relative z-10 block font-medium transition-colors duration-500 px-4 py-1.5
+                      relative z-10 block font-bold transition-colors duration-500 px-4 py-1.5
                       ${isActive ? 'text-amber-400' : 'text-stone-300 group-hover:text-white'}
                     `}
                     whileHover={{ 
-                      scale: 1.05, // Teks membesar sedikit
-                      letterSpacing: "0.05em" // Jarak huruf melebar pelan (efek elegan)
+                      scale: 1.05, 
+                      letterSpacing: "0.02em" 
                     }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }} // Pegas super halus
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   >
                     {item.label}
                   </motion.span>
@@ -96,7 +95,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Hamburger Icon */}
+          {/* Hamburger Icon Mobile */}
           <motion.button
             whileHover={{ scale: 1.15, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
@@ -110,10 +109,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Overlay gelap + Mobile Menu */}
+      {/* Overlay Gelap & Menu Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <>
+            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
@@ -123,6 +123,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             />
 
+            {/* Sidebar Content */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -139,16 +140,16 @@ export default function Navbar() {
                 overflow-y-auto
               "
             >
-              {/* Tombol Close (X) di pojok kanan atas */}
+              {/* Tombol Close Internal */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-6 right-6 text-amber-400 focus:outline-none z-50"
+                className="absolute top-6 right-6 text-amber-400 focus:outline-none"
                 aria-label="Close menu"
               >
                 <X className="w-8 h-8" />
               </button>
 
-              {/* Isi Menu */}
+              {/* List Menu Mobile - Tetap Bold */}
               <div className="flex flex-col gap-8">
                 {menuItems.map((item) => {
                   const isActive = pathname === item.href
@@ -161,14 +162,29 @@ export default function Navbar() {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                       }}
                       className={`
-                        text-xl font-bold transition-colors
-                        ${isActive ? 'text-amber-400 font-bold' : 'text-stone-300 hover:text-amber-400'}
+                        text-2xl flex items-center justify-between transition-colors
+                        ${isActive ? 'text-amber-400 font-bold' : 'text-stone-300 hover:text-amber-400 font-bold'}
                       `}
                     >
-                      {item.label}
+                      <span className="font-bold tracking-tight">{item.label}</span>
+                      
+                      {/* Indikator Aktif Mobile */}
+                      {isActive && (
+                        <motion.div 
+                          layoutId="activeDot"
+                          className="w-2 h-2 bg-amber-400 rounded-full shadow-[0_0_10px_#fbbf24]"
+                        />
+                      )}
                     </Link>
                   )
                 })}
+              </div>
+
+              {/* Tambahan Dekorasi di bawah menu mobile agar tidak kosong */}
+              <div className="mt-20 pt-8 border-t border-white/5">
+                 <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">
+                   © 2024 Kamunara Ecosystem
+                 </p>
               </div>
             </motion.div>
           </>

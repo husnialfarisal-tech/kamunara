@@ -2,6 +2,28 @@
 
 A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
 
+---
+
+## 📧 Email Configuration (Kontak Form)
+
+The contact form sends emails using Nodemailer. Configure SMTP settings in `.env.local`:
+
+```env
+# SMTP Configuration for Gmail
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+```
+
+### Gmail App Password Setup:
+1. Enable 2-Step Verification in your Google Account
+2. Go to: https://myaccount.google.com/apppasswords
+3. Create an App Password for "Mail"
+4. Use the generated password in `SMTP_PASS`
+
+---
+
 ## ✨ Technology Stack
 
 This scaffold provides a robust foundation built with:
