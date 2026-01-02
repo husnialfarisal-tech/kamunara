@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes"; // ← WAJIB untuk dark/light mode
+import PageTransition from "@/components/PageTransition"; // ← Import animasi baru
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-950 text-foreground`}>
         {/* ThemeProvider mengelola dark/light mode */}
         <ThemeProvider
           attribute="class"              // Pakai class dark untuk Tailwind
@@ -58,7 +59,11 @@ export default function RootLayout({
           enableSystem                   // Dukung mode sistem
           disableTransitionOnChange      // Matikan animasi transisi biar switch cepat
         >
-          {children}
+          {/* Animasi Transisi Halaman (Panggil File Baru) */}
+          <PageTransition>
+            {children}
+          </PageTransition>
+          
           <Toaster />
         </ThemeProvider>
       </body>

@@ -260,7 +260,7 @@ export default function TentangPage() {
               
               <div className="flex flex-col items-center">
                 
-                {/* LEVEL 1: MANAGER */}
+                {/* LEVEL 1: MANAGER (Warna Tetap Amber Solid) */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -301,27 +301,27 @@ export default function TentangPage() {
                 {/* LEVEL 2: FINANCE (KIRI) - SUPERVISOR (TENGAH) - DIGITAL PROGRAM (KANAN) */}
                 <div className="flex flex-col md:flex-row justify-center items-start gap-6 md:gap-12 w-full relative">
                   
-                  {/* KIRI: FINANCE */}
+                  {/* KIRI: FINANCE (Warna Hijau Transparan mirip Digital Program) */}
                   <motion.div 
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     whileHover={{
-                      y: -8,
-                      scale: 1.02,
-                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.45)',
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(16, 185, 129, 0.55)',
                       transition: { duration: 0.14, ease: 'easeOut' }
                     }}
-                    className="group relative w-full md:w-56 p-5 bg-stone-800 border border-amber-500/50 rounded-2xl text-center overflow-hidden"
+                    className="group relative w-full md:w-56 p-4 bg-emerald-500/10 border border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
                   >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
-                      <div className="absolute inset-0 bg-amber-500/20 blur-xl scale-110" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent blur-2xl scale-110" />
                     </div>
                     {/* Icon DollarSign untuk Finance */}
-                    <DollarSign className="w-6 h-6 mx-auto mb-2 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                    <h3 className="text-white font-bold relative z-10">Finance</h3>
+                    <DollarSign className="w-6 h-6 text-emerald-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+                    <h3 className="text-emerald-400 font-bold text-sm relative z-10">Finance</h3>
                   </motion.div>
 
-                  {/* TENGAH: SUPERVISOR & ANAKNYA */}
+                  {/* TENGAH: SUPERVISOR & ANAKNYA (Warna Tetap Stone) */}
                   <div className="flex flex-col items-center">
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
@@ -357,7 +357,7 @@ export default function TentangPage() {
                         </div>
                     </div>
 
-                    {/* LEVEL 3: 3 SALES MARKETING */}
+                    {/* LEVEL 3: 3 SALES MARKETING (Warna Tetap Stone) */}
                     <div className="grid grid-cols-3 gap-3 w-full md:w-auto">
                       {[1, 2, 3].map((item) => (
                         <motion.div 
@@ -383,7 +383,7 @@ export default function TentangPage() {
                     </div>
                   </div>
 
-                  {/* KANAN: DIGITAL PROGRAM */}
+                  {/* KANAN: DIGITAL PROGRAM (Warna Tetap Amber Transparan) */}
                   <motion.div 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -550,3 +550,5 @@ export default function TentangPage() {
     </>
   )
 }
+
+// anjay
