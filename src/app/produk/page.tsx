@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, X, Database, Shield, Zap, Smartphone, Building2, MapPin } from 'lucide-react'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -121,7 +122,17 @@ function PIPOSSection() {
           className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
         >
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
-            <Database className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3" />
+            <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
+              <Image
+                src="/images/logo_pipos_copy.png"
+                alt="PIPOS Logo"
+                width={138}
+                height={138}
+                className="object-contain"
+                priority
+              />
+            </div>
+
             <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPOS</h3>
             <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Point of Sale System dengan 3 Role Akses</p>
           </div>
@@ -368,11 +379,28 @@ function KKNKUSection() {
           className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden order-2 lg:order-1"
         >
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
-            <Smartphone className="w-32 h-32 mx-auto text-amber-400 mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3" />
-            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">KKNKU</h3>
-            <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Kuliah Kerja Nyata Universitas Khairun</p>
+
+            {/* ICON DIGANTI LOGO — TIDAK ADA PERUBAHAN LAIN */}
+            <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
+              <Image
+                src="/images/logo.png"
+                alt="KKNKU Logo"
+                width={128}
+                height={128}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
+              KKNKU
+            </h3>
+            <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
+              Kuliah Kerja Nyata Universitas Khairun
+            </p>
           </div>
         </motion.div>
+
         <div className="space-y-6 order-1 lg:order-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -382,22 +410,37 @@ function KKNKUSection() {
             className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2"
           >
             <Smartphone className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Manajemen KKN</span>
+            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">
+              Manajemen KKN
+            </span>
           </motion.div>
+
           <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
+
           <p className="text-lg text-stone-300 leading-relaxed">
             Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
           </p>
+
           <div className="space-y-3">
-            <div className="flex items-center gap-3 text-stone-300"><Shield className="w-5 h-5 text-amber-400" /><span>Pendaftaran dan verifikasi mahasiswa</span></div>
-            <div className="flex items-center gap-3 text-stone-300"><Zap className="w-5 h-5 text-amber-400" /><span>Manajemen berkas dan dokumen KKN</span></div>
-            <div className="flex items-center gap-3 text-stone-300"><Smartphone className="w-5 h-5 text-amber-400" /><span>Pemilihan dan pengelolaan lokasi KKN</span></div>
+            <div className="flex items-center gap-3 text-stone-300">
+              <Shield className="w-5 h-5 text-amber-400" />
+              <span>Pendaftaran dan verifikasi mahasiswa</span>
+            </div>
+            <div className="flex items-center gap-3 text-stone-300">
+              <Zap className="w-5 h-5 text-amber-400" />
+              <span>Manajemen berkas dan dokumen KKN</span>
+            </div>
+            <div className="flex items-center gap-3 text-stone-300">
+              <Smartphone className="w-5 h-5 text-amber-400" />
+              <span>Pemilihan dan pengelolaan lokasi KKN</span>
+            </div>
           </div>
         </div>
       </div>
     </motion.div>
   )
 }
+
 
 const ClientMap = dynamic(() => import('@/components/ClientMap'), {
   ssr: false,

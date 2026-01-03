@@ -251,161 +251,141 @@ export default function TentangPage() {
           </section>
 
           {/* Bagan Organisasi Kamunara */}
-           <section className="py-20 px-4">
-            <div className="container mx-auto max-w-5xl">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-white mb-4">Bagan Organisasi</h2>
-                <div className="h-1 w-20 bg-amber-500 mx-auto rounded-full" />
-              </div>
-              
-              <div className="flex flex-col items-center">
-                
-                {/* LEVEL 1: MANAGER (Warna Tetap Amber Solid) */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                    transition: { duration: 0.14, ease: 'easeOut' }
-                  }}
-                  className="group relative w-64 p-6 bg-gradient-to-b from-amber-500 to-amber-600 rounded-2xl text-center shadow-lg overflow-hidden"
-                >
-                  {/* Inner glow */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
-                    <div className="absolute inset-0 bg-white/20 blur-xl scale-110" />
-                  </div>
-                  <Briefcase className="w-8 h-8 mx-auto mb-2 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                  <h3 className="text-white font-bold text-lg relative z-10">Manager</h3>
-                </motion.div>
+<section className="py-20 px-4">
+  <div className="container mx-auto max-w-5xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-white mb-4">Bagan Organisasi</h2>
+      <div className="h-1 w-20 bg-amber-500 mx-auto rounded-full" />
+    </div>
 
-                {/* Connector Level 1 ke Level 2 (MANAGER -> FINANCE, SUPERVISOR, DIGITAL) */}
-                <div className="relative w-full max-w-5xl h-12 mb-4">
-                  {/* Vertical Center Line (Manager -> Supervisor) */}
-                  <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
-                  
-                  {/* Desktop Branches */}
-                  <div className="hidden md:block absolute top-0 w-full h-full">
-                    {/* Horizontal Line connecting Finance and Digital Program */}
-                    <div className="absolute top-4 left-[calc(50%-280px)] right-[calc(50%-280px)] h-px bg-stone-700" />
-                    
-                    {/* Vertical Drop to Finance */}
-                    <div className="absolute top-4 left-[calc(50%-280px)] h-full w-px bg-stone-700" />
-                    
-                    {/* Vertical Drop to Digital Program */}
-                    <div className="absolute top-4 right-[calc(50%-280px)] h-full w-px bg-stone-700" />
-                  </div>
-                </div>
+    <div className="flex flex-col items-center">
 
-                {/* LEVEL 2: FINANCE (KIRI) - SUPERVISOR (TENGAH) - DIGITAL PROGRAM (KANAN) */}
-                <div className="flex flex-col md:flex-row justify-center items-start gap-6 md:gap-12 w-full relative">
-                  
-                  {/* KIRI: FINANCE (Warna Hijau Transparan mirip Digital Program) */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{
-                      y: -14,
-                      scale: 1.045,
-                      boxShadow: '0 22px 45px -12px rgba(16, 185, 129, 0.55)',
-                      transition: { duration: 0.14, ease: 'easeOut' }
-                    }}
-                    className="group relative w-full md:w-56 p-4 bg-emerald-500/10 border border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent blur-2xl scale-110" />
-                    </div>
-                    {/* Icon DollarSign untuk Finance */}
-                    <DollarSign className="w-6 h-6 text-emerald-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                    <h3 className="text-emerald-400 font-bold text-sm relative z-10">Finance</h3>
-                  </motion.div>
+      {/* LEVEL 1: MANAGER */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+          boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+          transition: { duration: 0.14, ease: 'easeOut' }
+        }}
+        className="group relative w-64 p-6 bg-gradient-to-b from-amber-500 to-amber-600 rounded-2xl text-center shadow-lg overflow-hidden"
+      >
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
+          <div className="absolute inset-0 bg-white/20 blur-xl scale-110" />
+        </div>
+        <Briefcase className="w-8 h-8 mx-auto mb-2 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+        <h3 className="text-white font-bold text-lg relative z-10">Manager</h3>
+      </motion.div>
 
-                  {/* TENGAH: SUPERVISOR & ANAKNYA (Warna Tetap Stone) */}
-                  <div className="flex flex-col items-center">
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      whileHover={{
-                        y: -8,
-                        scale: 1.02,
-                        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.45)',
-                        transition: { duration: 0.14, ease: 'easeOut' }
-                      }}
-                      className="group relative w-full md:w-60 p-5 bg-stone-800 border border-amber-500/50 rounded-2xl text-center overflow-hidden"
-                    >
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
-                        <div className="absolute inset-0 bg-amber-500/20 blur-xl scale-110" />
-                      </div>
-                      <UsersIcon className="w-6 h-6 mx-auto mb-2 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                      <h3 className="text-white font-bold relative z-10">Supervisor</h3>
-                    </motion.div>
+      {/* CONNECTOR LEVEL 1 */}
+      <div className="relative w-full max-w-5xl h-12 mb-4">
+        <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
 
-                    {/* Garis Connector Supervisor ke Sales */}
-                    <div className="relative w-full max-w-[500px] h-12 my-2">
-                        {/* Vertical Center Line */}
-                        <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
-                        
-                        {/* Desktop Branches */}
-                        <div className="hidden md:block absolute top-0 w-full h-full">
-                            {/* Horizontal Line */}
-                            <div className="absolute top-4 left-0 right-0 h-px bg-stone-700" />
-                            {/* Drop to Left Sales */}
-                            <div className="absolute top-4 left-[16.66%] h-full w-px bg-stone-700" />
-                            {/* Drop to Right Sales */}
-                            <div className="absolute top-4 right-[16.66%] h-full w-px bg-stone-700" />
-                        </div>
-                    </div>
+        {/* Desktop layout dipaksa tampil di mobile */}
+        <div className="absolute top-0 w-full h-full">
+          <div className="absolute top-4 left-[calc(50%-280px)] right-[calc(50%-280px)] h-px bg-stone-700" />
+          <div className="absolute top-4 left-[calc(50%-280px)] h-full w-px bg-stone-700" />
+          <div className="absolute top-4 right-[calc(50%-280px)] h-full w-px bg-stone-700" />
+        </div>
+      </div>
 
-                    {/* LEVEL 3: 3 SALES MARKETING (Warna Tetap Stone) */}
-                    <div className="grid grid-cols-3 gap-3 w-full md:w-auto">
-                      {[1, 2, 3].map((item) => (
-                        <motion.div 
-                          key={item}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          whileHover={{
-                            y: -14,
-                            scale: 1.045,
-                            boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                            transition: { duration: 0.14, ease: 'easeOut' }
-                          }}
-                          className="group relative p-3 bg-stone-900 border border-white/10 hover:border-amber-500/50 rounded-xl text-center overflow-hidden"
-                        >
-                          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-                          </div>
-                          {/* Icon TrendingUp untuk Sales */}
-                          <TrendingUp className="w-5 h-5 mx-auto mb-2 text-stone-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                          <span className="text-white font-medium text-xs relative z-10">Sales Mkt.</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
+      {/* LEVEL 2 */}
+      <div className="flex flex-row justify-center items-start gap-12 w-full relative">
 
-                  {/* KANAN: DIGITAL PROGRAM (Warna Tetap Amber Transparan) */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{
-                      y: -14,
-                      scale: 1.045,
-                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                      transition: { duration: 0.14, ease: 'easeOut' }
-                    }}
-                    className="group relative w-full md:w-56 p-4 bg-amber-500/5 border border-amber-500/20 hover:border-amber-500/50 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-                    </div>
-                    <Cpu className="w-6 h-6 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-                    <span className="text-amber-500 font-bold text-sm relative z-10">Digital Program</span>
-                  </motion.div>
+        {/* FINANCE */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          whileHover={{
+            y: -14,
+            scale: 1.045,
+            boxShadow: '0 22px 45px -12px rgba(16, 185, 129, 0.55)',
+            transition: { duration: 0.14, ease: 'easeOut' }
+          }}
+          className="group relative w-56 p-4 bg-emerald-500/10 border border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
+        >
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent blur-2xl scale-110" />
+          </div>
+          <DollarSign className="w-6 h-6 text-emerald-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+          <h3 className="text-emerald-400 font-bold text-sm relative z-10">Finance</h3>
+        </motion.div>
 
-                </div>
-              </div>
+        {/* SUPERVISOR */}
+        <div className="flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.45)',
+              transition: { duration: 0.14, ease: 'easeOut' }
+            }}
+            className="group relative w-60 p-5 bg-stone-800 border border-amber-500/50 rounded-2xl text-center overflow-hidden"
+          >
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
+              <div className="absolute inset-0 bg-amber-500/20 blur-xl scale-110" />
             </div>
-          </section>
+            <UsersIcon className="w-6 h-6 mx-auto mb-2 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+            <h3 className="text-white font-bold relative z-10">Supervisor</h3>
+          </motion.div>
+
+          {/* CONNECTOR SUPERVISOR */}
+          <div className="relative w-full max-w-[500px] h-12 my-2">
+            <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
+            <div className="absolute top-0 w-full h-full">
+              <div className="absolute top-4 left-0 right-0 h-px bg-stone-700" />
+              <div className="absolute top-4 left-[16.66%] h-full w-px bg-stone-700" />
+              <div className="absolute top-4 right-[16.66%] h-full w-px bg-stone-700" />
+            </div>
+          </div>
+
+          {/* SALES */}
+          <div className="grid grid-cols-3 gap-3">
+            {[1, 2, 3].map((item) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  y: -14,
+                  scale: 1.045,
+                  boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                  transition: { duration: 0.14, ease: 'easeOut' }
+                }}
+                className="group relative p-3 bg-stone-900 border border-white/10 hover:border-amber-500/50 rounded-xl text-center overflow-hidden"
+              >
+                <TrendingUp className="w-5 h-5 mx-auto mb-2 text-stone-400" />
+                <span className="text-white font-medium text-xs">Sales Mkt.</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* DIGITAL PROGRAM */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          whileHover={{
+            y: -14,
+            scale: 1.045,
+            boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+            transition: { duration: 0.14, ease: 'easeOut' }
+          }}
+          className="group relative w-56 p-4 bg-amber-500/5 border border-amber-500/20 hover:border-amber-500/50 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
+        >
+          <Cpu className="w-6 h-6 text-amber-500" />
+          <span className="text-amber-500 font-bold text-sm">Digital Program</span>
+        </motion.div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
           {/* Values Section */}
           <section className="py-16 px-4">
             <div className="container mx-auto">
@@ -551,4 +531,3 @@ export default function TentangPage() {
   )
 }
 
-// anjay
