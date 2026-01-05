@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Check, X, Database, Shield, Zap, Smartphone, Building2, MapPin } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Check, X, Database, Shield, Zap, Smartphone, Building2, MapPin, ArrowLeft, PlayCircle, Layers, BarChart3, Users, Printer, ScanLine, Youtube} from 'lucide-react'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
@@ -10,7 +10,7 @@ import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
 
 // ============================================
-// DATA
+// DATA & CONFIG
 // ============================================
 
 const packagePrices = {
@@ -61,6 +61,9 @@ const institutions = [
   { name: "Universitas Khairun", location: "Ternate", product: "PIPOS & KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
 ]
 
+// ============================================
+// COMPONENTS
+// ============================================
 
 function HeroSection() {
   return (
@@ -85,7 +88,107 @@ function HeroSection() {
   )
 }
 
-function PIPOSSection() {
+// --------------------------------------------------------
+// NEW: DETAIL VIEW PIPOS
+// --------------------------------------------------------
+function PiposDetailView({ onBack }: { onBack: () => void }) {
+  const detailFeatures = [
+    { icon: ScanLine, title: "Point of Sales Modern", desc: "Antarmuka kasir yang responsif, mendukung scan barcode, dan pencarian produk super cepat." },
+    { icon: Layers, title: "Manajemen Inventori", desc: "Pelacakan stok real-time, notifikasi stok menipis, dan manajemen varian produk." },
+    { icon: BarChart3, title: "Laporan Lengkap", desc: "Analisis penjualan harian, mingguan, bulanan, hingga laba rugi yang otomatis tergenerate." },
+    { icon: Users, title: "Manajemen Karyawan", desc: "Kontrol hak akses (Owner, Admin, Kasir) dan pantau kinerja shift karyawan." },
+    { icon: Printer, title: "Dukungan Hardware", desc: "Kompatibel dengan berbagai printer thermal (Bluetooth/USB) dan barcode scanner." },
+    { icon: Shield, title: "Keamanan Data", desc: "Backup data otomatis ke cloud untuk mencegah kehilangan riwayat transaksi." },
+  ]
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto px-4 pb-20"
+    >
+      {/* Tombol Kembali */}
+      <button 
+        onClick={onBack}
+        className="flex items-center gap-2 text-stone-400 hover:text-amber-400 mb-8 transition-colors group"
+      >
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+        <span className="font-medium">Kembali ke Daftar Produk</span>
+      </button>
+
+      {/* Header Detail */}
+      <div className="flex flex-col lg:flex-row items-center gap-10 mb-16">
+        <div className="w-full lg:w-1/3 flex justify-center">
+            <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-neutral-900/50 rounded-full flex items-center justify-center border border-amber-500/20 shadow-[0_0_60px_-15px_rgba(245,158,11,0.3)]">
+                 <Image
+                    src="/images/logo_pipos_copy.png"
+                    alt="PIPOS Logo Large"
+                    width={200}
+                    height={200}
+                    className="object-contain animate-pulse-slow"
+                  />
+            </div>
+        </div>
+        <div className="w-full lg:w-2/3 text-left">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">PIPOS <span className="text-amber-500">System</span></h2>
+            <p className="text-lg text-stone-300 leading-relaxed mb-6">
+                PIPOS (Point of Sales System) bukan sekadar aplikasi kasir biasa. Ini adalah ekosistem manajemen ritel yang dirancang untuk memangkas waktu administrasi dan meningkatkan profitabilitas. 
+                Dengan PIPOS, Anda tidak hanya mencatat penjualan, tetapi juga memahami pola beli pelanggan, mengelola stok tanpa pusing, dan mengambil keputusan bisnis berdasarkan data akurat.
+            </p>
+            <div className="flex flex-wrap gap-3">
+                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Cloud Based</span>
+                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Real-time Sync</span>
+                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Multi Device</span>
+            </div>
+        </div>
+      </div>
+
+      {/* Grid Fitur Detail */}
+      <div className="mb-20">
+        <h3 className="text-2xl font-bold text-white mb-8 text-center">Fitur Unggulan</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {detailFeatures.map((fitur, i) => (
+                <div key={i} className="bg-neutral-900/60 border border-white/5 p-6 rounded-2xl hover:border-amber-500/30 transition-colors">
+                    <fitur.icon className="w-10 h-10 text-amber-500 mb-4" />
+                    <h4 className="text-xl font-bold text-white mb-2">{fitur.title}</h4>
+                    <p className="text-stone-400 text-sm leading-relaxed">{fitur.desc}</p>
+                </div>
+            ))}
+        </div>
+      </div>
+
+      {/* Demo Section */}
+      <div className="bg-neutral-900 border border-white/10 rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+         <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+         
+         <h3 className="text-3xl font-bold text-white mb-4">Lihat PIPOS Beraksi</h3>
+         <p className="text-stone-300 mb-8 max-w-2xl mx-auto">
+            Saksikan bagaimana PIPOS dapat menyederhanakan operasional bisnis Anda dalam hitungan menit. Tonton demo singkat penggunaan aplikasi.
+         </p>
+
+         <a 
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" // GANTI LINK INI DENGAN LINK VIDEO DEMO ASLI ANDA
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-red-900/40 group"
+         >
+            <PlayCircle className="w-7 h-7 " />
+            <span className="text-lg">Tonton Demo di YouTube</span>
+         </a>
+         
+         <p className="mt-4 text-xs text-stone-500">
+            *Anda akan diarahkan ke halaman YouTube
+         </p>
+      </div>
+
+    </motion.div>
+  )
+}
+
+function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -108,19 +211,37 @@ function PIPOSSection() {
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
           <p className="text-lg text-stone-300 leading-relaxed">
-            Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPOS menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian. Dilengkapi dengan fitur canggih untuk pelaporan dan analisis bisnis.
+            Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPOS menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
           </p>
-          <div className="space-y-3">
+          <div className="space-y-3 pb-4">
             <div className="flex items-center gap-3 text-stone-300"><Shield className="w-5 h-5 text-amber-400" /><span>3 Level akses: Owner, Admin, Kasir</span></div>
             <div className="flex items-center gap-3 text-stone-300"><Zap className="w-5 h-5 text-amber-400" /><span>Transaksi penjualan real-time</span></div>
             <div className="flex items-center gap-3 text-stone-300"><Database className="w-5 h-5 text-amber-400" /><span>Laporan dan analisis bisnis lengkap</span></div>
           </div>
+          
+          {/* Tombol Trigger untuk melihat detail */}
+          <button
+            onClick={onDetailClick}
+            className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold border-b border-amber-500/50 hover:border-amber-400 transition-all pb-1 group"
+          >
+            Lihat deskripsi PIPOS
+            <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
-        {/* Piposs */}
+        
+        {/* Piposs Card - Clickable as well */}
         <motion.div
+          onClick={onDetailClick}
           whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden"
+          className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden cursor-pointer"
         >
+          {/* Overlay Hint on Hover */}
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+             <span className="bg-amber-500 text-white px-6 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                Lihat Detail
+             </span>
+          </div>
+
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
             <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
               <Image
@@ -380,7 +501,6 @@ function KKNKUSection() {
         >
           <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
 
-            {/* ICON DIGANTI LOGO — TIDAK ADA PERUBAHAN LAIN */}
             <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
               <Image
                 src="/images/logo.png"
@@ -543,6 +663,8 @@ function InstitutionsSection() {
 }
 
 export default function ProdukPage() {
+  const [activeView, setActiveView] = useState<'list' | 'pipos-detail'>('list')
+
   return (
     <>
       <Navbar />
@@ -552,20 +674,41 @@ export default function ProdukPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
         <div className="relative z-10 pb-12">
-          <HeroSection />
-          <section className="py-16 px-4">
-            <div className="container mx-auto">
-              <PIPOSSection />
-              <SubscriptionSection />
-              <ProyekKamiSection />
-              <KKNKUSection />
-              <ClientMapSection />
-              <StatisticsSection />
-              <InstitutionsSection />
-            </div>
-          </section>
+          
+          <AnimatePresence mode="wait">
+            {activeView === 'list' ? (
+              <motion.div
+                key="list-view"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <HeroSection />
+                <section className="py-16 px-4">
+                  <div className="container mx-auto">
+                    {/* Mengirim fungsi untuk mengubah state ke komponen PIPOS */}
+                    <PIPOSSection onDetailClick={() => setActiveView('pipos-detail')} />
+                    
+                    <SubscriptionSection />
+                    <ProyekKamiSection />
+                    <KKNKUSection />
+                    <ClientMapSection />
+                    <StatisticsSection />
+                    <InstitutionsSection />
+                  </div>
+                </section>
+              </motion.div>
+            ) : (
+              // TAMPILAN DETAIL
+              <motion.div key="detail-view">
+                 <PiposDetailView onBack={() => setActiveView('list')} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <CTA
-            title="Tertarik dengan Produk Kami?"
+            title={activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPOS?"}
             description="Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat"
             buttonText="Hubungi Kami"
             href="/kontak"
