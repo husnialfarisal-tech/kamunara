@@ -503,7 +503,7 @@ export default function TentangPage() {
                       <div className="absolute inset-0 bg-blue-500/30 blur-xl scale-110 rounded-xl" />
                     </div>
                     <Link
-                      href="https://facebook.com/kamunara.group"
+                      href="https://www.facebook.com/share/g/17gbQKDK8M/?mibextid=wwXIfr"
                       target="_blank"
                       className="relative z-10 flex items-center gap-3 px-6 py-3 bg-blue-600 rounded-xl text-white hover:bg-blue-700 transition-all"
                     >

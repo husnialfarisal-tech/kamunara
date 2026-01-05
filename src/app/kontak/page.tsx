@@ -81,7 +81,7 @@ export default function KontakPage() {
       <main className="relative pt-32 min-h-screen bg-neutral-950 overflow-hidden">
         
         {/* Elemen Dekorasi Background (Glow Effects) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" /> */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(700px,90vw)] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
@@ -250,7 +250,7 @@ export default function KontakPage() {
                       </motion.a>
 
                       <motion.a
-                        href="https://facebook.com/Putri Haildaa"
+                        href="https://www.facebook.com/share/g/17gbQKDK8M/?mibextid=wwXIfr"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
@@ -262,7 +262,7 @@ export default function KontakPage() {
                       </motion.a>
 
                       <motion.a
-                        href="mailto:info@kamunara.com"
+                        href="mailto:kamunaragroup.com"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-3 p-6 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl text-white hover:from-red-700 hover:to-orange-700 transition-all"
