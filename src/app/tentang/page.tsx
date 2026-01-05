@@ -1,7 +1,8 @@
 'use client'
 
+import { useState, useEffect } from 'react' // Tambahkan useEffect & useState
 import { motion } from 'framer-motion'
-import { Heart, Users, Briefcase, Users as UsersIcon, TrendingUp, Zap, Cpu, ChevronDown, Facebook, Compass, Rocket, Target, Code2, Award, DollarSign } from 'lucide-react'
+import { Heart, Users, Briefcase, Users as UsersIcon, TrendingUp, Zap, Cpu, Facebook, Compass, Rocket, Target, Code2, Award, DollarSign } from 'lucide-react'
 import Link from 'next/link'
 
 import Navbar from '@/components/Navbar'
@@ -16,15 +17,6 @@ const statsData = [
   { value: "10", label: "Tim Profesional" }
 ]
 
-// --- Organization Chart Data ---
-const staffMembers = [
-  { title: "Finance", icon: Zap },
-  { title: "Sales 1", icon: TrendingUp },
-  { title: "Sales 2", icon: TrendingUp },
-  { title: "Sales 3", icon: TrendingUp },
-  { title: "Marketing", icon: Zap }
-]
-
 // --- Values Data ---
 const values = [
   { icon: Heart, title: "Integritas", desc: "Kejujuran dan transparansi penuh" },
@@ -35,33 +27,45 @@ const values = [
   { icon: Code2, title: "Profesionalisme", desc: "Etika tinggi & standar profesional" }
 ]
 
-
 export default function TentangPage() {
+  // State untuk menyimpan posisi partikel agar konsisten (Fix Hydration Issue)
+  const [particles, setParticles] = useState<{ x: number; y: number; duration: number; delay: number }[]>([])
+
+  useEffect(() => {
+    // Generate partikel hanya setelah komponen dimuat di browser
+    const generatedParticles = Array.from({ length: 25 }).map(() => ({
+      x: Math.random() * 100, // Posisi X acak 0-100% lebar layar
+      y: Math.random() * 100, // Posisi Y acak 0-100% tinggi halaman
+      duration: Math.random() * 15 + 10, // Durasi acak 10-25 detik
+      delay: Math.random() * 10, // Delay acak
+    }))
+    setParticles(generatedParticles)
+  }, [])
+
   return (
     <>
       <Navbar />
 
       <main className="min-h-screen bg-neutral-950 relative selection:bg-amber-500/30 overflow-hidden">
         
-        {/* AMBIENT BACKGROUND PARTICLES - Fixed overflow */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 20 }).map((_, i) => (
+        {/* AMBIENT BACKGROUND PARTICLES (KUNANG-KUNANG) - FIXED */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          {particles.map((p, i) => (
             <motion.div
               key={i}
-              className="absolute w-[2px] h-[2px] bg-amber-200 rounded-full"
-              initial={{
-                x: `${Math.random() * 100}%`,
-                y: '100vh',
-                opacity: 0,
+              className="absolute w-[3px] h-[3px] bg-amber-200/60 rounded-full blur-[1px]"
+              style={{
+                left: `${p.x}%`,
+                top: `${p.y}%`,
               }}
               animate={{
-                y: '-20vh',
-                opacity: [0, 0.6, 0],
+                y: [0, -100], // Bergerak ke atas sejauh 100px dari posisi awal
+                opacity: [0, 0.8, 0], // Efek kedip (fade in - fade out)
               }}
               transition={{
-                duration: Math.random() * 10 + 10,
+                duration: p.duration,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: p.delay,
                 ease: "linear"
               }}
             />
@@ -251,140 +255,140 @@ export default function TentangPage() {
           </section>
 
           {/* Bagan Organisasi Kamunara */}
-<section className="py-20 px-4">
-  <div className="container mx-auto max-w-5xl">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold text-white mb-4">Bagan Organisasi</h2>
-      <div className="h-1 w-20 bg-amber-500 mx-auto rounded-full" />
-    </div>
+          <section className="py-20 px-4">
+            <div className="container mx-auto max-w-5xl">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-white mb-4">Bagan Organisasi</h2>
+                <div className="h-1 w-20 bg-amber-500 mx-auto rounded-full" />
+              </div>
 
-    <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center">
 
-      {/* LEVEL 1: MANAGER */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{
-          y: -8,
-          scale: 1.02,
-          boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-          transition: { duration: 0.14, ease: 'easeOut' }
-        }}
-        className="group relative w-64 p-6 bg-gradient-to-b from-amber-500 to-amber-600 rounded-2xl text-center shadow-lg overflow-hidden"
-      >
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
-          <div className="absolute inset-0 bg-white/20 blur-xl scale-110" />
-        </div>
-        <Briefcase className="w-8 h-8 mx-auto mb-2 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-        <h3 className="text-white font-bold text-lg relative z-10">Manager</h3>
-      </motion.div>
+                {/* LEVEL 1: MANAGER */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                    transition: { duration: 0.14, ease: 'easeOut' }
+                  }}
+                  className="group relative w-64 p-6 bg-gradient-to-b from-amber-500 to-amber-600 rounded-2xl text-center shadow-lg overflow-hidden"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
+                    <div className="absolute inset-0 bg-white/20 blur-xl scale-110" />
+                  </div>
+                  <Briefcase className="w-8 h-8 mx-auto mb-2 text-white transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+                  <h3 className="text-white font-bold text-lg relative z-10">Manager</h3>
+                </motion.div>
 
-      {/* CONNECTOR LEVEL 1 */}
-      <div className="relative w-full max-w-5xl h-12 mb-4">
-        <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
+                {/* CONNECTOR LEVEL 1 */}
+                <div className="relative w-full max-w-5xl h-12 mb-4">
+                  <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
 
-        {/* Desktop layout dipaksa tampil di mobile */}
-        <div className="absolute top-0 w-full h-full">
-          <div className="absolute top-4 left-[calc(50%-280px)] right-[calc(50%-280px)] h-px bg-stone-700" />
-          <div className="absolute top-4 left-[calc(50%-280px)] h-full w-px bg-stone-700" />
-          <div className="absolute top-4 right-[calc(50%-280px)] h-full w-px bg-stone-700" />
-        </div>
-      </div>
+                  {/* Desktop layout dipaksa tampil di mobile */}
+                  <div className="absolute top-0 w-full h-full">
+                    <div className="absolute top-4 left-[calc(50%-280px)] right-[calc(50%-280px)] h-px bg-stone-700" />
+                    <div className="absolute top-4 left-[calc(50%-280px)] h-full w-px bg-stone-700" />
+                    <div className="absolute top-4 right-[calc(50%-280px)] h-full w-px bg-stone-700" />
+                  </div>
+                </div>
 
-      {/* LEVEL 2 */}
-      <div className="flex flex-row justify-center items-start gap-12 w-full relative">
+                {/* LEVEL 2 */}
+                <div className="flex flex-row justify-center items-start gap-12 w-full relative">
 
-        {/* FINANCE */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{
-            y: -14,
-            scale: 1.045,
-            boxShadow: '0 22px 45px -12px rgba(16, 185, 129, 0.55)',
-            transition: { duration: 0.14, ease: 'easeOut' }
-          }}
-          className="group relative w-56 p-4 bg-emerald-500/10 border border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent blur-2xl scale-110" />
-          </div>
-          <DollarSign className="w-6 h-6 text-emerald-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-          <h3 className="text-emerald-400 font-bold text-sm relative z-10">Finance</h3>
-        </motion.div>
+                  {/* FINANCE */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(16, 185, 129, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative w-56 p-4 bg-emerald-500/10 border border-emerald-500/40 hover:border-emerald-500/60 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent blur-2xl scale-110" />
+                    </div>
+                    <DollarSign className="w-6 h-6 text-emerald-400 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+                    <h3 className="text-emerald-400 font-bold text-sm relative z-10">Finance</h3>
+                  </motion.div>
 
-        {/* SUPERVISOR */}
-        <div className="flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{
-              y: -8,
-              scale: 1.02,
-              boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.45)',
-              transition: { duration: 0.14, ease: 'easeOut' }
-            }}
-            className="group relative w-60 p-5 bg-stone-800 border border-amber-500/50 rounded-2xl text-center overflow-hidden"
-          >
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
-              <div className="absolute inset-0 bg-amber-500/20 blur-xl scale-110" />
+                  {/* SUPERVISOR */}
+                  <div className="flex flex-col items-center">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      whileHover={{
+                        y: -8,
+                        scale: 1.02,
+                        boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.45)',
+                        transition: { duration: 0.14, ease: 'easeOut' }
+                      }}
+                      className="group relative w-60 p-5 bg-stone-800 border border-amber-500/50 rounded-2xl text-center overflow-hidden"
+                    >
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-150 pointer-events-none">
+                        <div className="absolute inset-0 bg-amber-500/20 blur-xl scale-110" />
+                      </div>
+                      <UsersIcon className="w-6 h-6 mx-auto mb-2 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
+                      <h3 className="text-white font-bold relative z-10">Supervisor</h3>
+                    </motion.div>
+
+                    {/* CONNECTOR SUPERVISOR */}
+                    <div className="relative w-full max-w-[500px] h-12 my-2">
+                      <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
+                      <div className="absolute top-0 w-full h-full">
+                        <div className="absolute top-4 left-0 right-0 h-px bg-stone-700" />
+                        <div className="absolute top-4 left-[16.66%] h-full w-px bg-stone-700" />
+                        <div className="absolute top-4 right-[16.66%] h-full w-px bg-stone-700" />
+                      </div>
+                    </div>
+
+                    {/* SALES */}
+                    <div className="grid grid-cols-3 gap-3">
+                      {[1, 2, 3].map((item) => (
+                        <motion.div
+                          key={item}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          whileHover={{
+                            y: -14,
+                            scale: 1.045,
+                            boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                            transition: { duration: 0.14, ease: 'easeOut' }
+                          }}
+                          className="group relative p-3 bg-stone-900 border border-white/10 hover:border-amber-500/50 rounded-xl text-center overflow-hidden"
+                        >
+                          <TrendingUp className="w-5 h-5 mx-auto mb-2 text-stone-400" />
+                          <span className="text-white font-medium text-xs">Sales Mkt.</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* DIGITAL PROGRAM */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{
+                      y: -14,
+                      scale: 1.045,
+                      boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
+                      transition: { duration: 0.14, ease: 'easeOut' }
+                    }}
+                    className="group relative w-56 p-4 bg-amber-500/5 border border-amber-500/20 hover:border-amber-500/50 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
+                  >
+                    <Cpu className="w-6 h-6 text-amber-500" />
+                    <span className="text-amber-500 font-bold text-sm">Digital Program</span>
+                  </motion.div>
+
+                </div>
+              </div>
             </div>
-            <UsersIcon className="w-6 h-6 mx-auto mb-2 text-amber-500 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3 relative z-10" />
-            <h3 className="text-white font-bold relative z-10">Supervisor</h3>
-          </motion.div>
-
-          {/* CONNECTOR SUPERVISOR */}
-          <div className="relative w-full max-w-[500px] h-12 my-2">
-            <div className="absolute left-1/2 top-0 h-full w-px bg-stone-700" />
-            <div className="absolute top-0 w-full h-full">
-              <div className="absolute top-4 left-0 right-0 h-px bg-stone-700" />
-              <div className="absolute top-4 left-[16.66%] h-full w-px bg-stone-700" />
-              <div className="absolute top-4 right-[16.66%] h-full w-px bg-stone-700" />
-            </div>
-          </div>
-
-          {/* SALES */}
-          <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3].map((item) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{
-                  y: -14,
-                  scale: 1.045,
-                  boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-                  transition: { duration: 0.14, ease: 'easeOut' }
-                }}
-                className="group relative p-3 bg-stone-900 border border-white/10 hover:border-amber-500/50 rounded-xl text-center overflow-hidden"
-              >
-                <TrendingUp className="w-5 h-5 mx-auto mb-2 text-stone-400" />
-                <span className="text-white font-medium text-xs">Sales Mkt.</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* DIGITAL PROGRAM */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{
-            y: -14,
-            scale: 1.045,
-            boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)',
-            transition: { duration: 0.14, ease: 'easeOut' }
-          }}
-          className="group relative w-56 p-4 bg-amber-500/5 border border-amber-500/20 hover:border-amber-500/50 rounded-xl text-center flex flex-col items-center justify-center gap-3 overflow-hidden"
-        >
-          <Cpu className="w-6 h-6 text-amber-500" />
-          <span className="text-amber-500 font-bold text-sm">Digital Program</span>
-        </motion.div>
-
-      </div>
-    </div>
-  </div>
-</section>
+          </section>
 
           {/* Values Section */}
           <section className="py-16 px-4">
@@ -428,7 +432,7 @@ export default function TentangPage() {
                 ))}
               </div>
               
-              {/* Social Media Section - After Values/Principles */}
+              {/* Social Media Section */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -437,7 +441,8 @@ export default function TentangPage() {
               >
                 <h3 className="text-2xl font-bold text-white mb-6">Ikuti Kami di Media Sosial</h3>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <motion.div
+                  {/* ... (Social Media Buttons remain same) ... */}
+                   <motion.div
                     whileHover={{
                       y: -8,
                       scale: 1.05,
@@ -530,4 +535,3 @@ export default function TentangPage() {
     </>
   )
 }
-

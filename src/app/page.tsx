@@ -1,86 +1,100 @@
 'use client'
+
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Rocket, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export default function LandingPage() {
+  const [particles, setParticles] = useState<{ x: number; y: number; duration: number; delay: number }[]>([])
+
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: 30 }).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 5,
+    }))
+    setParticles(generatedParticles)
+  }, [])
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden relative selection:bg-amber-500/30">
+    <main className="min-h-screen bg-gradient-to-br from-neutral-950 via-stone-900 to-neutral-950 overflow-hidden relative selection:bg-amber-500/30">
      
-      {/* AMBIENT BACKGROUND PARTICLES - Fixed overflow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+      {/* AMBIENT BACKGROUND PARTICLES (KUNANG-KUNANG) */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {particles.map((p, i) => (
           <motion.div
             key={i}
-            className="absolute w-[2px] h-[2px] bg-amber-200 rounded-full"
-            initial={{
-              x: `${Math.random() * 100}%`,
-              y: '100vh',
-              opacity: 0,
-            }}
+            className="absolute w-[2px] h-[2px] bg-amber-400/40 rounded-full blur-[1px]"
+            style={{ left: `${p.x}%`, top: `${p.y}%` }}
             animate={{
-              y: '-20vh',
-              opacity: [0, 0.8, 0],
+              y: [0, -100],
+              opacity: [0, 0.6, 0],
+              scale: [0, 1.5, 0]
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: p.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: p.delay,
               ease: "linear"
             }}
           />
         ))}
       </div>
 
-      <section className="pt-20 pb-24 px-4 relative z-10">
+      {/* BACKGROUND GLOW ACCENT (Pojok Kanan Bawah) */}
+      <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <section className="pt-20 pb-24 px-4 relative z-10 flex items-center min-h-[calc(100vh-80px)]">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* ───────────────────── TEXT AREA ───────────────────── */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: 'easeOut' }}
-              className="space-y-8"
+              className="space-y-8 relative z-20"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-5 py-2"
+                className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 backdrop-blur-md rounded-full px-5 py-2 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
               >
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-amber-400 text-sm font-medium">
+                <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+                <span className="text-amber-400 text-sm font-bold tracking-wide">
                   Digital Solutions Expert
                 </span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
                 Transformasi
-                <span className="block bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">
                   Digital Anda
                 </span>
               </h1>
 
-              <p className="text-xl text-stone-300 leading-relaxed max-w-xl">
+              <p className="text-xl text-stone-400 leading-relaxed max-w-xl border-l-4 border-amber-500/30 pl-6">
                 Kamunara adalah perusahaan outsource yang berfokus pada pengembangan
                 software website & mobile. Kami hadir sebagai mitra teknologi yang
                 solid, modern, dan berkelanjutan.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-5 pt-4">
                 <Link href="/home">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(245, 158, 11, 0.5)" }}
                     whileTap={{ scale: 0.95 }}
                     className="
-                      bg-gradient-to-r from-amber-400 to-amber-600
-                      text-stone-900 font-bold
+                      bg-gradient-to-r from-amber-500 to-amber-700
+                      text-white font-bold
                       px-8 py-4 rounded-xl
-                      flex items-center gap-2
-                      shadow-lg shadow-amber-600/30
-                      hover:shadow-amber-600/50 transition-shadow
+                      flex items-center gap-3
+                      shadow-lg shadow-amber-900/40
+                      transition-all border border-amber-400/20
                     "
                   >
                     Meluncur
@@ -90,14 +104,14 @@ export default function LandingPage() {
 
                 <Link href="/tentang">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
                     whileTap={{ scale: 0.95 }}
                     className="
-                      border-2 border-amber-500/50 hover:border-amber-500
-                      text-amber-400 font-bold
+                      border border-stone-600 hover:border-amber-500
+                      text-stone-300 hover:text-amber-400 font-bold
                       px-8 py-4 rounded-xl
-                      hover:bg-amber-500/10
-                      flex items-center gap-2
+                      flex items-center gap-3
+                      transition-colors backdrop-blur-sm
                     "
                   >
                     Pelajari Lebih Lanjut
@@ -107,140 +121,113 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* ───────────────────── 3D GYRO-CORE ANIMATION ───────────────────── */}
+            {/* ───────────────────── NEW: "REACTOR CORE" LOGO ANIMATION ───────────────────── */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: 'easeOut' }}
-              className="relative perspective-[2000px] flex items-center justify-center"
+              className="relative flex items-center justify-center h-[500px] w-full perspective-[1000px]"
             >
-              <div className="relative h-[420px] lg:h-[560px] w-full flex items-center justify-center">
+              
+              {/* 1. ATMOSPHERE GLOW (Behind) */}
+              <div className="absolute w-[300px] h-[300px] bg-amber-500/20 rounded-full blur-[80px] animate-pulse-slow" />
 
-                {/* 2. THE 3D GYROSCOPE CONTAINER */}
-                <motion.div
-                  animate={{
-                    rotateX: [15, 20, 15],
-                    rotateY: [-15, -10, -15],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px] flex items-center justify-center"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                 
-                  {/* --- RING 1: OUTER DASHED RING --- */}
+              {/* 2. THE MAIN ROTATING STRUCTURE */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px] flex items-center justify-center"
+              >
+                
+                {/* Ring 1: Outer Dashed Orbit (Thin & Techy) */}
+                <div className="absolute inset-0 border border-dashed border-stone-700 rounded-full opacity-40" />
+                
+                {/* Ring 2: The "Comet" Ring (Rotating Gold Segment) */}
+                <motion.div 
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-4 rounded-full border border-transparent border-t-amber-500/60 border-l-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                />
+
+                {/* Ring 3: Glass Ring (Thick) */}
+                <div className="absolute inset-16 border-[1px] border-white/10 rounded-full bg-white/[0.02] backdrop-blur-[1px]" />
+                
+                {/* Ring 4: Inner Active Energy Ring (Fast) */}
+                <motion.div 
+                   animate={{ rotate: 360, scale: [1, 1.02, 1] }}
+                   transition={{ 
+                     rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                     scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                   }}
+                   className="absolute inset-24 border-2 border-amber-500/30 border-b-amber-400 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)]"
+                />
+
+                {/* Orbiting Particles (Electrons) */}
+                {[0, 120, 240].map((deg, i) => (
                   <motion.div
-                    animate={{ rotateY: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 border-2 border-dashed border-amber-100/80 rounded-full"
-                    style={{ transformStyle: 'preserve-3d' }}
+                    key={i}
+                    className="absolute top-1/2 left-1/2 w-full h-full"
+                    style={{ rotate: deg }}
+                    animate={{ rotate: deg + 360 }}
+                    transition={{ duration: 8 + i, repeat: Infinity, ease: "linear" }}
                   >
-                    {/* Orbital Points */}
-                    {[0, 90, 180, 270].map((deg) => (
-                      <div
-                        key={deg}
-                        className="absolute top-1/2 left-1/2 w-3 h-3 bg-amber-50 rounded-full border border-amber-200"
-                        style={{
-                          transform: `rotateY(${deg}deg) translateZ(220px)`,
-                        }}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-3 h-3 bg-amber-200 rounded-full shadow-[0_0_10px_#fbbf24]" />
+                  </motion.div>
+                ))}
+
+              </motion.div>
+
+              {/* 3. THE CORE (Logo Container) - COUNTER ROTATION (Agar logo tetap lurus) */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 {/* Hexagon/Circle Tech Background behind logo */}
+                 <div className="absolute w-32 h-32 md:w-40 md:h-40 bg-stone-900/80 rounded-full border border-amber-500/30 backdrop-blur-md flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.2)] z-10">
+                    
+                    {/* Pulsing Core Effect */}
+                    <motion.div 
+                      animate={{ opacity: [0.5, 0.8, 0.5], scale: [1, 1.1, 1] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-amber-500/10 rounded-full"
+                    />
+
+                    {/* THE LOGO - UPDATED TO BE ROUND */}
+                    <motion.div
+                      className="relative w-20 h-20 md:w-24 md:h-24 z-20 rounded-full overflow-hidden flex items-center justify-center"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image
+                        src="/images/Kamunara_Icon_Logo.png"
+                        alt="Kamunara Core Logo"
+                        fill
+                        className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                        priority
                       />
-                    ))}
-                  </motion.div>
-
-                  {/* --- RING 2: MIDDLE TECH RING --- */}
-                  <motion.div
-                    animate={{ rotateX: [0, -360] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-[10%] border-2 border-white rounded-full bg-white/5"
-                    style={{ transformStyle: 'preserve-3d' }}
-                  >
-                    {/* Tech details */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-2 bg-amber-200" />
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-8 h-2 bg-amber-200" />
-                  </motion.div>
-
-                  {/* --- RING 3: INNER FAST RING --- */}
-                  <motion.div
-                    animate={{ rotate: [360, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-[25%] border border-dotted border-white rounded-full"
-                  />
-
-                  {/* --- THE CORE (Inti Energi) - Lurus Menghadap Depan (Counter-Rotation) --- */}
-                  <motion.div
-                    // PERBAIKAN: Menambahkan animasi kebalikan dari parent agar logo selalu lurus menghadap depan
-                    animate={{
-                      rotateX: [-15, -20, -15], // Kebalikan dari parent rotateX
-                      rotateY: [15, 10, 15],    // Kebalikan dari parent rotateY
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="relative w-24 h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-white to-amber-100 rounded-full z-10 flex items-center justify-center border-2 border-white overflow-hidden"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                    }}
-                  >
-                    <Image
-                      src="/images/Kamunara_Icon_Logo.png"
-                      alt="Kamunara Gold Mode Logo"
-                      fill
-                      className="object-contain p-3"
-                      priority
-                    />
-                  </motion.div>
-
-                  {/* --- FLOATING DATA BITS --- */}
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      animate={{
-                        translateY: [0, -30, 0],
-                        translateX: [0, (i % 2 === 0 ? 10 : -10), 0],
-                        opacity: [0, 1, 0],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 0.8,
-                        ease: 'easeInOut'
-                      }}
-                      className="absolute w-1.5 h-1.5 bg-white rounded-full"
-                      style={{
-                        top: '50%',
-                        left: '50%',
-                        transform: `rotate(${i * 60}deg) translate(100px) rotate(-${i * 60}deg)`,
-                      }}
-                    />
-                  ))}
-                </motion.div>
-
-                {/* BRAND LABEL BELOW */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 1 }}
-                  className="absolute bottom-4 lg:bottom-10 text-center z-20"
-                >
-                  <p className="text-stone-300 font-bold tracking-[0.5em] text-sm lg:text-base">
-                    KAMUNARA
-                  </p>
-                  {/* Animated Underline */}
-                  <div className="h-[1px] w-full mx-auto mt-2 overflow-hidden">
-                    <motion.div
-                      animate={{ x: ['-100%', '100%'] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                      className="h-full w-[50%] bg-gradient-to-r from-transparent via-amber-400 to-transparent"
-                    />
-                  </div>
-                </motion.div>
-
+                      
+                      {/* Logo Shimmer/Shine Effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent skew-x-12"
+                        animate={{ x: ['-100%', '200%'] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: 2, ease: "easeInOut" }}
+                      />
+                    </motion.div>
+                 </div>
               </div>
+
+              {/* 4. BRAND TEXT BELOW CORE */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="absolute bottom-10 md:bottom-20 z-0"
+              >
+                 <div className="flex flex-col items-center gap-2">
+                    <div className="h-12 w-[1px] bg-gradient-to-b from-transparent via-amber-500/50 to-transparent" />
+                    <span className="text-[10px] uppercase tracking-[0.4em] text-amber-500/60 font-mono">
+                      KAMUNARA
+                    </span>
+                 </div>
+              </motion.div>
+
             </motion.div>
 
           </div>

@@ -2,7 +2,10 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, X, Database, Shield, Zap, Smartphone, Building2, MapPin, ArrowLeft, PlayCircle, Layers, BarChart3, Users, Printer, ScanLine, Youtube} from 'lucide-react'
+import { 
+  Check, X, Database, Shield, Zap, Smartphone, Building2, MapPin, 
+  ArrowLeft, Layers, BarChart3, Users, Printer, ScanLine, Youtube 
+} from 'lucide-react'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
@@ -170,12 +173,12 @@ function PiposDetailView({ onBack }: { onBack: () => void }) {
          </p>
 
          <a 
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" // GANTI LINK INI DENGAN LINK VIDEO DEMO ASLI ANDA
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" // !! GANTI LINK INI DENGAN LINK VIDEO DEMO ASLI !!
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-red-900/40 group"
+            className="inline-flex items-center gap-3 bg-[#FF0000] hover:bg-[#CC0000] text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-red-900/40 group"
          >
-            <PlayCircle className="w-7 h-7 " />
+            <Youtube className="w-7 h-7" />
             <span className="text-lg">Tonton Demo di YouTube</span>
          </a>
          
@@ -328,7 +331,7 @@ function SubscriptionSection() {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
           {['standar', 'prof', 'excl'].map((pkg, idx) => (
             <motion.div
               key={pkg}
@@ -346,11 +349,12 @@ function SubscriptionSection() {
                 group relative bg-neutral-900/80 backdrop-blur-sm 
                 border border-white/5 hover:border-amber-500/30 
                 rounded-3xl overflow-hidden
-                ${pkg === 'prof' ? 'border-amber-500/50 lg:scale-105' : ''}
+                ${pkg === 'prof' ? 'border-amber-500/50 lg:scale-105 z-10' : 'z-0'}
               `}
               >
-              {/* Badges dalam 1 kolom */}
-              <div className="absolute top-5 right-5 z-20 flex flex-col gap-2">
+              
+              {/* --- PERBAIKAN POSISI BADGE --- */}
+              <div className="absolute top-3 right-3 z-20 flex flex-col gap-1 items-end">
                 {/* Badge POPULER */}
                 {pkg === 'prof' && (
                   <motion.div
@@ -359,15 +363,15 @@ function SubscriptionSection() {
                     exit={{ opacity: 0, x: 20 }}
                     className="
                       bg-amber-500/90 backdrop-blur-sm border border-amber-400/30
-                      text-white text-xs font-semibold px-4 py-1.5 rounded-full
-                      shadow-md shadow-amber-900/30
+                      text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full
+                      shadow-md shadow-amber-900/30 uppercase tracking-wider
                     "
                   >
                     POPULER
                   </motion.div>
                 )}
 
-                {/* Badge Hemat 10% - dengan efek masuk */}
+                {/* Badge Hemat 10% */}
                 {!isMonthly && (
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.8 }}
@@ -376,7 +380,7 @@ function SubscriptionSection() {
                     className="
                       bg-gradient-to-r from-green-600 to-emerald-600
                       backdrop-blur-md border border-emerald-400/30
-                      text-white text-xs font-semibold px-4 py-1.5 rounded-full
+                      text-white text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full
                       shadow-lg shadow-green-900/40
                     "
                   >
@@ -385,12 +389,13 @@ function SubscriptionSection() {
                 )}
               </div>
 
-              <div className="relative z-10 px-6 pt-8 pb-6">
+              {/* --- KONTEN UTAMA DENGAN PADDING ATAS LEBIH BESAR --- */}
+              <div className="relative z-10 px-6 pt-14 pb-8">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
                     {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
                   </h3>
-                  <p className="text-stone-400 text-xs md:text-sm">
+                  <p className="text-stone-400 text-xs md:text-sm min-h-[40px]">
                     {pkg === 'standar' ? 'Cocok untuk toko kecil' : pkg === 'prof' ? 'Ideal untuk bisnis berkembang' : 'Solusi enterprise lengkap'}
                   </p>
 
@@ -419,15 +424,15 @@ function SubscriptionSection() {
                   {features.map((feature, index) => {
                     const isEnabled = enabledFeatures[pkg as keyof typeof enabledFeatures][index]
                     return (
-                      <div key={index} className="flex items-center gap-3 text-stone-300">
+                      <div key={index} className="flex items-start gap-3 text-stone-300">
                         <div
-                          className={`w-5 h-5 rounded-full flex items-center justify-center ${
+                          className={`mt-0.5 w-5 h-5 min-w-[1.25rem] rounded-full flex items-center justify-center ${
                             isEnabled ? 'bg-green-500/20' : 'bg-red-500/20'
                           }`}
                         >
                           {isEnabled ? <Check className="w-3 h-3 text-green-400" /> : <X className="w-3 h-3 text-red-400" />}
                         </div>
-                        <span className={`text-sm ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
+                        <span className={`text-sm text-left ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
                           {renderFeatureText(feature[pkg as keyof typeof feature])}
                         </span>
                       </div>
@@ -561,6 +566,80 @@ function KKNKUSection() {
   )
 }
 
+// --------------------------------------------------------
+// NEW SECTION: MARQUEE LOGO (TRUSTED PARTNERS)
+// --------------------------------------------------------
+function TrustedPartnersSection() {
+  const logos = Array(8).fill([
+    { src: "/images/logo_pipos_copy.png", alt: "PIPOS" },
+    { src: "/images/logo.png", alt: "Universitas Khairun" }
+  ]).flat()
+
+  return (
+    <section className="py-10 border-y border-white/5 bg-neutral-900/30 overflow-hidden">
+      <div className="container mx-auto px-4 mb-6 text-center">
+         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">Didukung Oleh Ekosistem</p>
+      </div>
+      
+      {/* Container Marquee with optional fading mask */}
+      <div className="relative flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        {/* Wrapper Animasi */}
+        <motion.div
+          className="flex items-center gap-16 md:gap-32 px-50 min-w-max"
+          animate={{ x: ["0%", "-100%"] }} 
+          transition={{ 
+            duration: 50, 
+            ease: "linear", 
+            repeat: Infinity 
+          }}
+        >
+          {/* Render Logo 2 set untuk loop */}
+          {[...logos, ...logos].map((logo, index) => (
+            <div 
+              key={index} 
+              className="relative group flex items-center justify-center h-20 md:h-28 w-48 md:w-72 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100px, 150px"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// --------------------------------------------------------
+// NEW COMPONENT: CLIENT MAP TITLE
+// --------------------------------------------------------
+function ClientTitleSection() {
+  return (
+    <div className="container mx-auto px-4 pt-20 pb-8 text-center">
+       <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+       >
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
+            <MapPin className="w-4 h-4 text-amber-400" />
+            <span className="text-amber-400 text-sm font-medium">Jangkauan Kami</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Mitra & Persebaran <span className="text-amber-500">Klien</span>
+          </h2>
+          <p className="text-stone-400 max-w-2xl mx-auto">
+            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPOS di berbagai wilayah.
+          </p>
+       </motion.div>
+    </div>
+  )
+}
 
 const ClientMap = dynamic(() => import('@/components/ClientMap'), {
   ssr: false,
@@ -669,6 +748,7 @@ export default function ProdukPage() {
     <>
       <Navbar />
       <main className="relative pt-32 min-h-screen bg-neutral-950 overflow-hidden">
+        {/* Background Gradients */}
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
@@ -685,19 +765,42 @@ export default function ProdukPage() {
                 transition={{ duration: 0.3 }}
               >
                 <HeroSection />
+                
+                {/* CONTENT SECTION START */}
                 <section className="py-16 px-4">
-                  <div className="container mx-auto">
-                    {/* Mengirim fungsi untuk mengubah state ke komponen PIPOS */}
+                  <div className="container mx-auto space-y-24"> 
+                    
+                    {/* PIPOS */}
                     <PIPOSSection onDetailClick={() => setActiveView('pipos-detail')} />
                     
+                    {/* HARGA */}
                     <SubscriptionSection />
+                    
+                    {/* HEADER PROYEK */}
                     <ProyekKamiSection />
+                    
+                    {/* KKNKU */}
                     <KKNKUSection />
-                    <ClientMapSection />
-                    <StatisticsSection />
-                    <InstitutionsSection />
                   </div>
                 </section>
+
+                {/* --- BAGIAN BARU: MARQUEE LOGO --- */}
+                {/* Diletakkan full width di luar container agar menyentuh ujung layar */}
+                <TrustedPartnersSection />
+
+                {/* --- BAGIAN BARU: CLIENT MAP & LIST --- */}
+                <section className="px-4 pb-16">
+                   {/* JUDUL BARU SEBELUM CLIENT */}
+                   <ClientTitleSection />
+
+                   <div className="container mx-auto">
+                      <ClientMapSection />
+                      <StatisticsSection />
+                      <InstitutionsSection />
+                   </div>
+                </section>
+                {/* CONTENT SECTION END */}
+
               </motion.div>
             ) : (
               // TAMPILAN DETAIL
