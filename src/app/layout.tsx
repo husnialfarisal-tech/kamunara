@@ -1,47 +1,38 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// 1. Ganti import font di sini
+import { Outfit, JetBrains_Mono } from "next/font/google"; 
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "next-themes"; // ← WAJIB untuk dark/light mode
-import PageTransition from "@/components/PageTransition"; // ← Import animasi baru
+import { ThemeProvider } from "next-themes";
+import PageTransition from "@/components/PageTransition";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 2. Konfigurasi Font Utama (Outfit)
+const outfit = Outfit({
+  variable: "--font-sans", // Kita namakan variable-nya font-sans
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// 3. Konfigurasi Font Kedua (JetBrains Mono)
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono", // Kita namakan variable-nya font-mono
   subsets: ["latin"],
+  display: "swap",
 });
 
-// Metadata SEO (tanpa themeColor, karena dipindah ke viewport)
 export const metadata: Metadata = {
   title: "Kamunara - Solusi Digital Terpercaya | Web & Mobile Development",
-  description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital baik berbasis website maupun mobile. Holding pada perusahaan DS.",
-  keywords: ["Kamunara", "Digital Solutions", "Web Development", "Mobile Development", "PIPOS", "KKNKU", "Software Development", "Outsource IT", "Transformasi Digital"],
+  description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital baik berbasis website maupun mobile.",
+  keywords: ["Kamunara", "Digital Solutions", "Web Development", "Mobile Development", "Software Development", "IT Outsourcing"],
   authors: [{ name: "Kamunara Team" }],
-  openGraph: {
-    title: "Kamunara - Solusi Digital Terpercaya",
-    description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital",
-    url: "https://kamunara.com",
-    siteName: "Kamunara",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kamunara - Solusi Digital Terpercaya",
-    description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital",
-  },
 };
 
-// Export viewport (tempat yang benar untuk themeColor dan pengaturan mobile)
 export const viewport: Viewport = {
-  themeColor: '#1c1917', // Warna gelap sesuai tema utama (stone-900)
+  themeColor: '#1c1917',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false, // Opsional: lock zoom supaya tidak berubah ukuran di HP
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -51,19 +42,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-950 text-foreground`}>
-        {/* ThemeProvider mengelola dark/light mode */}
+      {/* 4. Masukkan variable font ke dalam body */}
+      <body className={`${outfit.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
         <ThemeProvider
-          attribute="class"              // Pakai class dark untuk Tailwind
-          defaultTheme="system"          // Otomatis ikut mode sistem user (dark/light)
-          enableSystem                   // Dukung mode sistem
-          disableTransitionOnChange      // Matikan animasi transisi biar switch cepat
+          attribute="class"
+          defaultTheme="dark" // Saya ubah ke 'dark' biar default-nya langsung mode gelap sesuai desain Anda
+          enableSystem
+          disableTransitionOnChange
         >
-          {/* Animasi Transisi Halaman (Panggil File Baru) */}
           <PageTransition>
             {children}
           </PageTransition>
-          
           <Toaster />
         </ThemeProvider>
       </body>

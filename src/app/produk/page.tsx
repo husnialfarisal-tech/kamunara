@@ -578,7 +578,7 @@ function TrustedPartnersSection() {
   return (
     <section className="py-10 border-y border-white/5 bg-neutral-900/30 overflow-hidden">
       <div className="container mx-auto px-4 mb-6 text-center">
-         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">Didukung Oleh Ekosistem</p>
+         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">instansi Pengembang</p>
       </div>
       
       {/* Container Marquee with optional fading mask */}

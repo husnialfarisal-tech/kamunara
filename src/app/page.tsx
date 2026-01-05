@@ -66,7 +66,7 @@ export default function LandingPage() {
               >
                 <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
                 <span className="text-amber-400 text-sm font-bold tracking-wide">
-                  Digital Solutions Expert
+                  KAMUNARA
                 </span>
               </motion.div>
 
@@ -78,9 +78,9 @@ export default function LandingPage() {
               </h1>
 
               <p className="text-xl text-stone-400 leading-relaxed max-w-xl border-l-4 border-amber-500/30 pl-6">
-                Kamunara adalah perusahaan outsource yang berfokus pada pengembangan
-                software website & mobile. Kami hadir sebagai mitra teknologi yang
-                solid, modern, dan berkelanjutan.
+                Kamunara adalah perusahaan outsorcing yang bergerak sebagai penyedia layanan Software yang  
+                 berspesialisasi pada pengembangan maupun penyedia layanan digital, Website & Aplikasi 
+                Mobile.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-5 pt-4">
