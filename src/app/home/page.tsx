@@ -13,19 +13,25 @@ export default function HomePage() {
   // ==========================================
   const products = [
     { 
-      name: "Pipos", 
+      name: "Pipos",
       src: "/images/logo_pipos_copy.png", 
-      href: "/solutions/pipos" 
+      href: "/solutions/pipos",
+      // Masukkan nama file background untuk Pipos di sini
+      bgImage: "/images/bg1.png" 
     },
     { 
       name: "NOIbook", 
       src: "/images/logo_NOIbook.png", 
-      href: "/solutions/noibook" 
+      href: "/solutions/noibook",
+      // Masukkan nama file background untuk NOIbook di sini
+      bgImage: "/images/bg2.png" 
     }, 
     { 
       name: "KITkapital", 
       src: "/images/logo_KITkapital.png", 
-      href: "/solutions/kitkapital" 
+      href: "/solutions/kitkapital",
+      // Masukkan nama file background untuk KITkapital di sini
+      bgImage: "/images/bg4.png" 
     }, 
   ]
 
@@ -89,7 +95,7 @@ export default function HomePage() {
                       transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                       className="absolute inset-0 bg-neutral-900/40 backdrop-blur-md border border-white/5 rounded-2xl transform translate-z-[-60px] scale-90 origin-center"
                     >
-                       <div className="absolute inset-0 border border-amber-500/10 rounded-2xl scale-110 opacity-50" />
+                        <div className="absolute inset-0 border border-amber-500/10 rounded-2xl scale-110 opacity-50" />
                     </motion.div>
 
                     {/* Main Center Card */}
@@ -174,9 +180,9 @@ export default function HomePage() {
 
                     {/* Background Glow */}
                     <motion.div
-                       animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
-                       transition={{ duration: 4, repeat: Infinity }}
-                       className="absolute inset-0 bg-amber-500/20 rounded-full blur-[60px] transform translate-z-[-80px]"
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="absolute inset-0 bg-amber-500/20 rounded-full blur-[60px] transform translate-z-[-80px]"
                     />
                   </div>
                 </div>
@@ -201,15 +207,30 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="group relative w-full border-t border-white/5 hover:bg-neutral-900/30 transition-colors duration-500"
+                  className="group relative w-full border-t border-white/5 overflow-hidden"
                 >
+                  
+                  {/* --- BACKGROUND IMAGE LAYER --- */}
+                  {/* Gambar background full-width dengan overlay gelap */}
+                  <div className="absolute inset-0 z-0">
+                    <img 
+                      src={item.bgImage} 
+                      alt={`Background ${item.name}`} 
+                      className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform scale-105 group-hover:scale-100 grayscale group-hover:grayscale-0"
+                    />
+                    {/* Overlay default agar background tidak terlalu terang */}
+                    <div className="absolute inset-0 bg-neutral-950/90 group-hover:bg-neutral-950/70 transition-colors duration-700" />
+                  </div>
+
+                  {/* --- CONTENT LAYER (Logo & Teks) --- */}
                   <div className="py-20 md:py-28 flex flex-col justify-center items-center gap-8 md:gap-10 relative z-10 px-4">
                     
+                    {/* Logo Wrapper */}
                     <div className="relative">
                        <img 
                         src={item.src} 
                         alt={item.name} 
-                        className="h-24 md:h-32 lg:h-36 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100 transform group-hover:scale-105"
+                        className="h-24 md:h-32 lg:h-36 w-auto object-contain filter transition-all duration-500 opacity-90 group-hover:opacity-100 transform group-hover:scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                       />
                     </div>
 
@@ -224,8 +245,6 @@ export default function HomePage() {
                     </div>
 
                   </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 </motion.div>
               ))}
               

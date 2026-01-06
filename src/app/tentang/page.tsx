@@ -177,83 +177,108 @@ export default function TentangPage() {
             </div>
           </section>
 
-          {/* Visi & Misi Section */}
-          <section className="py-16 px-4">
-            <div className="container mx-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.35)',
-                  transition: { duration: 0.14, ease: 'easeOut' }
-                }}
-                className="group relative bg-gradient-to-r from-amber-500/10 to-amber-600/10 rounded-3xl p-10 md:p-12 border border-amber-500/20 overflow-hidden"
-              >
-                {/* Inner glow effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-150 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent blur-2xl scale-110" />
-                </div>
-                <div className="flex flex-col lg:flex-row items-center gap-12">
-                  <div className="lg:w-1/3 text-center">
-                    <div className="space-y-6">
-                      <div className="bg-amber-500/20 rounded-2xl p-6 inline-block">
-                        <Compass className="w-16 h-16 mx-auto text-amber-400 mb-2" />
-                        <p className="text-amber-400 font-bold uppercase tracking-widest text-xs">Visionary</p>
-                      </div>
-                      <div className="bg-blue-500/20 rounded-2xl p-6 inline-block ml-4">
-                        <Rocket className="w-16 h-16 mx-auto text-blue-400 mb-2" />
-                        <p className="text-blue-400 font-bold uppercase tracking-widest text-xs">Mission</p>
-                      </div>
-                      <h3 className="text-3xl font-bold text-white mt-4">Visi & Misi</h3>
-                    </div>
-                  </div>
+{/* Visi & Misi Section - Premium Style */}
+<section className="py-0">
+  
+  {/* Judul Utama */}
+  <div className="text-center py-10">
+     <p className="text-stone-600 text-[10px] md:text-xs tracking-[0.5em] uppercase font-serif">
+       VISI & MISI
+     </p>
+  </div>
 
-                  <div className="lg:w-2/3 space-y-12">
-                    <motion.div 
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.7 }}
-                    >
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Visi Kami</h2>
-                      <p className="text-xl text-amber-300 font-medium italic leading-relaxed">
-                        "Menjadi mitra pengembangan dan transformasi digital pilihan global, yang menghubungkan talenta terbaik untuk menciptakan solusi berdampak bagi kemajuan bersama."
-                      </p>
-                    </motion.div>
+  <div className="flex flex-col">
+    
+    {/* BAGIAN VISI */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="group relative w-full overflow-hidden min-h-[450px] flex items-center justify-center"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          // Ganti dengan foto abstrak gelap/teknologi pilihan Anda
+          src="images/bg.png" 
+          alt="Background Visi" 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Overlay Gelap: Kunci agar terlihat premium adalah overlay ini.
+            Semakin gelap background, tulisan Emas/Putih semakin mewah. */}
+        <div className="absolute inset-0 bg-neutral-950/80 group-hover:bg-neutral-950/70 transition-colors duration-500" />
+      </div>
 
-                    <motion.div 
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.7, delay: 0.2 }}
-                    >
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Misi Kami</h2>
-                      <div className="grid md:grid-cols-2 gap-6 text-stone-200">
-                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                          <span className="text-amber-300 font-semibold block mb-2">Membangun Jembatan Digital</span>
-                          <p className="text-sm">Menyediakan solusi IT outsourcing yang andal dan tim developer berkualitas untuk membantu perusahaan di seluruh indonesia mencapai tujuan digital mereka.</p>
-                        </div>
-                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                          <span className="text-amber-300 font-semibold block mb-2">Berkolaborasi, Bukan Hanya Bekerja </span>
-                          <p className="text-sm">Menerapkan filosofi "Karya Kita Bersama" dalam setiap kemitraan, memastikan klien merasa sebagai bagian integral dari proses pengembangan.</p>
-                        </div>
-                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                          <span className="text-amber-300 font-semibold block mb-2">Memberdayakan Energi Muda</span>
-                          <p className="text-sm">Menciptakan ekosistem kerja yang dinamis dan inovatif bagi talenta muda untuk berkembang, belajar, dan memberikan ide-ide terbaiknya.</p>
-                        </div>
-                        <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                          <span className="text-amber-300 font-semibold block mb-2">Beradaptasi dengan PerubahanBeradaptasi</span>
-                          <p className="text-sm"> Menjadi perusahaan yang lincah (agile) dalam menghadapi tren teknologi, memastikan solusi yang kami berikan relevan dan futuristik.</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
+      {/* Konten Visi */}
+      <div className="relative z-10 w-full h-full">
+        <div className="container mx-auto px-4 py-16 md:py-24 text-center max-w-4xl">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-wide">Visi Kami</h3>
+            <p className="text-xl md:text-2xl text-amber-100/90 font-light italic leading-relaxed font-serif">
+              "Menjadi mitra pengembangan dan transformasi digital pilihan global, yang menghubungkan talenta terbaik untuk menciptakan solusi berdampak bagi kemajuan bersama."
+            </p>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* BAGIAN MISI */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="group relative w-full overflow-hidden min-h-[550px] flex items-center"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          // Ganti dengan foto abstrak gelap/teknologi pilihan Anda
+          src="images/Kamunara25.jpeg" 
+          alt="Background Misi" 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Overlay Gelap */}
+        <div className="absolute inset-0 bg-neutral-950/85 group-hover:bg-neutral-950/80 transition-colors duration-500" />
+      </div>
+
+      {/* Konten Misi */}
+      <div className="relative z-10 w-full h-full">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+            <div className="flex flex-col items-center mb-10">
+              <h3 className="text-3xl md:text-4xl font-bold text-white tracking-wide">Misi Kami</h3>
             </div>
-          </section>
 
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Misi Item 1 */}
+              <div className="p-6 border-l-2 border-amber-500/30 pl-6 hover:border-amber-500 transition-colors duration-300">
+                <span className="text-amber-200 text-lg font-medium block mb-2 font-serif">Membangun Jembatan Digital</span>
+                <p className="text-stone-400 font-light leading-relaxed">Menyediakan solusi IT outsourcing yang andal dan tim developer berkualitas untuk membantu perusahaan mencapai tujuan digital mereka.</p>
+              </div>
+
+              {/* Misi Item 2 */}
+              <div className="p-6 border-l-2 border-amber-500/30 pl-6 hover:border-amber-500 transition-colors duration-300">
+                <span className="text-amber-200 text-lg font-medium block mb-2 font-serif">Berkolaborasi</span>
+                <p className="text-stone-400 font-light leading-relaxed">Menerapkan filosofi "Karya Kita Bersama" dalam setiap kemitraan, memastikan klien merasa sebagai bagian integral dari proses.</p>
+              </div>
+
+              {/* Misi Item 3 */}
+              <div className="p-6 border-l-2 border-amber-500/30 pl-6 hover:border-amber-500 transition-colors duration-300">
+                <span className="text-amber-200 text-lg font-medium block mb-2 font-serif">Memberdayakan Energi Muda</span>
+                <p className="text-stone-400 font-light leading-relaxed">Menciptakan ekosistem kerja yang dinamis dan inovatif bagi talenta muda untuk berkembang dan memberikan ide terbaiknya.</p>
+              </div>
+
+              {/* Misi Item 4 */}
+              <div className="p-6 border-l-2 border-amber-500/30 pl-6 hover:border-amber-500 transition-colors duration-300">
+                <span className="text-amber-200 text-lg font-medium block mb-2 font-serif">Adaptasi & Inovasi</span>
+                <p className="text-stone-400 font-light leading-relaxed">Menjadi perusahaan yang lincah (agile) dalam menghadapi tren teknologi, memastikan solusi relevan dan futuristik.</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </motion.div>
+
+  </div>
+</section>
           {/* Bagan Organisasi Kamunara */}
           <section className="py-20 px-4">
             <div className="container mx-auto max-w-5xl">
