@@ -13,7 +13,7 @@ const config: Config = {
         // MENAMBAHKAN KONFIGURASI FONT DI SINI
         fontFamily: {
             sans: ['var(--font-jakarta)', 'sans-serif'],
-            serif: ['var(--font-cormorant)', 'serif'],
+            serif: ['var(--font-bodoni)', 'serif'], // Update ke Bodoni
             mono: ['var(--font-mono)', 'monospace'],
         },
         colors: {

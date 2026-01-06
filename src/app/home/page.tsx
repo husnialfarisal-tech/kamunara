@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CTA from '@/components/CTA'
-import { Zap, ShieldCheck, Code, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react' 
 import Link from 'next/link' 
 
 export default function HomePage() {
   
   // ==========================================
-  // DAFTAR PRODUK YANG DIUPDATE
+  // DAFTAR PRODUK
   // ==========================================
   const products = [
     { 
@@ -18,23 +18,17 @@ export default function HomePage() {
       href: "/solutions/pipos" 
     },
     { 
-      name: "Betarak", 
-      src: "/images/logo_betarak.png", 
-      href: "/solutions/betarak" 
-    },
-    { 
       name: "NOIbook", 
-      src: "/images/logo_NOIbook.png",  // <-- Nama file baru
-      href: "/solutions/noibook"       // <-- Link ke folder noibook
+      src: "/images/logo_NOIbook.png", 
+      href: "/solutions/noibook" 
     }, 
     { 
       name: "KITkapital", 
-      src: "/images/logo_KITkapital.png", // <-- Nama file baru
-      href: "/solutions/kitkapital"       // <-- Link ke folder kitkapital
+      src: "/images/logo_KITkapital.png", 
+      href: "/solutions/kitkapital" 
     }, 
   ]
 
-  // ... (Sisa kode ke bawah TETAP SAMA seperti sebelumnya, tidak perlu diubah)
   return (
     <>
       <Navbar />
@@ -88,6 +82,8 @@ export default function HomePage() {
                 {/* Right: 3D Animation */}
                 <div className="relative h-[360px] sm:h-[420px] w-full flex items-center justify-center perspective-[1200px]">
                   <div className="relative w-64 h-80 transform-style-3d">
+                    
+                    {/* Background Card Effect */}
                     <motion.div
                       animate={{ y: [0, -15, 0], rotateY: [-10, 10, -10] }}
                       transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -96,6 +92,7 @@ export default function HomePage() {
                        <div className="absolute inset-0 border border-amber-500/10 rounded-2xl scale-110 opacity-50" />
                     </motion.div>
 
+                    {/* Main Center Card */}
                     <motion.div
                       animate={{ y: [0, -10, 0], rotateX: [2, -2, 2], rotateY: [-2, 2, -2] }}
                       transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -108,11 +105,16 @@ export default function HomePage() {
                           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                           className="absolute inset-0 border border-dashed border-amber-500/30 rounded-full" 
                         />
-                        <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.4)]">
-                           <Zap className="text-white w-10 h-10 fill-white/20" />
+                        {/* CENTER IMAGE: Kamunara */}
+                        <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.4)] overflow-hidden">
+                           <img 
+                             src="/images/kamunara_copy.png" 
+                             alt="Kamunara" 
+                             className="w-full h-full object-cover" 
+                           />
                         </div>
                       </div>
-                      <h3 className="text-white font-bold text-xl tracking-wide">Inovasi</h3>
+                      <h3 className="text-white font-bold text-xl tracking-wide">KAMUNARA</h3>
                       <p className="text-amber-200/60 text-xs mt-2 uppercase tracking-widest">Next Gen</p>
                       <div className="w-full mt-6">
                         <div className="flex justify-between text-[10px] text-stone-400 mb-1 font-mono">
@@ -129,23 +131,48 @@ export default function HomePage() {
                       </div>
                     </motion.div>
 
+                    {/* Floating Element 1 (Bottom Right): NOIbook - HIJAU */}
                     <motion.div
                       animate={{ y: [0, 20, 0], x: [0, -10, 0], rotateX: [10, 5, 10] }}
                       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute -right-12 bottom-12 w-28 h-20 bg-neutral-900/80 backdrop-blur-xl border border-indigo-500/40 rounded-xl flex items-center justify-center transform translate-z-[50px] shadow-[0_10px_40px_-10px_rgba(99,102,241,0.5)] z-20"
+                      className="absolute -right-12 bottom-12 w-28 h-20 bg-neutral-900/80 backdrop-blur-xl border border-emerald-500/40 rounded-xl flex items-center justify-center transform translate-z-[50px] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.5)] z-20 overflow-hidden"
                     >
-                      <Code className="text-indigo-300 w-8 h-8" />
-                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]" />
+                      <img 
+                        src="/images/logo_NOIbook.png" 
+                        alt="NOIbook" 
+                        className="w-16 h-16 object-contain" 
+                      />
+                      {/* Titik dekorasi hijau */}
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]" />
                     </motion.div>
 
+                    {/* Floating Element 2 (Top Left): Pipos - MERAH */}
                     <motion.div
                       animate={{ y: [10, -10, 10], rotateZ: [0, 10, 0] }}
                       transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute -left-10 top-10 w-24 h-24 bg-neutral-800/80 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center transform translate-z-[50px] rotate-y-[-15deg] z-30"
+                      className="absolute -left-10 top-10 w-24 h-24 bg-neutral-800/80 backdrop-blur-xl border border-red-500/40 rounded-xl flex items-center justify-center transform translate-z-[50px] rotate-y-[-15deg] shadow-[0_0_30px_-10px_rgba(239,68,68,0.4)] z-30 overflow-hidden"
                     >
-                       <ShieldCheck className="text-emerald-400 w-10 h-10" />
+                       <img 
+                        src="/images/logo_pipos_copy.png" 
+                        alt="Pipos" 
+                        className="w-16 h-16 object-contain" 
+                      />
                     </motion.div>
 
+                    {/* Floating Element 3 (Top Right): KITkapital - BIRU */}
+                    <motion.div
+                      animate={{ y: [-5, 15, -5], x: [5, -5, 5], rotateZ: [-5, 5, -5] }}
+                      transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -right-10 top-16 w-20 h-20 bg-neutral-800/80 backdrop-blur-xl border border-blue-500/40 rounded-xl flex items-center justify-center transform translate-z-[40px] z-25 shadow-[0_0_30px_-10px_rgba(59,130,246,0.4)] overflow-hidden"
+                    >
+                       <img 
+                        src="/images/logo_KITkapital.png" 
+                        alt="KITkapital" 
+                        className="w-14 h-14 object-contain" 
+                      />
+                    </motion.div>
+
+                    {/* Background Glow */}
                     <motion.div
                        animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
                        transition={{ duration: 4, repeat: Infinity }}
@@ -157,7 +184,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ================= SECTION PRODUK (Updated) ================= */}
+          {/* ================= SECTION PRODUK ================= */}
           <section className="relative w-full bg-neutral-950 overflow-hidden pb-32">
             
             <div className="text-center py-10">

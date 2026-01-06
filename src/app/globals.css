@@ -8,7 +8,7 @@
   --color-foreground: var(--foreground);
   /* Update font mapping agar sesuai dengan variable baru */
   --font-sans: var(--font-jakarta);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-bodoni); /* Update ke Bodoni */
   --font-mono: var(--font-mono);
   
   --color-sidebar-ring: var(--sidebar-ring);
@@ -140,7 +140,7 @@
     @apply bg-background text-foreground font-sans; /* Body otomatis Sans (Modern) */
   }
 
-  /* Judul otomatis Serif (Mewah) */
+  /* Judul otomatis Serif (Bodoni Moda - Gucci Style) */
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
