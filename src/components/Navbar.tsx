@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const menuItems = [
-    { href: '/home', label: 'Home' },
+    { href: '/home', label: 'Home' }, // Pastikan href sesuai halaman Anda (biasanya '/' untuk home)
     { href: '/produk', label: 'Produk' },
     { href: '/tentang', label: 'Tentang' },
     { href: '/kontak', label: 'Kontak' },
@@ -29,27 +29,31 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
 
-          {/* Logo Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <Image
-                src="/images/kamunara_copy.png"
-                alt="Logo Kamunara"
-                width={48}
-                height={48}
-                className="object-contain"
-                priority
-              />
-            </div>
+          {/* ================= LOGO SECTION (DIPERBAIKI) ================= */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-2"
+            >
+              {/* Container Logo: Dibuat relative agar Image fill berfungsi sempurna */}
+              <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
+                <Image
+                  src="/images/kamunara_copy.png"
+                  alt="Logo Kamunara"
+                  fill // Mengisi container parent secara otomatis
+                  sizes="(max-width: 768px) 48px, 56px"
+                  className="object-contain" // Menjaga proporsi logo agar tidak gepeng
+                  priority
+                />
+              </div>
 
-            <span className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-              KAMUNARA
-            </span>
-          </motion.div>
+              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent group-hover:from-amber-300 group-hover:to-amber-500 transition-all duration-300">
+                KAMUNARA
+              </span>
+            </motion.div>
+          </Link>
+          {/* ================= END LOGO SECTION ================= */}
 
           {/* Menu Desktop (FULL BOLD + LIQUID ANIMATION) */}
           <div className="hidden md:flex items-center gap-8">
@@ -183,7 +187,7 @@ export default function Navbar() {
               {/* Tambahan Dekorasi di bawah menu mobile agar tidak kosong */}
               <div className="mt-20 pt-8 border-t border-white/5">
                  <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">
-                   © 2024 Kamunara Ecosystem
+                   © 2025 Kamunara Ecosystem
                  </p>
               </div>
             </motion.div>

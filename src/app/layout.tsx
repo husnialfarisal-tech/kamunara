@@ -1,21 +1,29 @@
 import type { Metadata, Viewport } from "next";
-// 1. Ganti import font di sini
-import { Outfit, JetBrains_Mono } from "next/font/google"; 
+// 1. Ganti import font di sini (Premium Fonts)
+import { Plus_Jakarta_Sans, Cormorant_Garamond, JetBrains_Mono } from "next/font/google"; 
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/PageTransition";
 
-// 2. Konfigurasi Font Utama (Outfit)
-const outfit = Outfit({
-  variable: "--font-sans", // Kita namakan variable-nya font-sans
+// 2. Konfigurasi Font Utama / Body (Plus Jakarta Sans - Modern)
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta", // Nama variabel unik
   subsets: ["latin"],
   display: "swap",
 });
 
-// 3. Konfigurasi Font Kedua (JetBrains Mono)
+// 3. Konfigurasi Font Judul / Heading (Cormorant Garamond - Mewah)
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant", // Nama variabel unik
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// 4. Konfigurasi Font Coding (JetBrains Mono)
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono", // Kita namakan variable-nya font-mono
+  variable: "--font-mono", 
   subsets: ["latin"],
   display: "swap",
 });
@@ -42,11 +50,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      {/* 4. Masukkan variable font ke dalam body */}
-      <body className={`${outfit.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
+      {/* 5. Masukkan SEMUA variable font ke dalam body */}
+      <body className={`${jakarta.variable} ${cormorant.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" // Saya ubah ke 'dark' biar default-nya langsung mode gelap sesuai desain Anda
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

@@ -1,229 +1,220 @@
-'use client'
-
-import { motion, useScroll, useTransform } from 'framer-motion'
+'use client' 
+import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
-import { useRef } from 'react'
+import CTA from '@/components/CTA'
+import { Zap, ShieldCheck, Code, ArrowRight } from 'lucide-react'
+import Link from 'next/link' 
 
 export default function HomePage() {
-  const targetRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"]
-  })
+  
+  // ==========================================
+  // DAFTAR PRODUK YANG DIUPDATE
+  // ==========================================
+  const products = [
+    { 
+      name: "Pipos", 
+      src: "/images/logo_pipos_copy.png", 
+      href: "/solutions/pipos" 
+    },
+    { 
+      name: "Betarak", 
+      src: "/images/logo_betarak.png", 
+      href: "/solutions/betarak" 
+    },
+    { 
+      name: "NOIbook", 
+      src: "/images/logo_NOIbook.png",  // <-- Nama file baru
+      href: "/solutions/noibook"       // <-- Link ke folder noibook
+    }, 
+    { 
+      name: "KITkapital", 
+      src: "/images/logo_KITkapital.png", // <-- Nama file baru
+      href: "/solutions/kitkapital"       // <-- Link ke folder kitkapital
+    }, 
+  ]
 
-  // Efek parallax halus untuk gambar
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
-
+  // ... (Sisa kode ke bawah TETAP SAMA seperti sebelumnya, tidak perlu diubah)
   return (
     <>
       <Navbar />
-      
-      <main className="bg-neutral-950 min-h-screen text-white selection:bg-amber-500/30">
+      <main className="relative pt-32 pb-24 md:pb-32 min-h-screen bg-neutral-950 overflow-hidden">
         
-        {/* ========================================================
-            1. HERO SECTION (Tampilan Layaknya Cover Majalah Vogue/Dior)
-           ======================================================== */}
-        <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        {/* Elemen Dekorasi Background */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(700px,90vw)] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
+
+        <div className="relative z-10">
           
-          {/* Background Image (Cinematic) */}
-          <div className="absolute inset-0 z-0">
-            {/* Ganti src dengan foto High Res tim atau kantor yang estetik */}
-            <Image 
-              src="/images/tim.jpeg" 
-              alt="Kamunara Editorial"
-              fill
-              className="object-cover object-center opacity-60 grayscale hover:grayscale-0 transition-all duration-[2s] ease-in-out scale-105"
-              priority
-            />
-            {/* Overlay Gradient Mewah */}
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
-          </div>
+          {/* Hero Section */}
+          <section className="relative pb-24 md:pb-36 px-4 text-center overflow-hidden min-h-screen -mt-32">
+            <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 bg-[url('/images/tim.jpeg')] bg-cover bg-center opacity-40" />
+              <div className="absolute inset-0 bg-neutral-950/80" />
+            </div>
 
-          {/* Hero Content - Minimalis Tengah */}
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="text-amber-400 text-xs md:text-sm tracking-[0.5em] uppercase mb-6 font-mono"
-            >
-              Est. 2024 — Digital Atelier
-            </motion.p>
+            <div className="container mx-auto max-w-6xl relative z-10 pt-28">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                
+                {/* Left: Title */}
+                <div className="text-center lg:text-left">
+                  <motion.h1
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className="font-extrabold tracking-tight leading-[1.05]"
+                  >
+                    <span className="block text-4xl sm:text-5xl md:text-6xl text-white/90">
+                      Solusi Digital
+                    </span>
+                    <span className="relative inline-block mt-4 text-5xl sm:text-6xl md:text-7xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
+                      Terdepan
+                      <span className="absolute left-0 -bottom-4 w-24 h-[3px] rounded-full bg-gradient-to-r from-amber-400/80 to-transparent" />
+                    </span>
+                  </motion.h1>
 
-            <motion.h1 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mix-blend-overlay"
-            >
-              KAMUNARA
-            </motion.h1>
+                  <motion.p
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-10 text-lg sm:text-xl text-stone-300 max-w-xl"
+                  >
+                    Kami membantu bisnis, instansi, dan organisasi mencapai transformasi
+                    digital yang efisien, aman, dan scalable.
+                  </motion.p>
+                </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="mt-12"
-            >
-              <Link href="#collections">
-                <button className="group border border-white/20 px-8 py-4 rounded-full backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-500 ease-out">
-                  <span className="text-xs uppercase tracking-[0.2em] font-medium flex items-center gap-4">
-                    Lihat Koleksi
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </button>
-              </Link>
-            </motion.div>
-          </div>
+                {/* Right: 3D Animation */}
+                <div className="relative h-[360px] sm:h-[420px] w-full flex items-center justify-center perspective-[1200px]">
+                  <div className="relative w-64 h-80 transform-style-3d">
+                    <motion.div
+                      animate={{ y: [0, -15, 0], rotateY: [-10, 10, -10] }}
+                      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-neutral-900/40 backdrop-blur-md border border-white/5 rounded-2xl transform translate-z-[-60px] scale-90 origin-center"
+                    >
+                       <div className="absolute inset-0 border border-amber-500/10 rounded-2xl scale-110 opacity-50" />
+                    </motion.div>
 
-          {/* Scroll Indicator */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-          >
-            <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/50 to-transparent" />
-            <span className="text-[10px] tracking-widest text-white/50">SCROLL</span>
-          </motion.div>
-        </section>
+                    <motion.div
+                      animate={{ y: [0, -10, 0], rotateX: [2, -2, 2], rotateY: [-2, 2, -2] }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-gradient-to-br from-neutral-800/80 to-neutral-900/90 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-6 z-10 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      <div className="relative mb-6">
+                        <motion.div
+                          animate={{ scale: [1, 1.1, 1], rotate: 360 }}
+                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                          className="absolute inset-0 border border-dashed border-amber-500/30 rounded-full" 
+                        />
+                        <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+                           <Zap className="text-white w-10 h-10 fill-white/20" />
+                        </div>
+                      </div>
+                      <h3 className="text-white font-bold text-xl tracking-wide">Inovasi</h3>
+                      <p className="text-amber-200/60 text-xs mt-2 uppercase tracking-widest">Next Gen</p>
+                      <div className="w-full mt-6">
+                        <div className="flex justify-between text-[10px] text-stone-400 mb-1 font-mono">
+                          <span>PROCESS</span>
+                          <span className="text-emerald-400">98%</span>
+                        </div>
+                        <div className="h-1 w-full bg-neutral-700/50 rounded-full overflow-hidden">
+                          <motion.div 
+                            animate={{ width: ["30%", "90%", "60%", "98%"] }}
+                            transition={{ duration: 5, repeat: Infinity }}
+                            className="h-full bg-gradient-to-r from-amber-400 to-emerald-400" 
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
 
+                    <motion.div
+                      animate={{ y: [0, 20, 0], x: [0, -10, 0], rotateX: [10, 5, 10] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -right-12 bottom-12 w-28 h-20 bg-neutral-900/80 backdrop-blur-xl border border-indigo-500/40 rounded-xl flex items-center justify-center transform translate-z-[50px] shadow-[0_10px_40px_-10px_rgba(99,102,241,0.5)] z-20"
+                    >
+                      <Code className="text-indigo-300 w-8 h-8" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]" />
+                    </motion.div>
 
-        {/* ========================================================
-            2. THE COLLECTIONS (Produk Layanan sebagai "Fashion Item")
-           ======================================================== */}
-        <section id="collections" className="py-32 px-4 md:px-12 bg-neutral-950" ref={targetRef}>
-          
-          <div className="mb-20 text-center">
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide text-white mb-4">
-              THE <span className="font-serif italic text-amber-500">COLLECTIONS</span>
-            </h2>
-            <div className="w-12 h-[1px] bg-amber-500 mx-auto" />
-          </div>
+                    <motion.div
+                      animate={{ y: [10, -10, 10], rotateZ: [0, 10, 0] }}
+                      transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -left-10 top-10 w-24 h-24 bg-neutral-800/80 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center transform translate-z-[50px] rotate-y-[-15deg] z-30"
+                    >
+                       <ShieldCheck className="text-emerald-400 w-10 h-10" />
+                    </motion.div>
 
-          {/* Grid Layout ala Gucci/Chanel */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto">
-
-            {/* CARD 1: WEB DEVELOPMENT (Big & Bold) */}
-            <Link href="/layanan/web-development" className="group relative h-[600px] md:h-[800px] w-full overflow-hidden block">
-              <div className="absolute inset-0 bg-neutral-800">
-                {/* Image Placeholder - Ganti dengan Screenshot Website Keren / Abstract Tech */}
-                <motion.div style={{ y }} className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                    <motion.div
+                       animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
+                       transition={{ duration: 4, repeat: Infinity }}
+                       className="absolute inset-0 bg-amber-500/20 rounded-full blur-[60px] transform translate-z-[-80px]"
+                    />
+                  </div>
+                </div>
               </div>
-              
-              {/* Content Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-16">
-                <span className="text-amber-400 text-xs tracking-[0.3em] mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  DIGITAL CRAFTSMANSHIP
-                </span>
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  WEB <br/> DEVELOPMENT
-                </h3>
-                <div className="h-[1px] w-0 group-hover:w-24 bg-white transition-all duration-700 delay-100 mb-6" />
-                <span className="text-sm underline decoration-amber-500 underline-offset-8 text-neutral-300 group-hover:text-white transition-colors">
-                  Selengkapnya
-                </span>
-              </div>
-            </Link>
+            </div>
+          </section>
 
-            {/* CARD 2: MOBILE APPS (Big & Bold) */}
-            <Link href="/layanan/mobile-apps" className="group relative h-[600px] md:h-[800px] w-full overflow-hidden block md:mt-24">
-              <div className="absolute inset-0 bg-neutral-800">
-                 {/* Image Placeholder */}
-                <motion.div style={{ y }} className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
-              </div>
-              
-              <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-16">
-                <span className="text-amber-400 text-xs tracking-[0.3em] mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  MOBILITY & PRESTIGE
-                </span>
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  MOBILE <br/> APPLICATIONS
-                </h3>
-                <div className="h-[1px] w-0 group-hover:w-24 bg-white transition-all duration-700 delay-100 mb-6" />
-                <span className="text-sm underline decoration-amber-500 underline-offset-8 text-neutral-300 group-hover:text-white transition-colors">
-                  Selengkapnya
-                </span>
-              </div>
-            </Link>
-
-          </div>
-        </section>
-
-
-        {/* ========================================================
-            3. EDITORIAL SECTION (Filosofi Brand - Minimalist Text)
-           ======================================================== */}
-        <section className="py-32 bg-neutral-900 border-t border-white/5">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
+          {/* ================= SECTION PRODUK (Updated) ================= */}
+          <section className="relative w-full bg-neutral-950 overflow-hidden pb-32">
             
-            <ZapIconDecor /> {/* Icon dekorasi kecil */}
+            <div className="text-center py-10">
+               <p className="text-stone-600 text-[10px] md:text-xs tracking-[0.5em] uppercase font-serif">
+                 Featured Products
+               </p>
+            </div>
 
-            <h2 className="text-3xl md:text-5xl leading-tight font-serif italic text-white/90 mb-8">
-              "Teknologi bukan sekadar kode. <br/> Ini adalah seni merancang masa depan."
-            </h2>
-            
-            <p className="text-neutral-400 text-lg leading-relaxed mb-12 max-w-2xl mx-auto font-light">
-              Seperti sebuah rumah mode merancang busana *haute couture*, Kamunara merancang arsitektur digital yang presisi, eksklusif, dan dirancang khusus untuk skala bisnis Anda.
-            </p>
+            <div className="w-full">
+              {products.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="group relative w-full border-t border-white/5 hover:bg-neutral-900/30 transition-colors duration-500"
+                >
+                  <div className="py-20 md:py-28 flex flex-col justify-center items-center gap-8 md:gap-10 relative z-10 px-4">
+                    
+                    <div className="relative">
+                       <img 
+                        src={item.src} 
+                        alt={item.name} 
+                        className="h-24 md:h-32 lg:h-36 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100 transform group-hover:scale-105"
+                      />
+                    </div>
 
-            <Link href="/tentang">
-              <button className="text-white border-b border-amber-500 pb-1 hover:text-amber-500 transition-colors uppercase tracking-widest text-xs">
-                Baca Filosofi Kami
-              </button>
-            </Link>
+                    <div className="overflow-hidden">
+                      <Link href={item.href || '#'} className="inline-flex flex-col items-center group/btn cursor-pointer">
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-stone-500 group-hover:text-white transition-colors duration-300 uppercase flex items-center gap-2">
+                           Lihat Detail Produk
+                           <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-amber-500" />
+                        </span>
+                        <span className="w-0 h-[1px] bg-amber-500 mt-2 group-hover:w-full transition-all duration-500 ease-out" />
+                      </Link>
+                    </div>
 
-          </div>
-        </section>
+                  </div>
 
-        {/* ========================================================
-            4. VISUAL BREAK (Banner Panjang)
-           ======================================================== */}
-        <div className="relative h-[400px] w-full overflow-hidden">
-             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-fixed bg-center opacity-30" />
-             <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[10vw] font-bold text-white/5 select-none pointer-events-none">
-                  KAMUNARA
-                </span>
-             </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                </motion.div>
+              ))}
+              
+              <div className="w-full border-t border-white/5" />
+            </div>
+          </section>
+
+          <CTA
+            title="Siap Memulai Transformasi Digital?"
+            description="Mari diskusikan solusi terbaik untuk bisnis Anda hari ini"
+            buttonText="Hubungi Kami"
+            href="/kontak"
+          />
         </div>
-
-        <CTA_Luxury />
-
       </main>
       <Footer />
     </>
-  )
-}
-
-// --- Komponen Kecil untuk Estetika ---
-
-function ZapIconDecor() {
-  return (
-    <div className="flex justify-center mb-8">
-      <div className="w-px h-8 bg-amber-500/50"></div>
-    </div>
-  )
-}
-
-function CTA_Luxury() {
-  return (
-    <section className="py-32 px-4 text-center bg-neutral-950">
-       <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">
-         SIAP BERKOLABORASI?
-       </h2>
-       <p className="text-neutral-400 mb-10 text-sm tracking-widest uppercase">
-         Mari ciptakan mahakarya digital anda
-       </p>
-       <Link href="/kontak">
-         <button className="bg-white text-black px-12 py-4 rounded-none hover:bg-amber-500 hover:text-white transition-colors duration-300 font-bold uppercase tracking-widest text-sm">
-           Hubungi Kami
-         </button>
-       </Link>
-    </section>
   )
 }
