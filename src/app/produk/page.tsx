@@ -18,7 +18,7 @@ import CTA from '@/components/CTA'
 
 const packagePrices = {
   standar: { monthly: 99999, annual: 1080000 },
-  prof: { monthly: 399999, annual: 4320000 },
+  prof: { monthly: 299999, annual: 4320000 },
   excl: { monthly: 999999, annual: 10800000 }
 }
 
@@ -37,31 +37,32 @@ const features = [
   { standar: 'Dukungan Multi-Outlet', prof: 'Dukungan Multi-Outlet (Add-On)', excl: 'Dukungan Multi-Outlet (Sesuai kebutuhan)' },
   { standar: 'Backup & Recovery Data', prof: 'Backup & Recovery Data', excl: 'Backup & Recovery Data (Sesuai kebutuhan)' },
   { standar: 'Analisis & Laporan (Dasar)', prof: 'Analisis & Laporan (Lengkap)', excl: 'Analisis & Laporan (Sesuai kebutuhan)' },
-  { standar: 'Koneksi Noi Book (Coming Soon)', prof: 'Koneksi Noi Book (Coming Soon)', excl: 'Koneksi Noi Book (Coming Soon)' }
+  { standar: 'Koneksi NOIbook (Coming Soon)', prof: 'Koneksi NOIBook (Coming Soon)', excl: 'Koneksi NOIBook (Coming Soon)' },
+  { standar: 'Koneksi KITCapital (Coming Soon)', prof: 'Koneksi KITCapital (Coming Soon)', excl: 'Koneksi KITCapital (Coming Soon)' }
 ]
 
 const enabledFeatures = {
-  standar: [true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true],
-  prof: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
-  excl: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+  standar: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false],
+  prof: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+  excl: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
 }
 
 const clientLocations = [
-  { nama: 'Toko Makmur', produk: 'PIPOS', kota: 'Sagea', lat: 0.464371, lng: 128.096860 },
-  { nama: 'Toko Rizky', produk: 'PIPOS', kota: 'Saketa', lat: -0.356588, lng: 127.846552 },
-  { nama: 'Toko Sembako', produk: 'PIPOS', kota: 'Sofifi', lat: 0.75, lng: 127.55 },
-  { nama: 'Toko Peralatan', produk: 'PIPOS', kota: 'Tobelo', lat: 1.73, lng: 127.99 },
-  { nama: 'Jati Mart', produk: 'PIPOS', kota: 'Buli', lat: 0.83, lng: 128.27 },
+  { nama: 'Toko Makmur', produk: 'PIPos', kota: 'Sagea', lat: 0.464371, lng: 128.096860 },
+  { nama: 'Toko Rizky', produk: 'PIPos', kota: 'Saketa', lat: -0.356588, lng: 127.846552 },
+  { nama: 'Toko Sembako', produk: 'PIPos', kota: 'Sofifi', lat: 0.75, lng: 127.55 },
+  { nama: 'Toko Peralatan', produk: 'PIPos', kota: 'Tobelo', lat: 1.73, lng: 127.99 },
+  { nama: 'Jati Mart', produk: 'PIPos', kota: 'Buli', lat: 0.83, lng: 128.27 },
   { nama: 'Universitas Khairun', produk: 'KKNKU', kota: 'Ternate', lat: 0.7890, lng: 127.3890 }
 ]
 
 const institutions = [
-  { name: "Toko Makmur", location: "Sagea, Halmahera Tengah", product: "PIPOS", description: "Sistem kasir toko untuk pengelolaan penjualan harian, stok barang, dan laporan keuangan secara real-time.", applications: ["Kasir Penjualan", "Manajemen Stok", "Laporan Harian", "Manajemen User"] },
-  { name: "Toko Rizky", location: "Saketa, Halmahera Selatan", product: "PIPOS", description: "Aplikasi kasir modern untuk toko sembako dengan fitur pencatatan transaksi dan kontrol stok yang mudah digunakan.", applications: ["Kasir Sembako", "Manajemen Produk", "Laporan Penjualan", "Riwayat Transaksi"] },
-  { name: "Toko Sembako", location: "Sofifi, Halmahera", product: "PIPOS", description: "Sistem kasir terintegrasi untuk toko kebutuhan pokok guna mempermudah transaksi dan monitoring stok barang.", applications: ["Kasir Toko", "Manajemen Stok", "Laporan Bulanan", "Manajemen Harga"] },
-  { name: "Toko Peralatan", location: "Tobelo, Halmahera Utara", product: "PIPOS", description: "Sistem kasir untuk toko peralatan dengan dukungan pencatatan item besar, stok gudang, dan laporan penjualan.", applications: ["Kasir Peralatan", "Manajemen Gudang", "Laporan Penjualan", "Manajemen Produk"] },
-  { name: "Jati Mart", location: "Buli, Halmahera Timur", product: "PIPOS", description: "Aplikasi kasir untuk minimarket yang mendukung transaksi cepat, stok otomatis, dan laporan keuangan.", applications: ["Kasir Minimarket", "Manajemen Stok", "Laporan Keuangan", "Manajemen User"] },
-  { name: "Universitas Khairun", location: "Ternate", product: "PIPOS & KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
+  { name: "Toko Makmur", location: "Sagea, Halmahera Tengah", product: "PIPos", description: "Sistem kasir toko untuk pengelolaan penjualan harian, stok barang, dan laporan keuangan secara real-time.", applications: ["Kasir Penjualan", "Manajemen Stok", "Laporan Harian", "Manajemen User"] },
+  { name: "Toko Rizky", location: "Saketa, Halmahera Selatan", product: "PIPos", description: "Aplikasi kasir modern untuk toko sembako dengan fitur pencatatan transaksi dan kontrol stok yang mudah digunakan.", applications: ["Kasir Sembako", "Manajemen Produk", "Laporan Penjualan", "Riwayat Transaksi"] },
+  { name: "Toko Sembako", location: "Sofifi, Halmahera", product: "PIPos", description: "Sistem kasir terintegrasi untuk toko kebutuhan pokok guna mempermudah transaksi dan monitoring stok barang.", applications: ["Kasir Toko", "Manajemen Stok", "Laporan Bulanan", "Manajemen Harga"] },
+  { name: "Toko Peralatan", location: "Tobelo, Halmahera Utara", product: "PIPos", description: "Sistem kasir untuk toko peralatan dengan dukungan pencatatan item besar, stok gudang, dan laporan penjualan.", applications: ["Kasir Peralatan", "Manajemen Gudang", "Laporan Penjualan", "Manajemen Produk"] },
+  { name: "Jati Mart", location: "Buli, Halmahera Timur", product: "PIPos", description: "Aplikasi kasir untuk minimarket yang mendukung transaksi cepat, stok otomatis, dan laporan keuangan.", applications: ["Kasir Minimarket", "Manajemen Stok", "Laporan Keuangan", "Manajemen User"] },
+  { name: "Universitas Khairun", location: "Ternate", product: "PIPos & KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
 ]
 
 // ============================================
@@ -92,9 +93,9 @@ function HeroSection() {
 }
 
 // --------------------------------------------------------
-// NEW: DETAIL VIEW PIPOS
+// NEW: DETAIL VIEW PIPos
 // --------------------------------------------------------
-function PiposDetailView({ onBack }: { onBack: () => void }) {
+function PIPosDetailView({ onBack }: { onBack: () => void }) {
   const detailFeatures = [
     { icon: ScanLine, title: "Point of Sales Modern", desc: "Antarmuka kasir yang responsif, mendukung scan barcode, dan pencarian produk super cepat." },
     { icon: Layers, title: "Manajemen Inventori", desc: "Pelacakan stok real-time, notifikasi stok menipis, dan manajemen varian produk." },
@@ -127,7 +128,7 @@ function PiposDetailView({ onBack }: { onBack: () => void }) {
             <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-neutral-900/50 rounded-full flex items-center justify-center border border-amber-500/20 shadow-[0_0_60px_-15px_rgba(245,158,11,0.3)]">
                  <Image
                     src="/images/logo_pipos_copy.png"
-                    alt="PIPOS Logo Large"
+                    alt="PIPos Logo Large"
                     width={200}
                     height={200}
                     className="object-contain animate-pulse-slow"
@@ -135,10 +136,10 @@ function PiposDetailView({ onBack }: { onBack: () => void }) {
             </div>
         </div>
         <div className="w-full lg:w-2/3 text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">PIPOS <span className="text-amber-500">System</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">PIPos <span className="text-amber-500">System</span></h2>
             <p className="text-lg text-stone-300 leading-relaxed mb-6">
-                PIPOS (Point of Sales System) bukan sekadar aplikasi kasir biasa. Ini adalah ekosistem manajemen ritel yang dirancang untuk memangkas waktu administrasi dan meningkatkan profitabilitas. 
-                Dengan PIPOS, Anda tidak hanya mencatat penjualan, tetapi juga memahami pola beli pelanggan, mengelola stok tanpa pusing, dan mengambil keputusan bisnis berdasarkan data akurat.
+                PIPos (Point of Sales System) bukan sekadar aplikasi kasir biasa. Ini adalah ekosistem manajemen ritel yang dirancang untuk memangkas waktu administrasi dan meningkatkan profitabilitas. 
+                Dengan PIPos, Anda tidak hanya mencatat penjualan, tetapi juga memahami pola beli pelanggan, mengelola stok tanpa pusing, dan mengambil keputusan bisnis berdasarkan data akurat.
             </p>
             <div className="flex flex-wrap gap-3">
                 <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Cloud Based</span>
@@ -167,9 +168,9 @@ function PiposDetailView({ onBack }: { onBack: () => void }) {
          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
          <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
          
-         <h3 className="text-3xl font-bold text-white mb-4">Lihat PIPOS Beraksi</h3>
+         <h3 className="text-3xl font-bold text-white mb-4">Lihat PIPos Beraksi</h3>
          <p className="text-stone-300 mb-8 max-w-2xl mx-auto">
-            Saksikan bagaimana PIPOS dapat menyederhanakan operasional bisnis Anda dalam hitungan menit. Tonton demo singkat penggunaan aplikasi.
+            Saksikan bagaimana PIPos dapat menyederhanakan operasional bisnis Anda dalam hitungan menit. Tonton demo singkat penggunaan aplikasi.
          </p>
 
          <a 
@@ -191,7 +192,7 @@ function PiposDetailView({ onBack }: { onBack: () => void }) {
   )
 }
 
-function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
+function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -212,9 +213,9 @@ function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
             <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Manajemen Kasir</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">PIPOS</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">PIPos</h2>
           <p className="text-lg text-stone-300 leading-relaxed">
-            Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPOS menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
+            Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPos menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
           </p>
           <div className="space-y-3 pb-4">
             <div className="flex items-center gap-3 text-stone-300"><Shield className="w-5 h-5 text-amber-400" /><span>3 Level akses: Owner, Admin, Kasir</span></div>
@@ -227,12 +228,12 @@ function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
             onClick={onDetailClick}
             className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold border-b border-amber-500/50 hover:border-amber-400 transition-all pb-1 group"
           >
-            Lihat deskripsi PIPOS
+            Lihat deskripsi PIPos
             <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
         
-        {/* Piposs Card - Clickable as well */}
+        {/* PIPoss Card - Clickable as well */}
         <motion.div
           onClick={onDetailClick}
           whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
@@ -249,7 +250,7 @@ function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
             <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
               <Image
                 src="/images/logo_pipos_copy.png"
-                alt="PIPOS Logo"
+                alt="PIPos Logo"
                 width={138}
                 height={138}
                 className="object-contain"
@@ -257,7 +258,7 @@ function PIPOSSection({ onDetailClick }: { onDetailClick: () => void }) {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPOS</h3>
+            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPos</h3>
             <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Point of Sale System dengan 3 Role Akses</p>
           </div>
         </motion.div>
@@ -296,11 +297,11 @@ function SubscriptionSection() {
             className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6"
           >
             <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Berlangganan PIPOS</span>
+            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Berlangganan PIPos</span>
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pilih Paket yang Tepat</h2>
           <p className="text-lg text-stone-300 max-w-3xl mx-auto">
-            Dapatkan akses penuh ke fitur PIPOS dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
+            Dapatkan akses penuh ke fitur PIPos dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
           </p>
         </motion.div>
 
@@ -445,7 +446,7 @@ function SubscriptionSection() {
                     window.open(
                       `https://wa.me/628131415160?text=Halo, saya ingin membeli paket ${
                         pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'
-                      } PIPOS`,
+                      } PIPos`,
                       '_blank'
                     )
                   }
@@ -571,14 +572,14 @@ function KKNKUSection() {
 // --------------------------------------------------------
 function TrustedPartnersSection() {
   const logos = Array(8).fill([
-    { src: "/images/logo_pipos_copy.png", alt: "PIPOS" },
+    { src: "/images/logo_pipos_copy.png", alt: "PIPos" },
     { src: "/images/logo.png", alt: "Universitas Khairun" }
   ]).flat()
 
   return (
     <section className="py-10 border-y border-white/5 bg-neutral-900/30 overflow-hidden">
       <div className="container mx-auto px-4 mb-6 text-center">
-         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">instansi Pengembang</p>
+         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">CLINET KAMUNARA</p>
       </div>
       
       {/* Container Marquee with optional fading mask */}
@@ -588,7 +589,7 @@ function TrustedPartnersSection() {
           className="flex items-center gap-16 md:gap-32 px-50 min-w-max"
           animate={{ x: ["0%", "-100%"] }} 
           transition={{ 
-            duration: 50, 
+            duration: 100, 
             ease: "linear", 
             repeat: Infinity 
           }}
@@ -634,7 +635,7 @@ function ClientTitleSection() {
             Mitra & Persebaran <span className="text-amber-500">Klien</span>
           </h2>
           <p className="text-stone-400 max-w-2xl mx-auto">
-            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPOS di berbagai wilayah.
+            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
           </p>
        </motion.div>
     </div>
@@ -658,7 +659,7 @@ function StatisticsSection() {
   const stats = [
     { label: "Total Instansi", value: "6", icon: Building2 },
     { label: "Kota Tercover", value: "6", icon: MapPin },
-    { label: "PIPOS", value: "4", icon: Database },
+    { label: "PIPos", value: "4", icon: Database },
     { label: "KKNKU", value: "3", icon: Smartphone }
   ]
 
@@ -742,7 +743,7 @@ function InstitutionsSection() {
 }
 
 export default function ProdukPage() {
-  const [activeView, setActiveView] = useState<'list' | 'pipos-detail'>('list')
+  const [activeView, setActiveView] = useState<'list' | 'PIPos-detail'>('list')
 
   return (
     <>
@@ -770,8 +771,8 @@ export default function ProdukPage() {
                 <section className="py-16 px-4">
                   <div className="container mx-auto space-y-24"> 
                     
-                    {/* PIPOS */}
-                    <PIPOSSection onDetailClick={() => setActiveView('pipos-detail')} />
+                    {/* PIPos */}
+                    <PIPosSection onDetailClick={() => setActiveView('PIPos-detail')} />
                     
                     {/* HARGA */}
                     <SubscriptionSection />
@@ -805,13 +806,13 @@ export default function ProdukPage() {
             ) : (
               // TAMPILAN DETAIL
               <motion.div key="detail-view">
-                 <PiposDetailView onBack={() => setActiveView('list')} />
+                 <PIPosDetailView onBack={() => setActiveView('list')} />
               </motion.div>
             )}
           </AnimatePresence>
 
           <CTA
-            title={activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPOS?"}
+            title={activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPos?"}
             description="Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat"
             buttonText="Hubungi Kami"
             href="/kontak"
