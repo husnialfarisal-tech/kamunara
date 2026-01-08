@@ -385,7 +385,7 @@ function SubscriptionSection() {
                       shadow-lg shadow-green-900/40
                     "
                   >
-                    Hemat 10%
+                    Diskon 10%
                   </motion.div>
                 )}
               </div>
