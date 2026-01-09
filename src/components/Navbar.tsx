@@ -2,47 +2,44 @@
 
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, Home, ShoppingBag, Info, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+
+// HAPUS IMPORT QUESTRIAL DISINI
 
 export default function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   
-  // Deteksi apakah sedang di halaman Home
-  // Kita anggap root '/' dan '/home' adalah halaman utama yang butuh animasi
   const isHomePage = pathname === '/' || pathname === '/home'
-
-  // Mengambil posisi scroll
   const { scrollY } = useScroll()
 
-  // --- LOGIC ANIMASI (Hanya aktif jika isHomePage) ---
-  
-  // 1. Background
+  // --- LOGIC ANIMASI NAVBAR ---
   const bgBackground = useTransform(scrollY, [0, 100], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.9)"])
-  
-  // 2. Backdrop Blur
   const bgBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(12px)"])
-  
-  // 3. Shadow
   const boxShadow = useTransform(scrollY, [0, 100], ["0px 0px 0px rgba(0,0,0,0)", "0px 4px 20px rgba(0,0,0,0.05)"])
-  
-  // 4. Border Bottom
   const borderBottom = useTransform(scrollY, [0, 100], ["1px solid rgba(0,0,0,0)", "1px solid rgba(0,0,0,0.05)"])
-  
-  // 5. Padding
   const navPadding = useTransform(scrollY, [0, 100], ["2rem 1rem", "1rem 1rem"])
 
-  // 6. LOGO ANIMATION
-  const logoScale = useTransform(scrollY, [0, 200], [3.5, 1])
-  const logoY = useTransform(scrollY, [0, 200], [250, 0]) // Logo turun di home
-  const logoWeight = useTransform(scrollY, [0, 200], [300, 700])
+  // --- LOGIC ANIMASI LOGO TEKS (KAMUNARA) ---
+  const logoScale = useTransform(scrollY, [0, 250], [1.5, 0.6]) 
   
-  // Opacity Icons
-  const iconsOpacity = useTransform(scrollY, [0, 150], [0, 1])
-  const iconsPointerEvents = useTransform(scrollY, [0, 150], ['none', 'auto'])
+  // POSISI TEKS
+  const logoY = useTransform(scrollY, [0, 250], [380, 0])
+  
+  // --- LOGIC ANIMASI LOGO GAMBAR ---
+  const imgOpacity = useTransform(scrollY, [0, 150], [1, 0])
+  
+  // POSISI GAMBAR
+  const imgY = useTransform(scrollY, [0, 150], [60, 50]) 
+  
+  const imgScale = useTransform(scrollY, [0, 150], [1, 0.8])
 
+  // --- LOGIC ICONS ---
+  const iconsY = useTransform(scrollY, [0, 100], [35, 0]) 
+  
   const menuItems = [
     { href: '/home', label: 'Home', icon: <Home className="w-5 h-5" /> },
     { href: '/produk', label: 'Produk', icon: <ShoppingBag className="w-5 h-5" /> },
@@ -53,7 +50,6 @@ export default function Navbar() {
   return (
     <motion.nav
       style={{
-        // TERNARY OPERATOR: Jika Home pakai animasi, jika tidak pakai nilai statis (final state)
         backgroundColor: isHomePage ? bgBackground : "rgba(255, 255, 255, 0.9)",
         backdropFilter: isHomePage ? bgBlur : "blur(12px)",
         boxShadow: isHomePage ? boxShadow : "0px 4px 20px rgba(0,0,0,0.05)",
@@ -65,61 +61,65 @@ export default function Navbar() {
       <div className="container mx-auto">
         <div className="relative flex items-center justify-between">
 
-          {/* ================= ICONS SECTION (LEFT) ================= */}
-          <motion.div 
-            style={{ 
-                opacity: isHomePage ? iconsOpacity : 1, 
-                pointerEvents: isHomePage ? iconsPointerEvents : 'auto' 
-            }}
-            className="hidden md:flex items-center gap-6 md:w-1/3 justify-start"
-          >
-             {menuItems.slice(0, 2).map((item) => {
-               const isActive = pathname === item.href
-               return (
-                 <Link key={item.href} href={item.href} className="group relative p-2">
-                   <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
-                     {item.icon}
-                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap">
-                       {item.label}
-                     </span>
-                   </div>
-                 </Link>
-               )
-             })}
-          </motion.div>
+          {/* ================= SECTION KIRI (KOSONG / SPACER) ================= */}
+          <div className="hidden md:block md:w-1/3"></div>
 
+          {/* ================= CENTER LOGO SECTION ================= */}
+          <div className="flex-grow flex justify-center md:w-1/3 z-20 relative h-10 items-center">
+            
+            {/* 1. GAMBAR LOGO (Hanya di Home) */}
+            {isHomePage && (
+              <motion.div
+                style={{
+                  opacity: imgOpacity,
+                  y: imgY,
+                  scale: imgScale,
+                  pointerEvents: 'none'
+                }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 z-10"
+              >
+                <div className="relative w-72 h-72 md:w-96 md:h-96">
+                   <Image 
+                     src="/images/kamunara_copy.png" 
+                     alt="Kamunara Logo"
+                     fill
+                     className="object-contain"
+                   />
+                </div>
+              </motion.div>
+            )}
 
-          {/* ================= CENTER LOGO (KAMUNARA) ================= */}
-          <div className="flex-grow flex justify-center md:w-1/3 z-20">
-            <Link href="/" className="relative block">
+            {/* 2. TEKS LOGO */}
+            <Link href="/" className="relative block z-20">
               <motion.div
                 style={{ 
-                  scale: isHomePage ? logoScale : 1,
+                  scale: isHomePage ? logoScale : 0.7,
                   y: isHomePage ? logoY : 0,
-                  fontWeight: isHomePage ? logoWeight : 700
                 }}
-                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-2xl" // Tambahkan text-2xl sebagai base size
+                // HAPUS ${questrial.className} disini
+                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-bold"
               >
                  KAMUNARA
               </motion.div>
             </Link>
           </div>
 
-
-          {/* ================= ICONS SECTION (RIGHT) ================= */}
+          {/* ================= ICONS SECTION (KANAN) ================= */}
           <motion.div 
             style={{ 
-                opacity: isHomePage ? iconsOpacity : 1, 
-                pointerEvents: isHomePage ? iconsPointerEvents : 'auto' 
+                opacity: 1, 
+                y: isHomePage ? iconsY : 0,
+                pointerEvents: 'auto' 
             }}
             className="hidden md:flex items-center gap-6 md:w-1/3 justify-end"
           >
-             {menuItems.slice(2, 4).map((item) => {
+             {menuItems.map((item) => {
                const isActive = pathname === item.href
                return (
                  <Link key={item.href} href={item.href} className="group relative p-2">
                    <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
                      {item.icon}
+                     {/* HAPUS ${questrial.className} disini */}
                      <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap">
                        {item.label}
                      </span>
@@ -145,7 +145,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ================= MOBILE DRAWER (Sama seperti sebelumnya) ================= */}
+      {/* ================= MOBILE DRAWER ================= */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -164,6 +164,7 @@ export default function Navbar() {
               className="fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-white shadow-2xl z-50 flex flex-col p-8"
             >
               <div className="flex justify-between items-center mb-10">
+                {/* HAPUS ${questrial.className} disini */}
                 <span className="text-xl font-bold tracking-widest">MENU</span>
                 <button onClick={() => setIsOpen(false)}>
                   <X className="w-6 h-6 text-stone-500 hover:text-black" />
@@ -181,12 +182,14 @@ export default function Navbar() {
                     <div className="p-2 bg-stone-100 rounded-full group-hover:bg-black group-hover:text-white transition-colors">
                       {item.icon}
                     </div>
+                    {/* HAPUS ${questrial.className} disini */}
                     <span className="text-lg font-medium">{item.label}</span>
                   </Link>
                 ))}
               </div>
 
               <div className="mt-auto pt-10 border-t border-stone-100">
+                 {/* HAPUS ${questrial.className} disini */}
                  <p className="text-xs text-stone-400 text-center tracking-widest">
                    © 2025 KAMUNARA
                  </p>

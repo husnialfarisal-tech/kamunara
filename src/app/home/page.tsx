@@ -51,7 +51,7 @@ export default function HomePage() {
             <div className="absolute inset-0 z-0">
               
               {/* 1. Gambar dibuat Opacity 100 (Full Color) */}
-              <div className="absolute inset-0 bg-[url('/images/k1.png')] bg-cover bg-center opacity-100" />
+              <div className="absolute inset-0 bg-[url('/images/putih.png')] bg-cover bg-center opacity-100" />
               
               {/* 2. Overlay gelap dihapus, diganti gradient transparan ke hitam (hanya di paling bawah) agar teks footer nanti nyambung */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neutral-950" />
