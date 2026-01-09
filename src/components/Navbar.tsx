@@ -7,8 +7,6 @@ import { Menu, X, Home, ShoppingBag, Info, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-// HAPUS IMPORT QUESTRIAL DISINI
-
 export default function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -25,16 +23,11 @@ export default function Navbar() {
 
   // --- LOGIC ANIMASI LOGO TEKS (KAMUNARA) ---
   const logoScale = useTransform(scrollY, [0, 250], [1.5, 0.6]) 
-  
-  // POSISI TEKS
   const logoY = useTransform(scrollY, [0, 250], [380, 0])
   
   // --- LOGIC ANIMASI LOGO GAMBAR ---
   const imgOpacity = useTransform(scrollY, [0, 150], [1, 0])
-  
-  // POSISI GAMBAR
   const imgY = useTransform(scrollY, [0, 150], [60, 50]) 
-  
   const imgScale = useTransform(scrollY, [0, 150], [1, 0.8])
 
   // --- LOGIC ICONS ---
@@ -79,6 +72,7 @@ export default function Navbar() {
                 className="absolute top-0 left-1/2 -translate-x-1/2 z-10"
               >
                 <div className="relative w-72 h-72 md:w-96 md:h-96">
+                  {/* Pastikan file gambar ada di public/images/kamunara_copy.png */}
                    <Image 
                      src="/images/kamunara_copy.png" 
                      alt="Kamunara Logo"
@@ -89,15 +83,17 @@ export default function Navbar() {
               </motion.div>
             )}
 
-            {/* 2. TEKS LOGO */}
+            {/* 2. TEKS LOGO (MENGGUNAKAN GARET) */}
             <Link href="/" className="relative block z-20">
               <motion.div
                 style={{ 
                   scale: isHomePage ? logoScale : 0.7,
                   y: isHomePage ? logoY : 0,
                 }}
-                // HAPUS ${questrial.className} disini
-                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-bold"
+                // PERUBAHAN DISINI:
+                // - font-heading: Mengaktifkan Garet
+                // - font-extrabold: Mengaktifkan weight 800 (Garet Heavy)
+                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-extrabold font-heading"
               >
                  KAMUNARA
               </motion.div>
@@ -119,8 +115,8 @@ export default function Navbar() {
                  <Link key={item.href} href={item.href} className="group relative p-2">
                    <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
                      {item.icon}
-                     {/* HAPUS ${questrial.className} disini */}
-                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap">
+                     {/* Label kecil menggunakan font default (Inter) agar mudah dibaca */}
+                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap font-sans font-bold">
                        {item.label}
                      </span>
                    </div>
@@ -164,8 +160,8 @@ export default function Navbar() {
               className="fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-white shadow-2xl z-50 flex flex-col p-8"
             >
               <div className="flex justify-between items-center mb-10">
-                {/* HAPUS ${questrial.className} disini */}
-                <span className="text-xl font-bold tracking-widest">MENU</span>
+                {/* Judul MENU menggunakan Garet (font-heading) */}
+                <span className="text-xl font-extrabold tracking-widest font-heading">MENU</span>
                 <button onClick={() => setIsOpen(false)}>
                   <X className="w-6 h-6 text-stone-500 hover:text-black" />
                 </button>
@@ -182,15 +178,15 @@ export default function Navbar() {
                     <div className="p-2 bg-stone-100 rounded-full group-hover:bg-black group-hover:text-white transition-colors">
                       {item.icon}
                     </div>
-                    {/* HAPUS ${questrial.className} disini */}
-                    <span className="text-lg font-medium">{item.label}</span>
+                    {/* Item menu mobile menggunakan Inter (font-sans) */}
+                    <span className="text-lg font-medium font-sans">{item.label}</span>
                   </Link>
                 ))}
               </div>
 
               <div className="mt-auto pt-10 border-t border-stone-100">
-                 {/* HAPUS ${questrial.className} disini */}
-                 <p className="text-xs text-stone-400 text-center tracking-widest">
+                 {/* Footer Copyright menggunakan Garet kecil juga oke, atau Inter */}
+                 <p className="text-xs text-stone-400 text-center tracking-widest font-heading font-bold">
                    © 2025 KAMUNARA
                  </p>
               </div>

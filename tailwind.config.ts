@@ -7,20 +7,10 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-        // --- KONFIGURASI FONT BARU ---
-        fontFamily: {
-            // Body text (Default) -> Open Sans
-            sans: ['var(--font-opensans)', 'sans-serif'],
-            
-            // Judul (Mirip Gilroy) -> Outfit. Panggil pakai class: font-heading
-            heading: ['var(--font-outfit)', 'sans-serif'], 
-            
-            // Coding -> JetBrains Mono
-            mono: ['var(--font-mono)', 'monospace'],
-        },
         colors: {
             background: 'hsl(var(--background))',
             foreground: 'hsl(var(--foreground))',

@@ -1,26 +1,50 @@
 import type { Metadata, Viewport } from "next";
-// 1. Import Outfit (Vibes Gilroy) dan Open Sans
-import { Outfit, Open_Sans, JetBrains_Mono } from "next/font/google"; 
 import "./globals.css";
+import localFont from "next/font/local"; // Import font lokal
+import { JetBrains_Mono } from "next/font/google"; // Font coding tetap dari Google
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/PageTransition";
 
-// 2. Konfigurasi Font Body (Open Sans - Sangat terbaca & Profesional)
-const openSans = Open_Sans({
-  variable: "--font-opensans", // Variabel untuk Tailwind
-  subsets: ["latin"],
-  display: "swap",
+// 1. Konfigurasi INTER (Body Text)
+// Pastikan file ada di folder src/app/font/inter/
+const inter = localFont({
+  src: [
+    {
+      path: './font/inter/Inter-Regular.woff2', 
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './font/inter/Inter-Bold.woff2', 
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-inter', // Variable CSS
+  display: 'swap',
 });
 
-// 3. Konfigurasi Font Judul / Heading (Outfit - Mirip Gilroy/Modern Tech)
-const outfit = Outfit({
-  variable: "--font-outfit", // Variabel untuk Tailwind
-  subsets: ["latin"],
-  display: "swap",
+// 2. Konfigurasi GARET (Heading/Judul)
+// Pastikan file ada di folder src/app/font/garet/
+const garet = localFont({
+  src: [
+    {
+      path: './font/garet/Garet-Book.woff2', 
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './font/garet/Garet-Heavy.woff2', 
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-garet', // Variable CSS
+  display: 'swap',
 });
 
-// 4. Konfigurasi Font Coding (JetBrains Mono)
+// 3. Font Coding (Opsional)
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono", 
   subsets: ["latin"],
@@ -28,10 +52,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kamunara - Solusi Digital Terpercaya | Web & Mobile Development",
-  description: "Kamunara adalah perusahaan outsource yang berfokus pada penyedia layanan pembuatan dan pengembangan software digital baik berbasis website maupun mobile.",
-  keywords: ["Kamunara", "Digital Solutions", "Web Development", "Mobile Development", "Software Development", "IT Outsourcing"],
-  authors: [{ name: "Kamunara Team" }],
+  title: "Kamunara - Solusi Digital Terpercaya",
+  description: "Kamunara adalah perusahaan outsource software development.",
 };
 
 export const viewport: Viewport = {
@@ -49,8 +71,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      {/* 5. Masukkan variabel font baru ke body */}
-      <body className={`${openSans.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
+      {/* Masukkan variabel ke className body */}
+      <body className={`${inter.variable} ${garet.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
