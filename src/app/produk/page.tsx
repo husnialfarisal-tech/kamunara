@@ -573,7 +573,10 @@ function KKNKUSection() {
 function TrustedPartnersSection() {
   const logos = Array(8).fill([
     { src: "/images/logo_pipos_copy.png", alt: "PIPos" },
-    { src: "/images/logo.png", alt: "Universitas Khairun" }
+    { src: "/images/logo_NOIbook.png", alt: "NOIbook" },
+    { src: "/images/logo_KITkapital.png", alt: "KITkapital" },
+    { src: "/images/logo_betarak.PNG", alt: "Betarak" },
+    { src: "/images/logo.png", alt: "Universitas Khairun" },
   ]).flat()
 
   return (
@@ -589,7 +592,7 @@ function TrustedPartnersSection() {
           className="flex items-center gap-16 md:gap-32 px-50 min-w-max"
           animate={{ x: ["0%", "-100%"] }} 
           transition={{ 
-            duration: 100, 
+            duration: 150, 
             ease: "linear", 
             repeat: Infinity 
           }}
