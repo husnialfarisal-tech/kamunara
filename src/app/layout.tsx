@@ -1,24 +1,23 @@
 import type { Metadata, Viewport } from "next";
-// 1. Ganti import font di sini (Bodoni Moda = Gucci Style)
-import { Plus_Jakarta_Sans, Bodoni_Moda, JetBrains_Mono } from "next/font/google"; 
+// 1. Import Outfit (Vibes Gilroy) dan Open Sans
+import { Outfit, Open_Sans, JetBrains_Mono } from "next/font/google"; 
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/PageTransition";
 
-// 2. Konfigurasi Font Utama / Body (Plus Jakarta Sans - Modern & Clean)
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+// 2. Konfigurasi Font Body (Open Sans - Sangat terbaca & Profesional)
+const openSans = Open_Sans({
+  variable: "--font-opensans", // Variabel untuk Tailwind
   subsets: ["latin"],
   display: "swap",
 });
 
-// 3. Konfigurasi Font Judul / Heading (Bodoni Moda - High Fashion/Gucci Style)
-const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni", // Nama variabel unik
+// 3. Konfigurasi Font Judul / Heading (Outfit - Mirip Gilroy/Modern Tech)
+const outfit = Outfit({
+  variable: "--font-outfit", // Variabel untuk Tailwind
   subsets: ["latin"],
   display: "swap",
-  // Bodoni Moda adalah variable font, jadi tidak perlu define weight manual
 });
 
 // 4. Konfigurasi Font Coding (JetBrains Mono)
@@ -50,8 +49,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      {/* 5. Masukkan variable font Bodoni ke dalam body */}
-      <body className={`${jakarta.variable} ${bodoni.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
+      {/* 5. Masukkan variabel font baru ke body */}
+      <body className={`${openSans.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

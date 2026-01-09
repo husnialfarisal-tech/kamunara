@@ -10,10 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-        // MENAMBAHKAN KONFIGURASI FONT DI SINI
+        // --- KONFIGURASI FONT BARU ---
         fontFamily: {
-            sans: ['var(--font-jakarta)', 'sans-serif'],
-            serif: ['var(--font-bodoni)', 'serif'], // Update ke Bodoni
+            // Body text (Default) -> Open Sans
+            sans: ['var(--font-opensans)', 'sans-serif'],
+            
+            // Judul (Mirip Gilroy) -> Outfit. Panggil pakai class: font-heading
+            heading: ['var(--font-outfit)', 'sans-serif'], 
+            
+            // Coding -> JetBrains Mono
             mono: ['var(--font-mono)', 'monospace'],
         },
         colors: {
