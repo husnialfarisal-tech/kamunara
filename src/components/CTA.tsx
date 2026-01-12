@@ -31,7 +31,7 @@ export default function CTA({
           viewport={{ once: true, margin: '-100px' }} // lebih smooth saat scroll
           className="bg-stone-900/50 rounded-3xl p-10 md:p-12 text-center border border-white/10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal font-heading text-white mb-4 md:mb-6 leading-tight">
             {title}
           </h2>
 

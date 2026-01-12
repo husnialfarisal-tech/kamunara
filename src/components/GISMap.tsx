@@ -133,7 +133,7 @@ export default function GISMap() {
                     <Building2 className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-amber-400">{instansi.name}</h3>
+                    <h3 className="font-normal font-heading text-lg text-amber-400">{instansi.name}</h3>
                     <p className="text-stone-400 text-sm flex items-center gap-1">
                       <MapPin className="w-3 h-3" />
                       {instansi.location}

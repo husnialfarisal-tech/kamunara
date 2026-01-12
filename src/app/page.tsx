@@ -70,7 +70,7 @@ export default function LandingPage() {
                 </span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-normal font-heading text-white leading-tight tracking-tight">
                 Transformasi
                 <span className="block bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">
                   Digital Anda

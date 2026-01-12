@@ -94,7 +94,7 @@ export default function KontakPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+                className="text-5xl md:text-7xl font-normal font-heading text-white mb-6 leading-tight"
               >
                 Hubungi
                 <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
@@ -121,7 +121,7 @@ export default function KontakPage() {
                   className="space-y-10"
                 >
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 className="text-3xl md:text-4xl font-normal font-heading text-white mb-4">
                       Informasi Kontak
                     </h2>
                     <p className="text-stone-300 text-lg">
@@ -161,7 +161,7 @@ export default function KontakPage() {
                           </div>
 
                           <div className="relative z-10">
-                            <h3 className="text-white font-bold mb-1 transition-colors duration-150 group-hover:text-amber-200">
+                            <h3 className="text-white font-normal font-heading mb-1 transition-colors duration-150 group-hover:text-amber-200">
                               {item.label}
                             </h3>
                             <p className="text-stone-300 transition-colors duration-150 group-hover:text-stone-100">
@@ -221,7 +221,7 @@ export default function KontakPage() {
 
                   {/* Social Media */}
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-white">Hubungi Kami</h3>
+                    <h3 className="text-2xl font-normal font-heading text-white">Hubungi Kami</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <motion.a
                         href="https://wa.me/628131415160"
@@ -282,7 +282,7 @@ export default function KontakPage() {
                   transition={{ duration: 0.7 }}
                   className="bg-gradient-to-br from-stone-800 to-stone-900 rounded-3xl p-8 border border-amber-500/20 hover:border-amber-500/50 transition-all"
                 >
-                  <h2 className="text-3xl font-bold text-white mb-6">Kirim Pesan</h2>
+                  <h2 className="text-3xl font-normal font-heading text-white mb-6">Kirim Pesan</h2>
 
                   {feedback.message && (
                     <motion.div

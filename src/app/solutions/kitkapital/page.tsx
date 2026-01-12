@@ -53,7 +53,7 @@ export default function KitKapitalPage() {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-normal font-heading mb-6 bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
                 KITkapital
               </h1>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
@@ -74,8 +74,8 @@ export default function KitKapitalPage() {
           {/* Detail Fitur */}
           <section className="border-t border-white/10 pt-16">
             <div className="text-center mb-16">
-               <span className="text-cyan-500 text-xs font-bold tracking-widest uppercase mb-2 block">Kapabilitas</span>
-               <h2 className="text-3xl font-bold">Pertumbuhan Aset</h2>
+               <span className="text-cyan-500 text-xs font-normal font-heading tracking-widest uppercase mb-2 block">Kapabilitas</span>
+               <h2 className="text-3xl font-normal font-heading">Pertumbuhan Aset</h2>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -92,7 +92,7 @@ export default function KitKapitalPage() {
                   className="p-6 rounded-xl bg-neutral-900/50 border border-white/5 hover:border-cyan-500/20 transition-all"
                 >
                    <item.icon className="w-10 h-10 text-cyan-500 mb-4" />
-                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                   <h3 className="text-xl font-normal font-heading mb-2">{item.title}</h3>
                    <p className="text-stone-400 text-sm">{item.desc}</p>
                 </motion.div>
               ))}
