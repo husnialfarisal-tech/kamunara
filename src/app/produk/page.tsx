@@ -77,7 +77,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
         >
           Produk
           <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">
@@ -136,8 +136,8 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
             </div>
         </div>
         <div className="w-full lg:w-2/3 text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">PIPos <span className="text-zinc-500">System</span></h2>
-            <p className="text-lg text-zinc-600 leading-relaxed mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">PIPos <span className="text-amber-500">System</span></h2>
+            <p className="text-lg text-stone-300 leading-relaxed mb-6">
                 PIPos (Point of Sales System) bukan sekadar aplikasi kasir biasa. Ini adalah ekosistem manajemen ritel yang dirancang untuk memangkas waktu administrasi dan meningkatkan profitabilitas. 
                 Dengan PIPos, Anda tidak hanya mencatat penjualan, tetapi juga memahami pola beli pelanggan, mengelola stok tanpa pusing, dan mengambil keputusan bisnis berdasarkan data akurat.
             </p>
@@ -151,13 +151,13 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
 
       {/* Grid Fitur Detail */}
       <div className="mb-20">
-        <h3 className="text-2xl font-bold text-black mb-8 text-center">Fitur Unggulan</h3>
+        <h3 className="text-2xl font-bold text-white mb-8 text-center">Fitur Unggulan</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {detailFeatures.map((fitur, i) => (
-                <div key={i} className="bg-[#f7f9ed] border border-zinc-200 p-6 rounded-2xl hover:border-zinc-900 transition-colors shadow-sm">
-                    <fitur.icon className="w-10 h-10 text-black mb-4" />
-                    <h4 className="text-xl font-bold text-black mb-2">{fitur.title}</h4>
-                    <p className="text-zinc-500 text-sm leading-relaxed">{fitur.desc}</p>
+                <div key={i} className="bg-neutral-900/60 border border-white/5 p-6 rounded-2xl hover:border-amber-500/30 transition-colors">
+                    <fitur.icon className="w-10 h-10 text-amber-500 mb-4" />
+                    <h4 className="text-xl font-bold text-white mb-2">{fitur.title}</h4>
+                    <p className="text-stone-400 text-sm leading-relaxed">{fitur.desc}</p>
                 </div>
             ))}
         </div>
@@ -168,8 +168,8 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
          <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -z-10" />
          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -z-10" />
          
-         <h3 className="text-3xl font-bold text-black mb-4">Lihat PIPos Beraksi</h3>
-         <p className="text-zinc-800 mb-8 max-w-2xl mx-auto">
+         <h3 className="text-3xl font-bold text-white mb-4">Lihat PIPos Beraksi</h3>
+         <p className="text-stone-300 mb-8 max-w-2xl mx-auto">
             Saksikan bagaimana PIPos dapat menyederhanakan operasional bisnis Anda dalam hitungan menit. Tonton demo singkat penggunaan aplikasi.
          </p>
 
@@ -213,8 +213,8 @@ function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
             <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-black text-sm font-medium transition-colors duration-150">Manajemen Kasir</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black">PIPos</h2>
-          <p className="text-lg text-zinc-600 leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">PIPos</h2>
+          <p className="text-lg text-stone-300 leading-relaxed">
             Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPos menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
           </p>
           <div className="space-y-3 pb-4">
@@ -258,8 +258,8 @@ function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-black mb-2 transition-colors duration-150 group-hover:text-zinc-800">PIPos</h3>
-            <p className="text-zinc-600 transition-colors duration-150 group-hover:text-zinc-800">Point of Sale System dengan 3 Role Akses</p>
+            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPos</h3>
+            <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Point of Sale System dengan 3 Role Akses</p>
           </div>
         </motion.div>
       </div>
@@ -310,8 +310,8 @@ function SubscriptionSection() {
             <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-black text-sm font-medium transition-colors duration-150">Berlangganan PIPos</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Pilih Paket yang Tepat</h2>
-          <p className="text-lg text-zinc-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pilih Paket yang Tepat</h2>
+          <p className="text-lg text-stone-300 max-w-3xl mx-auto">
             Dapatkan akses penuh ke fitur PIPos dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
           </p>
         </motion.div>
@@ -408,7 +408,7 @@ function SubscriptionSection() {
 
               <div className="relative z-10 px-6 pt-14 pb-8">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-2 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
                     {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
                   </h3>
                   <p className="text-zinc-600 text-xs md:text-sm min-h-[40px]">
@@ -497,7 +497,7 @@ function ProyekKamiSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
         >
           Proyek
           <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">Kami</span>
@@ -537,7 +537,7 @@ function KKNKUSection() {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-black mb-2 transition-colors duration-150 group-hover:text-zinc-800">
+            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
               KKNKU
             </h3>
             <p className="text-zinc-600 transition-colors duration-150 group-hover:text-zinc-800">
@@ -560,7 +560,7 @@ function KKNKUSection() {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-black">KKNKU</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
 
           <p className="text-lg text-zinc-600 leading-relaxed">
             Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
@@ -649,16 +649,16 @@ function ClientTitleSection() {
          viewport={{ once: true }}
          transition={{ duration: 0.6 }}
        >
-         <div className="inline-flex items-center gap-2 bg-zinc-100 border border-zinc-200 rounded-full px-4 py-2 mb-6">
-           <MapPin className="w-4 h-4 text-black" />
-           <span className="text-black text-sm font-medium">Jangkauan Kami</span>
-         </div>
-         <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-           Mitra & Persebaran <span className="text-zinc-500">Klien</span>
-         </h2>
-         <p className="text-zinc-500 max-w-2xl mx-auto">
-           Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
-         </p>
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
+            <MapPin className="w-4 h-4 text-amber-400" />
+            <span className="text-amber-400 text-sm font-medium">Jangkauan Kami</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Mitra & Persebaran <span className="text-amber-500">Klien</span>
+          </h2>
+          <p className="text-stone-400 max-w-2xl mx-auto">
+            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
+          </p>
        </motion.div>
     </div>
   )
@@ -702,9 +702,9 @@ function StatisticsSection() {
           whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
           className="group relative p-6 bg-[#f7f9ed] border border-zinc-200 hover:border-zinc-900 text-center overflow-hidden rounded-2xl shadow-sm"
         >
-          <stat.icon className="w-8 h-8 text-black mx-auto mb-3 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-          <div className="text-3xl font-bold text-black mb-2 transition-colors duration:150 group-hover:text-black">{stat.value}</div>
-          <p className="text-zinc-600 text-sm transition-colors duration:150 group-hover:text-black">{stat.label}</p>
+          <stat.icon className="w-8 h-8 text-white mx-auto mb-3 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+          <div className="text-3xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-white">{stat.value}</div>
+          <p className="text-stone-300 text-sm transition-colors duration-150 group-hover:text-stone-100">{stat.label}</p>
         </motion.div>
       ))}
     </motion.div>
@@ -729,9 +729,9 @@ function InstitutionsSection() {
               <Building2 className="w-6 h-6 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-black transition-colors duration:150 group-hover:text-black">{instansi.name}</h3>
-              <p className="text-zinc-600 text-sm flex items-center gap-1 transition-colors duration:150 group-hover:text-black">
-                <MapPin className="w-3 h-3 text-black" /> {instansi.location}
+              <h3 className="text-xl font-bold text-white transition-colors duration-150 group-hover:text-white">{instansi.name}</h3>
+              <p className="text-stone-400 text-sm flex items-center gap-1 transition-colors duration-150 group-hover:text-stone-100">
+                <MapPin className="w-3 h-3 text-white" /> {instansi.location}
               </p>
             </div>
           </div>
