@@ -1,32 +1,30 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import localFont from "next/font/local"; // Import font lokal
-import { JetBrains_Mono } from "next/font/google"; // Font coding tetap dari Google
+// 1. Import Font Google (Baru)
+import { Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"; 
+// 2. Import Font Local (Untuk mempertahankan Garet)
+import localFont from "next/font/local"; 
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/PageTransition";
 
-// 1. Konfigurasi INTER (Body Text)
-// Pastikan file ada di folder src/app/font/inter/
-const inter = localFont({
-  src: [
-    {
-      path: './font/inter/Inter-Regular.woff2', 
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './font/inter/Inter-Bold.woff2', 
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-inter', // Variable CSS
-  display: 'swap',
+// --- A. KONFIGURASI FONT BARU (Google) ---
+const jakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta", // Variable untuk body text
+  display: "swap",
 });
 
-// 2. Konfigurasi GARET (Heading/Judul)
-// Pastikan file ada di folder src/app/font/garet/
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cormorant", // Variable untuk heading mewah
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
+// --- B. KONFIGURASI FONT LAMA (Garet - Local) ---
+// Pastikan path ini sesuai dengan lokasi file font kamu sebelumnya
 const garet = localFont({
   src: [
     {
@@ -40,11 +38,10 @@ const garet = localFont({
       style: 'normal',
     },
   ],
-  variable: '--font-garet', // Variable CSS
+  variable: '--font-garet', // Variable KHUSUS untuk logo
   display: 'swap',
 });
 
-// 3. Font Coding (Opsional)
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono", 
   subsets: ["latin"],
@@ -71,8 +68,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      {/* Masukkan variabel ke className body */}
-      <body className={`${inter.variable} ${garet.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
+      {/* Masukkan SEMUA variable (jakarta, cormorant, garet) ke className */}
+      <body className={`${jakartaSans.variable} ${cormorant.variable} ${garet.variable} ${jetbrainsMono.variable} antialiased bg-neutral-950 text-foreground font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
