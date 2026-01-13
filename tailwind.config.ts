@@ -11,20 +11,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-        // --- UPDATE BAGIAN INI ---
         fontFamily: {
-            // Font Umum (Plus Jakarta Sans)
-            sans: ["var(--font-jakarta)", "sans-serif"],
-            // Font Judul Mewah (Cormorant Garamond)
-            heading: ["var(--font-cormorant)", "serif"],
-            // Font Khusus Logo (Garet) -> INI YANG PENTING
-            brand: ["var(--font-garet)", "sans-serif"], 
-            // Font Coding
+            // Body text (Paragraf) -> GLAMORE
+            sans: ["var(--font-glamore)", "sans-serif"],
+
+            // Heading (Judul Besar) -> GLAMORE
+            heading: ["var(--font-glamore)", "serif"],
+
+            // Logo -> Garet
+            brand: ["var(--font-garet)", "sans-serif"],
+
             mono: ["var(--font-mono)", "monospace"],
         },
-        // -------------------------
+        // ... (sisanya sama, tidak perlu diubah)
         colors: {
-            // ... (biarkan warna seperti semula)
             background: 'hsl(var(--background))',
             foreground: 'hsl(var(--foreground))',
             card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },

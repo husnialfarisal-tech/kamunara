@@ -76,7 +76,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
         >
           Produk
           <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">
@@ -212,7 +212,7 @@ function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
             <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-black text-sm font-medium transition-colors duration-150">Manajemen Kasir</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black">PIPos</h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-black">PIPos</h2>
           <p className="text-lg text-zinc-600 leading-relaxed">
             Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPos menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
           </p>
@@ -309,7 +309,7 @@ function SubscriptionSection() {
             <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             <span className="text-black text-sm font-medium transition-colors duration-150">Berlangganan PIPos</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Pilih Paket yang Tepat</h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-black mb-6">Pilih Paket yang Tepat</h2>
           <p className="text-lg text-zinc-600 max-w-3xl mx-auto">
             Dapatkan akses penuh ke fitur PIPos dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
           </p>
@@ -496,7 +496,7 @@ function ProyekKamiSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
         >
           Proyek
           <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">Kami</span>
@@ -559,7 +559,7 @@ function KKNKUSection() {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-black">KKNKU</h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-black">KKNKU</h2>
 
           <p className="text-lg text-zinc-600 leading-relaxed">
             Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
@@ -652,7 +652,7 @@ function ClientTitleSection() {
            <MapPin className="w-4 h-4 text-amber-400" />
            <span className="text-amber-400 text-sm font-medium">Jangkauan Kami</span>
          </div>
-         <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+         <h2 className="text-4xl md:text-5xl font-bold font-heading text-black mb-4">
            Mitra & Persebaran <span className="text-amber-500">Klien</span>
          </h2>
          <p className="text-zinc-600 max-w-2xl mx-auto">
@@ -839,7 +839,7 @@ export default function ProdukPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-bold font-heading text-white mb-6"
             >
               {activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPos?"}
             </motion.h2>

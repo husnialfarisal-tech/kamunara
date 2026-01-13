@@ -94,7 +94,7 @@ export default function TentangPage() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+                className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
               >
                 Tentang
                 <span className="block bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 bg-clip-text text-transparent">
@@ -137,7 +137,7 @@ export default function TentangPage() {
                     <Users className="w-4 h-4 text-black" />
                     <span className="text-black text-sm font-medium">Tentang Kami</span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-black">Mengenal Kamunara</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold font-heading text-black">Mengenal Kamunara</h2>
                   <p className="text-lg text-zinc-600 leading-relaxed">
                     Kamunara adalah perusahaan IT outsourcing yang baru berkembang dan berfokus pada pengembangan website serta aplikasi. Bernaung di bawah DS Company, kami hadir dengan semangat inovasi dan komitmen kualitas untuk mendukung transformasi digital organisasi dan perusahaan.
                   </p>
@@ -202,7 +202,7 @@ export default function TentangPage() {
               >
                 <div className="relative z-10 w-full h-full">
                   <div className="container mx-auto px-4 py-16 text-center max-w-4xl">
-                      <h3 className="text-3xl md:text-4xl font-bold text-black mb-6 tracking-wide">Visi Kami</h3>
+                      <h3 className="text-3xl md:text-4xl font-bold font-heading text-black mb-6 tracking-wide">Visi Kami</h3>
                       <p className="text-xl md:text-2xl text-zinc-700 font-light italic leading-relaxed font-serif">
                         "Menjadi mitra pengembangan dan transformasi digital pilihan global, yang menghubungkan talenta terbaik untuk menciptakan solusi berdampak bagi kemajuan bersama."
                       </p>
@@ -221,7 +221,7 @@ export default function TentangPage() {
                 <div className="relative z-10 w-full h-full">
                   <div className="container mx-auto px-4 py-16">
                       <div className="flex flex-col items-center mb-10">
-                        <h3 className="text-3xl md:text-4xl font-bold text-black tracking-wide">Misi Kami</h3>
+                        <h3 className="text-3xl md:text-4xl font-bold font-heading text-black tracking-wide">Misi Kami</h3>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -249,7 +249,7 @@ export default function TentangPage() {
           <section className="py-20 px-4">
             <div className="container mx-auto max-w-5xl">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-black mb-4">Bagan Organisasi</h2>
+                <h2 className="text-4xl font-bold font-heading text-black mb-4">Bagan Organisasi</h2>
                 <div className="h-1 w-20 bg-zinc-200 mx-auto rounded-full" />
               </div>
 
@@ -353,7 +353,7 @@ export default function TentangPage() {
                   <Heart className="w-4 h-4 text-black" />
                   <span className="text-black text-sm font-medium">Nilai Perusahaan</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Nilai dan Prinsip</h2>
+                <h2 className="text-4xl md:text-5xl font-bold font-heading text-black mb-4">Nilai dan Prinsip</h2>
                 <p className="text-zinc-600 text-lg max-w-2xl mx-auto">Fondasi dalam setiap langkah kami</p>
               </div>
 
@@ -390,7 +390,7 @@ export default function TentangPage() {
                 viewport={{ once: true }}
                 className="mt-16 text-center"
               >
-                <h3 className="text-2xl font-bold text-black mb-6">Ikuti Kami di Media Sosial</h3>
+                    <h3 className="text-2xl font-bold font-heading text-black mb-6">Ikuti Kami di Media Sosial</h3>
                 <div className="flex flex-wrap gap-4 justify-center">
                   
                    {/* TIKTOK BUTTON DENGAN LOGO SVG */}
@@ -457,7 +457,7 @@ export default function TentangPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-bold font-heading text-white mb-6"
             >
               Ingin Bekerja Sama?
             </motion.h2>

@@ -93,7 +93,7 @@ export default function KontakPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
+                className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
               >
                 Hubungi
                 <span className="block bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 bg-clip-text text-transparent">
@@ -120,7 +120,7 @@ export default function KontakPage() {
                   className="space-y-10"
                 >
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold font-heading text-black mb-4">
                       Informasi Kontak
                     </h2>
                     <p className="text-zinc-600 text-lg">
@@ -217,7 +217,7 @@ export default function KontakPage() {
 
                   {/* Social Media */}
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-black">Hubungi Kami</h3>
+                    <h3 className="text-2xl font-bold font-heading text-black">Hubungi Kami</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <motion.a
                         href="https://wa.me/628131415160"
@@ -279,7 +279,7 @@ export default function KontakPage() {
                   // UPDATE: Card Form Pastel (#f3f7e6)
                   className="bg-[#f3f7e6] rounded-3xl p-8 border border-zinc-200 shadow-lg hover:shadow-xl transition-all"
                 >
-                  <h2 className="text-3xl font-bold text-black mb-6">Kirim Pesan</h2>
+                  <h2 className="text-3xl font-bold font-heading text-black mb-6">Kirim Pesan</h2>
 
                   {feedback.message && (
                     <motion.div
@@ -396,7 +396,7 @@ export default function KontakPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-bold font-heading text-white mb-6"
             >
               Siap Memulai Proyek?
             </motion.h2>

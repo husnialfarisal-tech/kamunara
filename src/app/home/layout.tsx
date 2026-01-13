@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return <div className="font-heading">{children}</div>
 }

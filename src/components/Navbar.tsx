@@ -90,7 +90,7 @@ export default function Navbar() {
                   y: isHomePage ? logoY : 0,
                 }}
                 // Font normal untuk elegan
-                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-normal font-heading"
+                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-normal font-brand"
               >
                  KAMUNARA
               </motion.div>
@@ -113,7 +113,7 @@ export default function Navbar() {
                    <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
                      {item.icon}
                      {/* Label kecil menggunakan font default (Inter) agar mudah dibaca */}
-                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap font-sans font-normal">
+                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap font-brand font-normal">
                        {item.label}
                      </span>
                    </div>
@@ -157,8 +157,8 @@ export default function Navbar() {
               className="fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-white shadow-2xl z-50 flex flex-col p-8"
             >
               <div className="flex justify-between items-center mb-10">
-                {/* Judul MENU menggunakan Garet (font-heading) */}
-                <span className="text-xl font-normal tracking-widest font-heading">MENU</span>
+                {/* Judul MENU menggunakan Garet (font-brand) */}
+                <span className="text-xl font-normal tracking-widest font-brand">MENU</span>
                 <button onClick={() => setIsOpen(false)}>
                   <X className="w-6 h-6 text-stone-500 hover:text-black" />
                 </button>
@@ -176,14 +176,14 @@ export default function Navbar() {
                       {item.icon}
                     </div>
                     {/* Item menu mobile menggunakan Inter (font-sans) */}
-                    <span className="text-lg font-medium font-sans">{item.label}</span>
+                    <span className="text-lg font-medium font-brand">{item.label}</span>
                   </Link>
                 ))}
               </div>
 
               <div className="mt-auto pt-10 border-t border-stone-100">
                  {/* Footer Copyright menggunakan Garet kecil juga oke, atau Inter */}
-                 <p className="text-xs text-stone-400 text-center tracking-widest font-heading font-normal">
+                 <p className="text-xs text-stone-400 text-center tracking-widest font-brand font-normal">
                    © 2025 KAMUNARA
                  </p>
               </div>
