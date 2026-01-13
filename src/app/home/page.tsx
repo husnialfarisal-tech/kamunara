@@ -74,7 +74,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mt-10 text-lg sm:text-xl text-zinc-600 drop-shadow-sm"
+                    className="mt-10 text-lg sm:text-xl text-black drop-shadow-sm"
                   >
                     {/* Teks kosong sesuai request sebelumnya */}
                   </motion.p>
@@ -144,7 +144,7 @@ export default function HomePage() {
 
                     <div className="overflow-hidden">
                       <Link href={item.href || '#'} className="inline-flex flex-col items-center group/btn cursor-pointer">
-                        <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-zinc-500 group-hover:text-black transition-colors duration-300 uppercase flex items-center gap-2">
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-black group-hover:text-black transition-colors duration-300 uppercase flex items-center gap-2">
                            Lihat Detail Produk
                            {/* Icon berubah warna ke Amber saat hover */}
                            <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-amber-600" />
