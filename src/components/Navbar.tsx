@@ -10,28 +10,27 @@ import { useState } from 'react'
 export default function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  
   const isHomePage = pathname === '/' || pathname === '/home'
   const { scrollY } = useScroll()
 
   // --- LOGIC ANIMASI NAVBAR ---
-  const bgBackground = useTransform(scrollY, [0, 100], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.9)"])
+  const bgBackground = useTransform(scrollY, [0, 100], ["rgba(255,255,255, 0)", "rgba(255,255,255, 0.9)"])
   const bgBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(12px)"])
   const boxShadow = useTransform(scrollY, [0, 100], ["0px 0px 0px rgba(0,0,0,0)", "0px 4px 20px rgba(0,0,0,0.05)"])
   const borderBottom = useTransform(scrollY, [0, 100], ["1px solid rgba(0,0,0,0)", "1px solid rgba(0,0,0,0.05)"])
   const navPadding = useTransform(scrollY, [0, 100], ["2rem 1rem", "1rem 1rem"])
 
   // --- LOGIC ANIMASI LOGO TEKS (KAMUNARA) ---
-  const logoScale = useTransform(scrollY, [0, 250], [1.5, 0.6]) 
+  const logoScale = useTransform(scrollY, [0, 250], [1.5, 0.6])
   const logoY = useTransform(scrollY, [0, 250], [380, 0])
   
   // --- LOGIC ANIMASI LOGO GAMBAR ---
   const imgOpacity = useTransform(scrollY, [0, 150], [1, 0])
-  const imgY = useTransform(scrollY, [0, 150], [60, 50]) 
+  const imgY = useTransform(scrollY, [0, 150], [60, 50])
   const imgScale = useTransform(scrollY, [0, 150], [1, 0.8])
 
   // --- LOGIC ICONS ---
-  const iconsY = useTransform(scrollY, [0, 100], [35, 0]) 
+  const iconsY = useTransform(scrollY, [0, 100], [35, 0])
   
   const menuItems = [
     { href: '/home', label: 'Home', icon: <Home className="w-5 h-5" /> },
@@ -125,12 +124,12 @@ export default function Navbar() {
 
           {/* ================= MOBILE MENU BUTTON ================= */}
           <motion.div 
-             className="md:hidden absolute right-0"
+             className="md:hidden absolute right-0 z-50" // FIX: Menambahkan z-50 agar di atas logo
              animate={{ opacity: 1 }}
           >
              <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-black focus:outline-none"
+              className="p-2 text-black focus:outline-none cursor-pointer hover:bg-stone-100 rounded-full transition-colors"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

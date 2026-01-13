@@ -10,7 +10,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import CTA from '@/components/CTA'
+// import CTA removed because we use custom implementation
 
 // ============================================
 // DATA & CONFIG
@@ -77,14 +77,14 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
         >
           Produk
-          <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">
             Kami
           </span>
         </motion.h1>
-        <p className="text-xl text-stone-300 max-w-3xl mx-auto">
+        <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
           Solusi digital terintegrasi yang dirancang untuk memenuhi kebutuhan bisnis modern
         </p>
       </div>
@@ -116,7 +116,7 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
       {/* Tombol Kembali */}
       <button 
         onClick={onBack}
-        className="flex items-center gap-2 text-stone-400 hover:text-amber-400 mb-8 transition-colors group"
+        className="flex items-center gap-2 text-zinc-500 hover:text-black mb-8 transition-colors group"
       >
         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         <span className="font-medium">Kembali ke Daftar Produk</span>
@@ -125,7 +125,7 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
       {/* Header Detail */}
       <div className="flex flex-col lg:flex-row items-center gap-10 mb-16">
         <div className="w-full lg:w-1/3 flex justify-center">
-            <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-neutral-900/50 rounded-full flex items-center justify-center border border-amber-500/20 shadow-[0_0_60px_-15px_rgba(245,158,11,0.3)]">
+            <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-white rounded-full flex items-center justify-center border border-zinc-200 shadow-[0_0_60px_-15px_rgba(0,0,0,0.08)]">
                  <Image
                     src="/images/logo_pipos_copy.png"
                     alt="PIPos Logo Large"
@@ -136,54 +136,54 @@ function PIPosDetailView({ onBack }: { onBack: () => void }) {
             </div>
         </div>
         <div className="w-full lg:w-2/3 text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">PIPos <span className="text-amber-500">System</span></h2>
-            <p className="text-lg text-stone-300 leading-relaxed mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">PIPos <span className="text-zinc-500">System</span></h2>
+            <p className="text-lg text-zinc-600 leading-relaxed mb-6">
                 PIPos (Point of Sales System) bukan sekadar aplikasi kasir biasa. Ini adalah ekosistem manajemen ritel yang dirancang untuk memangkas waktu administrasi dan meningkatkan profitabilitas. 
                 Dengan PIPos, Anda tidak hanya mencatat penjualan, tetapi juga memahami pola beli pelanggan, mengelola stok tanpa pusing, dan mengambil keputusan bisnis berdasarkan data akurat.
             </p>
             <div className="flex flex-wrap gap-3">
-                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Cloud Based</span>
-                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Real-time Sync</span>
-                <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-sm">Multi Device</span>
+                <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 px-4 py-1.5 rounded-full text-sm">Cloud Based</span>
+                <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 px-4 py-1.5 rounded-full text-sm">Real-time Sync</span>
+                <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 px-4 py-1.5 rounded-full text-sm">Multi Device</span>
             </div>
         </div>
       </div>
 
       {/* Grid Fitur Detail */}
       <div className="mb-20">
-        <h3 className="text-2xl font-bold text-white mb-8 text-center">Fitur Unggulan</h3>
+        <h3 className="text-2xl font-bold text-black mb-8 text-center">Fitur Unggulan</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {detailFeatures.map((fitur, i) => (
-                <div key={i} className="bg-neutral-900/60 border border-white/5 p-6 rounded-2xl hover:border-amber-500/30 transition-colors">
-                    <fitur.icon className="w-10 h-10 text-amber-500 mb-4" />
-                    <h4 className="text-xl font-bold text-white mb-2">{fitur.title}</h4>
-                    <p className="text-stone-400 text-sm leading-relaxed">{fitur.desc}</p>
+                <div key={i} className="bg-[#f7f9ed] border border-zinc-200 p-6 rounded-2xl hover:border-zinc-900 transition-colors shadow-sm">
+                    <fitur.icon className="w-10 h-10 text-black mb-4" />
+                    <h4 className="text-xl font-bold text-black mb-2">{fitur.title}</h4>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{fitur.desc}</p>
                 </div>
             ))}
         </div>
       </div>
 
       {/* Demo Section */}
-      <div className="bg-neutral-900 border border-white/10 rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
-         <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+      <div className="bg-[#b5d5d0] border border-zinc-200 rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden shadow-sm">
+         <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -z-10" />
+         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -z-10" />
          
-         <h3 className="text-3xl font-bold text-white mb-4">Lihat PIPos Beraksi</h3>
-         <p className="text-stone-300 mb-8 max-w-2xl mx-auto">
+         <h3 className="text-3xl font-bold text-black mb-4">Lihat PIPos Beraksi</h3>
+         <p className="text-zinc-800 mb-8 max-w-2xl mx-auto">
             Saksikan bagaimana PIPos dapat menyederhanakan operasional bisnis Anda dalam hitungan menit. Tonton demo singkat penggunaan aplikasi.
          </p>
 
          <a 
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" // !! GANTI LINK INI DENGAN LINK VIDEO DEMO ASLI !!
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#FF0000] hover:bg-[#CC0000] text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-red-900/40 group"
+            className="inline-flex items-center gap-3 bg-black hover:bg-zinc-800 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-black/20 group"
          >
-            <Youtube className="w-7 h-7" />
+            <Youtube className="w-7 h-7 text-white" />
             <span className="text-lg">Tonton Demo di YouTube</span>
          </a>
          
-         <p className="mt-4 text-xs text-stone-500">
+         <p className="mt-4 text-xs text-zinc-700">
             *Anda akan diarahkan ke halaman YouTube
          </p>
       </div>
@@ -207,46 +207,46 @@ function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
-            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2"
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-zinc-100 border border-zinc-200 rounded-full px-4 py-2"
           >
-            <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Manajemen Kasir</span>
+            <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <span className="text-black text-sm font-medium transition-colors duration-150">Manajemen Kasir</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">PIPos</h2>
-          <p className="text-lg text-stone-300 leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold text-black">PIPos</h2>
+          <p className="text-lg text-zinc-600 leading-relaxed">
             Sistem Manajemen Kasir yang komprehensif untuk membantu toko dan bisnis mengelola transaksi dengan efisien. PIPos menyediakan 3 level akses: Owner untuk kontrol penuh, Admin untuk manajemen operasional, dan Kasir untuk transaksi harian.
           </p>
           <div className="space-y-3 pb-4">
-            <div className="flex items-center gap-3 text-stone-300"><Shield className="w-5 h-5 text-amber-400" /><span>3 Level akses: Owner, Admin, Kasir</span></div>
-            <div className="flex items-center gap-3 text-stone-300"><Zap className="w-5 h-5 text-amber-400" /><span>Transaksi penjualan real-time</span></div>
-            <div className="flex items-center gap-3 text-stone-300"><Database className="w-5 h-5 text-amber-400" /><span>Laporan dan analisis bisnis lengkap</span></div>
+            <div className="flex items-center gap-3 text-zinc-600"><Shield className="w-5 h-5 text-black" /><span>3 Level akses: Owner, Admin, Kasir</span></div>
+            <div className="flex items-center gap-3 text-zinc-600"><Zap className="w-5 h-5 text-black" /><span>Transaksi penjualan real-time</span></div>
+            <div className="flex items-center gap-3 text-zinc-600"><Database className="w-5 h-5 text-black" /><span>Laporan dan analisis bisnis lengkap</span></div>
           </div>
           
           {/* Tombol Trigger untuk melihat detail */}
           <button
             onClick={onDetailClick}
-            className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold border-b border-amber-500/50 hover:border-amber-400 transition-all pb-1 group"
+            className="inline-flex items-center gap-2 text-black hover:text-zinc-700 font-semibold border-b border-black/30 hover:border-black transition-all pb-1 group"
           >
             Lihat deskripsi PIPos
             <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
         
-        {/* PIPoss Card - Clickable as well */}
+        {/* PIPos Card - Clickable as well */}
         <motion.div
           onClick={onDetailClick}
-          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden cursor-pointer"
+          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative bg-[#f3f7e6] border border-zinc-200 hover:border-zinc-900 rounded-3xl p-8 overflow-hidden cursor-pointer shadow-sm"
         >
           {/* Overlay Hint on Hover */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-             <span className="bg-amber-500 text-white px-6 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <div className="absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+             <span className="bg-black text-white px-6 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 Lihat Detail
              </span>
           </div>
 
-          <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
+          <div className="bg-transparent rounded-2xl p-10 text-center relative z-10 border border-transparent">
             <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
               <Image
                 src="/images/logo_pipos_copy.png"
@@ -258,8 +258,8 @@ function PIPosSection({ onDetailClick }: { onDetailClick: () => void }) {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">PIPos</h3>
-            <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">Point of Sale System dengan 3 Role Akses</p>
+            <h3 className="text-2xl font-bold text-black mb-2 transition-colors duration-150 group-hover:text-zinc-800">PIPos</h3>
+            <p className="text-zinc-600 transition-colors duration-150 group-hover:text-zinc-800">Point of Sale System dengan 3 Role Akses</p>
           </div>
         </motion.div>
       </div>
@@ -274,9 +274,20 @@ function SubscriptionSection() {
   const renderFeatureText = (text: string) => {
     if (text.includes('(Coming Soon)')) {
       const parts = text.split('(Coming Soon)')
-      return <>{parts[0]}<span className="text-yellow-400">(Coming Soon)</span></>
+      return <>{parts[0]}<span className="text-zinc-500">(Coming Soon)</span></>
     }
     return text
+  }
+
+  // UPDATE: Logic warna kartu berdasarkan tipe paket untuk efek 3D
+  const getCardColor = (pkg: string) => {
+    switch(pkg) {
+        // Standard & Exclusive menggunakan Sage Green dengan Gradient halus
+        case 'standar': return 'bg-gradient-to-br from-[#dbe8e2] to-[#c4dcd3]'
+        case 'prof': return 'bg-gradient-to-br from-[#eaf4f3] to-[#dbeadd]' // Professional menggunakan Blue-Green
+        case 'excl': return 'bg-gradient-to-br from-[#dbe8e2] to-[#c4dcd3]' // Exclusive sama seperti Standard
+        default: return 'bg-zinc-50'
+    }
   }
 
   return (
@@ -293,14 +304,14 @@ function SubscriptionSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
-            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6"
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-zinc-100 border border-zinc-200 rounded-full px-4 py-2 mb-6"
           >
-            <Database className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">Berlangganan PIPos</span>
+            <Database className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <span className="text-black text-sm font-medium transition-colors duration-150">Berlangganan PIPos</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pilih Paket yang Tepat</h2>
-          <p className="text-lg text-stone-300 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Pilih Paket yang Tepat</h2>
+          <p className="text-lg text-zinc-600 max-w-3xl mx-auto">
             Dapatkan akses penuh ke fitur PIPos dengan paket berlangganan yang sesuai kebutuhan bisnis Anda
           </p>
         </motion.div>
@@ -312,11 +323,11 @@ function SubscriptionSection() {
           transition={{ duration: 0.6 }}
           className="flex justify-center mb-12"
         >
-          <div className="bg-neutral-900/60 backdrop-blur-sm border border-white/10 rounded-full p-2 flex items-center gap-2">
+          <div className="bg-zinc-100 border border-zinc-200 rounded-full p-2 flex items-center gap-2 shadow-sm">
             <button
               onClick={() => setIsMonthly(true)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                isMonthly ? 'bg-amber-500 text-white shadow-md' : 'text-stone-400 hover:text-white'
+                isMonthly ? 'bg-black text-white shadow-md' : 'text-zinc-500 hover:text-black'
               }`}
             >
               Bulanan
@@ -324,7 +335,7 @@ function SubscriptionSection() {
             <button
               onClick={() => setIsMonthly(false)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                !isMonthly ? 'bg-amber-500 text-white shadow-md' : 'text-stone-400 hover:text-white'
+                !isMonthly ? 'bg-black text-white shadow-md' : 'text-zinc-500 hover:text-black'
               }`}
             >
               Tahunan
@@ -340,49 +351,51 @@ function SubscriptionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
+              
+              // 3D CARD STYLING START
               whileHover={{
-                y: -8,
-                scale: 1.02,
-                boxShadow: '0 12px 30px -8px rgba(245, 158, 11, 0.4)',
-                transition: { duration: 0.14, ease: 'easeOut' },
+                y: -16, // Floating lebih tinggi saat hover
+                scale: 1.03, // Scale sedikit
+                boxShadow: '0 40px 80px -12px rgba(0,0,0,0.25)', // Bayangan lebih besar dan gelap
+                // PERUBAHAN: Duration dipercepat menjadi 0.2 agar lebih responsif
+                transition: { duration: 0.2, ease: 'easeOut' }, 
               }}
               className={`
-                group relative bg-neutral-900/80 backdrop-blur-sm 
-                border border-white/5 hover:border-amber-500/30 
-                rounded-3xl overflow-hidden
-                ${pkg === 'prof' ? 'border-amber-500/50 lg:scale-105 z-10' : 'z-0'}
+                group relative 
+                ${getCardColor(pkg)} 
+                border border-white/40 rounded-[2.5rem] overflow-hidden 
+                shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] transition-all duration-500
+                ${pkg === 'prof' 
+                  ? 'transform scale-105 z-20 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] border-black/5' 
+                  : 'z-10'}
               `}
               >
+              {/* 3D CARD STYLING END */}
               
-              {/* --- PERBAIKAN POSISI BADGE --- */}
               <div className="absolute top-3 right-3 z-20 flex flex-col gap-1 items-end">
-                {/* Badge POPULER */}
                 {pkg === 'prof' && (
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
                     className="
-                      bg-amber-500/90 backdrop-blur-sm border border-amber-400/30
-                      text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full
-                      shadow-md shadow-amber-900/30 uppercase tracking-wider
+                      bg-black text-white border border-black
+                      text-[10px] md:text-xs font-bold px-3 py-1 rounded-full
+                      shadow-lg shadow-black/20 uppercase tracking-wider
                     "
                   >
                     POPULER
                   </motion.div>
                 )}
 
-                {/* Badge Hemat 10% */}
                 {!isMonthly && (
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     className="
-                      bg-gradient-to-r from-green-600 to-emerald-600
-                      backdrop-blur-md border border-emerald-400/30
-                      text-white text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full
-                      shadow-lg shadow-green-900/40
+                      bg-white/90 backdrop-blur-sm border border-zinc-200
+                      text-black text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full shadow-sm
                     "
                   >
                     Diskon 10%
@@ -390,32 +403,34 @@ function SubscriptionSection() {
                 )}
               </div>
 
-              {/* --- KONTEN UTAMA DENGAN PADDING ATAS LEBIH BESAR --- */}
+              {/* Glossy Overlay for Premium Feel */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent pointer-events-none opacity-60" />
+
               <div className="relative z-10 px-6 pt-14 pb-8">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-2 tracking-tight">
                     {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
                   </h3>
-                  <p className="text-stone-400 text-xs md:text-sm min-h-[40px]">
+                  <p className="text-zinc-600 text-xs md:text-sm min-h-[40px]">
                     {pkg === 'standar' ? 'Cocok untuk toko kecil' : pkg === 'prof' ? 'Ideal untuk bisnis berkembang' : 'Solusi enterprise lengkap'}
                   </p>
 
                   <div className="mt-5">
                     {isMonthly ? (
-                      <div className="text-2xl md:text-3xl font-bold text-amber-400">
-                        <div className="line-through text-stone-500 text-sm md:text-base opacity-70 mb-1">
+                      <div className="text-2xl md:text-3xl font-bold text-black">
+                        <div className="line-through text-zinc-500 text-sm md:text-base opacity-70 mb-1">
                           {pkg === 'standar' ? 'Rp 200.000' : pkg === 'prof' ? 'Rp 600.000' : 'Rp 1.500.000'}
                         </div>
                         {formatPrice(packagePrices[pkg as keyof typeof packagePrices].monthly)}
-                        <span className="text-sm text-stone-400 font-normal">/bulan</span>
+                        <span className="text-sm text-zinc-600 font-normal">/bulan</span>
                       </div>
                     ) : (
-                      <div className="text-2xl md:text-3xl font-bold text-amber-400">
-                        <div className="line-through text-stone-500 text-sm md:text-base opacity-70 mb-1">
+                      <div className="text-2xl md:text-3xl font-bold text-black">
+                        <div className="line-through text-zinc-500 text-sm md:text-base opacity-70 mb-1">
                           {pkg === 'standar' ? 'Rp 1.200.000' : pkg === 'prof' ? 'Rp 4.800.000' : 'Rp 12.000.000'}
                         </div>
                         {formatPrice(packagePrices[pkg as keyof typeof packagePrices].annual)}
-                        <span className="text-sm text-stone-400 font-normal">/tahun</span>
+                        <span className="text-sm text-zinc-600 font-normal">/tahun</span>
                       </div>
                     )}
                   </div>
@@ -425,15 +440,15 @@ function SubscriptionSection() {
                   {features.map((feature, index) => {
                     const isEnabled = enabledFeatures[pkg as keyof typeof enabledFeatures][index]
                     return (
-                      <div key={index} className="flex items-start gap-3 text-stone-300">
+                      <div key={index} className="flex items-start gap-3 text-zinc-600">
                         <div
                           className={`mt-0.5 w-5 h-5 min-w-[1.25rem] rounded-full flex items-center justify-center ${
-                            isEnabled ? 'bg-green-500/20' : 'bg-red-500/20'
+                            isEnabled ? 'bg-black/10' : 'bg-transparent border border-zinc-300'
                           }`}
                         >
-                          {isEnabled ? <Check className="w-3 h-3 text-green-400" /> : <X className="w-3 h-3 text-red-400" />}
+                          {isEnabled ? <Check className="w-3 h-3 text-black" /> : <X className="w-3 h-3 text-zinc-400" />}
                         </div>
-                        <span className={`text-sm text-left ${isEnabled ? 'text-stone-300' : 'text-stone-500'}`}>
+                        <span className={`text-sm text-left ${isEnabled ? 'text-black font-medium' : 'text-zinc-400'}`}>
                           {renderFeatureText(feature[pkg as keyof typeof feature])}
                         </span>
                       </div>
@@ -441,7 +456,8 @@ function SubscriptionSection() {
                   })}
                 </div>
 
-                <button
+                {/* UPDATE: TOMBOL DENGAN EFEK GOOEY */}
+                <motion.button
                   onClick={() =>
                     window.open(
                       `https://wa.me/628131415160?text=Halo, saya ingin membeli paket ${
@@ -450,16 +466,19 @@ function SubscriptionSection() {
                       '_blank'
                     )
                   }
+                  whileHover={{ scale: 1.05 }} // Scale saat hover
+                  whileTap={{ scale: 0.9 }} // Squish saat di-klik
+                  // Fisika Spring untuk efek "Gooey/Jelly"
+                  transition={{ type: "spring", stiffness: 350, damping: 15 }}
                   className="
-                    w-full bg-gradient-to-r from-amber-500 to-amber-600 
-                    hover:from-amber-600 hover:to-amber-700 
+                    w-full bg-black hover:bg-zinc-800 
                     text-white font-semibold py-3 px-4 rounded-xl 
-                    transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30
-                    transform hover:-translate-y-0.5 active:scale-95 text-sm
+                    shadow-md hover:shadow-xl hover:shadow-black/30
+                    text-sm
                   "
                 >
                   Pilih {pkg === 'standar' ? 'Standard' : pkg === 'prof' ? 'Professional' : 'Exclusive'}
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           ))}
@@ -478,12 +497,12 @@ function ProyekKamiSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight"
         >
           Proyek
-          <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">Kami</span>
+          <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">Kami</span>
         </motion.h2>
-        <p className="text-xl text-stone-300 max-w-3xl mx-auto">
+        <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
           Berbagai proyek yang telah kami kerjakan untuk membantu transformasi digital bisnis dan institusi
         </p>
       </div>
@@ -502,10 +521,10 @@ function KKNKUSection() {
     >
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
-          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(245, 158, 11, 0.55)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative bg-neutral-900/60 backdrop-blur-sm border border-white/5 hover:border-amber-500/30 rounded-3xl p-8 overflow-hidden order-2 lg:order-1"
+          whileHover={{ y: -14, scale: 1.045, boxShadow: '0 22px 45px -12px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative bg-[#f3f7e6] border border-zinc-200 hover:border-zinc-900 rounded-3xl p-8 overflow-hidden order-2 lg:order-1 shadow-sm"
         >
-          <div className="bg-neutral-800/50 rounded-2xl p-10 text-center relative z-10">
+          <div className="bg-transparent rounded-2xl p-10 text-center relative z-10 border border-transparent">
 
             <div className="w-32 h-32 mx-auto mb-6 transition-transform duration-150 group-hover:scale-120 group-hover:-rotate-3">
               <Image
@@ -518,10 +537,10 @@ function KKNKUSection() {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-amber-200">
+            <h3 className="text-2xl font-bold text-black mb-2 transition-colors duration-150 group-hover:text-zinc-800">
               KKNKU
             </h3>
-            <p className="text-stone-400 transition-colors duration-150 group-hover:text-stone-100">
+            <p className="text-zinc-600 transition-colors duration-150 group-hover:text-zinc-800">
               Kuliah Kerja Nyata Universitas Khairun
             </p>
           </div>
@@ -532,32 +551,32 @@ function KKNKUSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(245, 158, 11, 0.4)', transition: { duration: 0.14, ease: 'easeOut' } }}
-            className="group relative inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2"
+            whileHover={{ y: -4, scale: 1.02, boxShadow: '0 8px 20px -6px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+            className="group relative inline-flex items-center gap-2 bg-zinc-100 border border-zinc-200 rounded-full px-4 py-2"
           >
-            <Smartphone className="w-4 h-4 text-amber-400 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-            <span className="text-amber-400 text-sm font-medium transition-colors duration-150 group-hover:text-amber-200">
+            <Smartphone className="w-4 h-4 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <span className="text-black text-sm font-medium transition-colors duration:150">
               Manajemen KKN
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white">KKNKU</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-black">KKNKU</h2>
 
-          <p className="text-lg text-stone-300 leading-relaxed">
+          <p className="text-lg text-zinc-600 leading-relaxed">
             Website manajemen Kuliah Kerja Nyata (KKN) untuk Universitas Khairun Ternate. Sistem terintegrasi untuk mengelola pendaftaran KKN, pengurusan berkas, dan pemilihan lokasi KKN dengan mudah dan terorganisir.
           </p>
 
           <div className="space-y-3">
-            <div className="flex items-center gap-3 text-stone-300">
-              <Shield className="w-5 h-5 text-amber-400" />
+            <div className="flex items-center gap-3 text-zinc-600">
+              <Shield className="w-5 h-5 text-black" />
               <span>Pendaftaran dan verifikasi mahasiswa</span>
             </div>
-            <div className="flex items-center gap-3 text-stone-300">
-              <Zap className="w-5 h-5 text-amber-400" />
+            <div className="flex items-center gap-3 text-zinc-600">
+              <Zap className="w-5 h-5 text-black" />
               <span>Manajemen berkas dan dokumen KKN</span>
             </div>
-            <div className="flex items-center gap-3 text-stone-300">
-              <Smartphone className="w-5 h-5 text-amber-400" />
+            <div className="flex items-center gap-3 text-zinc-600">
+              <Smartphone className="w-5 h-5 text-black" />
               <span>Pemilihan dan pengelolaan lokasi KKN</span>
             </div>
           </div>
@@ -580,9 +599,9 @@ function TrustedPartnersSection() {
   ]).flat()
 
   return (
-    <section className="py-10 border-y border-white/5 bg-neutral-900/30 overflow-hidden">
+    <section className="py-10 border-y border-zinc-200 bg-white overflow-hidden">
       <div className="container mx-auto px-4 mb-6 text-center">
-         <p className="text-sm text-stone-500 uppercase tracking-widest font-medium">CLINET KAMUNARA</p>
+         <p className="text-sm text-zinc-400 uppercase tracking-widest font-medium">CLINET KAMUNARA</p>
       </div>
       
       {/* Container Marquee with optional fading mask */}
@@ -601,7 +620,7 @@ function TrustedPartnersSection() {
           {[...logos, ...logos].map((logo, index) => (
             <div 
               key={index} 
-              className="relative group flex items-center justify-center h-20 md:h-28 w-48 md:w-72 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer"
+              className="relative group flex items-center justify-center h-20 md:h-28 w-48 md:w-72 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer"
             >
               <Image
                 src={logo.src}
@@ -625,21 +644,21 @@ function ClientTitleSection() {
   return (
     <div className="container mx-auto px-4 pt-20 pb-8 text-center">
        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+         initial={{ opacity: 0, y: 20 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true }}
+         transition={{ duration: 0.6 }}
        >
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-            <MapPin className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-sm font-medium">Jangkauan Kami</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Mitra & Persebaran <span className="text-amber-500">Klien</span>
-          </h2>
-          <p className="text-stone-400 max-w-2xl mx-auto">
-            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
-          </p>
+         <div className="inline-flex items-center gap-2 bg-zinc-100 border border-zinc-200 rounded-full px-4 py-2 mb-6">
+           <MapPin className="w-4 h-4 text-black" />
+           <span className="text-black text-sm font-medium">Jangkauan Kami</span>
+         </div>
+         <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+           Mitra & Persebaran <span className="text-zinc-500">Klien</span>
+         </h2>
+         <p className="text-zinc-500 max-w-2xl mx-auto">
+           Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
+         </p>
        </motion.div>
     </div>
   )
@@ -647,12 +666,12 @@ function ClientTitleSection() {
 
 const ClientMap = dynamic(() => import('@/components/ClientMap'), {
   ssr: false,
-  loading: () => <div className="h-[400px] md:h-[600px] bg-stone-800 rounded-2xl flex items-center justify-center text-stone-400">Memuat peta interaktif...</div>
+  loading: () => <div className="h-[400px] md:h-[600px] bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-400">Memuat peta interaktif...</div>
 })
 
 function ClientMapSection() {
   return (
-    <div className="h-[500px] sm:h-[600px] lg:h-[700px] w-full rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
+    <div className="h-[500px] sm:h-[600px] lg:h-[700px] w-full rounded-2xl overflow-hidden border border-zinc-200 shadow-sm bg-zinc-50">
       <ClientMap markers={clientLocations} />
     </div>
   )
@@ -680,12 +699,12 @@ function StatisticsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: i * 0.1 }}
-          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(255, 255, 255, 0.35)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative p-6 bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:border-white/30 text-center overflow-hidden rounded-2xl"
+          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative p-6 bg-[#f7f9ed] border border-zinc-200 hover:border-zinc-900 text-center overflow-hidden rounded-2xl shadow-sm"
         >
-          <stat.icon className="w-8 h-8 text-white mx-auto mb-3 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
-          <div className="text-3xl font-bold text-white mb-2 transition-colors duration-150 group-hover:text-white">{stat.value}</div>
-          <p className="text-stone-300 text-sm transition-colors duration-150 group-hover:text-stone-100">{stat.label}</p>
+          <stat.icon className="w-8 h-8 text-black mx-auto mb-3 transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+          <div className="text-3xl font-bold text-black mb-2 transition-colors duration:150 group-hover:text-black">{stat.value}</div>
+          <p className="text-zinc-600 text-sm transition-colors duration:150 group-hover:text-black">{stat.label}</p>
         </motion.div>
       ))}
     </motion.div>
@@ -702,37 +721,37 @@ function InstitutionsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(255, 255, 255, 0.35)', transition: { duration: 0.14, ease: 'easeOut' } }}
-          className="group relative bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:border-white/30 rounded-2xl p-6 overflow-hidden"
+          whileHover={{ y: -8, scale: 1.02, boxShadow: '0 12px 30px -8px rgba(0, 0, 0, 0.1)', transition: { duration: 0.14, ease: 'easeOut' } }}
+          className="group relative bg-[#f7f9ed] border border-zinc-200 hover:border-zinc-900 rounded-2xl p-6 overflow-hidden shadow-sm"
         >
           <div className="flex items-center gap-3 mb-4 relative z-10">
-            <div className="bg-white/10 rounded-xl p-3">
-              <Building2 className="w-6 h-6 text-white transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
+            <div className="bg-white/50 rounded-xl p-3">
+              <Building2 className="w-6 h-6 text-black transition-transform duration-150 group-hover:scale-110 group-hover:-rotate-3" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white transition-colors duration-150 group-hover:text-white">{instansi.name}</h3>
-              <p className="text-stone-400 text-sm flex items-center gap-1 transition-colors duration-150 group-hover:text-stone-100">
-                <MapPin className="w-3 h-3 text-white" /> {instansi.location}
+              <h3 className="text-xl font-bold text-black transition-colors duration:150 group-hover:text-black">{instansi.name}</h3>
+              <p className="text-zinc-600 text-sm flex items-center gap-1 transition-colors duration:150 group-hover:text-black">
+                <MapPin className="w-3 h-3 text-black" /> {instansi.location}
               </p>
             </div>
           </div>
           <div className="mb-4 relative z-10">
-            <span className="inline-block bg-white/10 text-white text-sm px-3 py-1 rounded-full transition-colors duration-150 group-hover:bg-white/20 group-hover:text-white">
+            <span className="inline-block bg-white/60 text-black text-sm px-3 py-1 rounded-full transition-colors duration:150 group-hover:bg-white group-hover:text-black">
               {instansi.product}
             </span>
           </div>
-          <p className="text-stone-300 mb-4 relative z-10 transition-colors duration-150 group-hover:text-stone-100">
+          <p className="text-zinc-600 mb-4 relative z-10 transition-colors duration:150 group-hover:text-black">
             {instansi.description}
           </p>
-          <div className="border-t border-stone-700 pt-4 relative z-10">
-            <h4 className="text-white text-sm font-medium mb-3 transition-colors duration-150 group-hover:text-white">
+          <div className="border-t border-zinc-200 pt-4 relative z-10">
+            <h4 className="text-black text-sm font-medium mb-3 transition-colors duration:150 group-hover:text-black">
               Aplikasi yang Digunakan:
             </h4>
             <div className="flex flex-wrap gap-2">
               {instansi.applications.map((app, i) => (
                 <span
                   key={i}
-                  className="bg-neutral-800 text-stone-300 text-xs px-2 py-1 rounded transition-colors duration-150 group-hover:bg-neutral-700 group-hover:text-stone-100"
+                  className="bg-white/60 text-zinc-700 text-xs px-2 py-1 rounded transition-colors duration:150 group-hover:bg-white group-hover:text-black"
                 >
                   {app}
                 </span>
@@ -751,11 +770,9 @@ export default function ProdukPage() {
   return (
     <>
       <Navbar />
-      <main className="relative pt-32 min-h-screen bg-neutral-950 overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
+      <main className="relative pt-32 min-h-screen bg-white overflow-hidden">
+        {/* Background Gradients - Subtle Light Gradients */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-white to-white pointer-events-none" />
 
         <div className="relative z-10 pb-12">
           
@@ -794,14 +811,14 @@ export default function ProdukPage() {
 
                 {/* --- BAGIAN BARU: CLIENT MAP & LIST --- */}
                 <section className="px-4 pb-16">
-                   {/* JUDUL BARU SEBELUM CLIENT */}
-                   <ClientTitleSection />
+                    {/* JUDUL BARU SEBELUM CLIENT */}
+                    <ClientTitleSection />
 
-                   <div className="container mx-auto">
+                    <div className="container mx-auto">
                       <ClientMapSection />
                       <StatisticsSection />
                       <InstitutionsSection />
-                   </div>
+                    </div>
                 </section>
                 {/* CONTENT SECTION END */}
 
@@ -813,14 +830,46 @@ export default function ProdukPage() {
               </motion.div>
             )}
           </AnimatePresence>
+        </div> {/* Menutup div wrapper 'pb-12' sebelumnya agar section hitam di bawahnya bisa full-width dan mentok ke footer */}
 
-          <CTA
-            title={activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPos?"}
-            description="Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat"
-            buttonText="Hubungi Kami"
-            href="/kontak"
-          />
-        </div>
+        {/* SECTION BARU: CTA FULL WIDTH BLACK (Tanpa Kotak Kartu) */}
+        <section className="relative w-full bg-black py-24 px-4 text-center mt-20">
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <motion.h2 
+              key={activeView} // Re-animate on view change
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-white mb-6"
+            >
+              {activeView === 'list' ? "Tertarik dengan Produk Kami?" : "Siap Menggunakan PIPos?"}
+            </motion.h2>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-10"
+            >
+              Diskusikan kebutuhan bisnis Anda dengan tim kami dan temukan solusi yang tepat
+            </motion.p>
+            
+            <motion.a 
+              href="/kontak"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-white text-black font-bold py-4 px-12 rounded-full hover:bg-zinc-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+            >
+              Hubungi Kami
+            </motion.a>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>
