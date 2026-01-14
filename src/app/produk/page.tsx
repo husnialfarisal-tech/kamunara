@@ -61,7 +61,7 @@ const institutions = [
   { name: "Toko Sembako", location: "Sofifi, Halmahera", product: "PIPos", description: "Sistem kasir terintegrasi untuk toko kebutuhan pokok guna mempermudah transaksi dan monitoring stok barang.", applications: ["Kasir Toko", "Manajemen Stok", "Laporan Bulanan", "Manajemen Harga"] },
   { name: "Toko Peralatan", location: "Tobelo, Halmahera Utara", product: "PIPos", description: "Sistem kasir untuk toko peralatan dengan dukungan pencatatan item besar, stok gudang, dan laporan penjualan.", applications: ["Kasir Peralatan", "Manajemen Gudang", "Laporan Penjualan", "Manajemen Produk"] },
   { name: "Jati Mart", location: "Buli, Halmahera Timur", product: "PIPos", description: "Aplikasi kasir untuk minimarket yang mendukung transaksi cepat, stok otomatis, dan laporan keuangan.", applications: ["Kasir Minimarket", "Manajemen Stok", "Laporan Keuangan", "Manajemen User"] },
-  { name: "Universitas Khairun", location: "Ternate", product: "PIPos & KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
+  { name: "Universitas Khairun", location: "Ternate", product: "KKNKU", description: "Sistem terintegrasi untuk manajemen kasir universitas dan website KKN - mengelola pembayaran mahasiswa dan program Kuliah Kerja Nyata", applications: ["Kasir Universitas", "Pendaftaran KKN", "Berkas Mahasiswa", "Manajemen Lokasi"] }
 ]
 
 // ============================================
@@ -648,14 +648,18 @@ function ClientTitleSection() {
          viewport={{ once: true }}
          transition={{ duration: 0.6 }}
        >
-         <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-           <MapPin className="w-4 h-4 text-amber-400" />
-           <span className="text-amber-400 text-sm font-medium">Jangkauan Kami</span>
+        <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
+           {/* Icon diubah jadi text-black */}
+           <MapPin className="w-4 h-4 text-black" />
+           {/* Teks Badge diubah jadi text-black */}
+           <span className="text-black text-sm font-medium">Jangkauan Kami</span>
          </div>
-         <h2 className="text-4xl md:text-5xl font-bold font-heading text-black mb-4">
-           Mitra & Persebaran <span className="text-amber-500">Klien</span>
+         <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+           {/* Span Klien diubah jadi text-black */}
+           Mitra & Persebaran <span className="text-black">Klien</span>
          </h2>
-         <p className="text-zinc-600 max-w-2xl mx-auto">
+         {/* Paragraf diubah jadi text-black */}
+         <p className="text-black max-w-2xl mx-auto">
            Bisnis dan institusi yang telah mempercayakan operasional mereka menggunakan sistem PIPos di berbagai wilayah.
          </p>
        </motion.div>

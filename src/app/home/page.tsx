@@ -70,8 +70,8 @@ export default function HomePage() {
           <section className="relative w-full bg-white overflow-hidden pb-32">
             
             <div className="text-center py-10">
-               {/* Label kecil menggunakan font-sans agar terbaca jelas & rapi */}
-               <p className="text-amber-600 text-[10px] md:text-xs tracking-[0.5em] uppercase font-bold font-sans">
+               {/* Judul diubah menjadi text-black (Hitam) */}
+               <p className="text-black text-[10px] md:text-xs tracking-[0.5em] uppercase font-bold font-serif">
                  Featured Products
                </p>
             </div>
@@ -91,7 +91,8 @@ export default function HomePage() {
                     transition: { duration: 0.2, ease: 'circOut' }
                   }}
                   className="group relative w-full border-y border-zinc-200 overflow-hidden bg-gradient-to-br from-[#dbe8e2] to-[#c4dcd3]"
-                >
+                >        
+                  {/* --- BACKGROUND IMAGE LAYER --- */}
                   <div className="absolute inset-0 z-0">
                     <img 
                       src={item.bgImage} 
