@@ -89,17 +89,15 @@ export default function Navbar() {
                 style={{ 
                   scale: isHomePage ? logoScale : 0.7,
                   y: isHomePage ? logoY : 0,
-                  // --- TRIK TEBAL MANUAL ---
-                  // 0.8px cukup untuk membuatnya terlihat 'berisi' tanpa jadi Bold.
-                  // Jika masih kurang tebal, ubah 0.8px jadi 1px.
-                  WebkitTextStroke: '1.9px black', 
+                  WebkitTextStroke: '1.9px black',
+                  fontFamily: 'var(--font-garet)',
                 }}
-                // Kita kembalikan ke font-normal (tipis), lalu ditebalkan paksa oleh stroke di atas
-                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-normal font-brand"
+                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-normal"
               >
-                 KAMUNARA
+                KAMUNARA
               </motion.div>
             </Link>
+
           </div>
 
           {/* ================= ICONS SECTION (KANAN) ================= */}
