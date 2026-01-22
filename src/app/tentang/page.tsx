@@ -31,11 +31,16 @@ const values = [
 const teamMembers = [
   { role: 'Manajer', name: 'Nama Manajer', image: '/images/manager.jpg', desc: 'Leading the Vision & Strategy. Bertanggung jawab atas arah keseluruhan perusahaan.' },
   { role: 'Supervisor', name: 'Nama Supervisor', image: '/images/manager.jpg', desc: 'Operational Excellence. Memastikan setiap proyek berjalan sesuai timeline dan kualitas.' },
+  // PERUBAHAN DI SINI: Menggunakan \n untuk baris baru
+  { role: 'Supervisor\nConsultant Business', name: 'Nama Supervisor', image: '/images/manager.jpg', desc: 'Operational Excellence. Memastikan setiap proyek berjalan sesuai timeline dan kualitas.' },
   { role: 'Finance', name: 'Nama Finance', image: '/images/manager.jpg', desc: 'Financial Health. Mengelola kesehatan finansial dan perencanaan anggaran strategis.' },
-  { role: 'Digital Program', name: 'Nama Programmer', image: '/images/manager.jpg', desc: 'Tech Innovation. Arsitek di balik solusi digital dan pengembangan sistem.' },
-  { role: 'Sales Marketing 1', name: 'Nama Sales 1', image: '/images/manager.jpg', desc: 'Market Expansion. Membuka peluang pasar baru dan menjalin kemitraan strategis.' },
-  { role: 'Sales Marketing 2', name: 'Nama Sales 2', image: '/images/manager.jpg', desc: 'Client Relations. Menjaga hubungan erat dan kepuasan klien jangka panjang.' },
-  { role: 'Sales Marketing 3', name: 'Nama Sales 3', image: '/images/manager.jpg', desc: 'Growth Specialist. Fokus pada strategi pertumbuhan penjualan dan akuisisi.' },
+  { role: 'IT Development', name: 'Nama Programmer', image: '/images/manager.jpg', desc: 'Tech Innovation. Arsitek di balik solusi digital dan pengembangan sistem.' },
+  { role: 'IT Development', name: 'Nama Sales 1', image: '/images/manager.jpg', desc: 'Market Expansion. Membuka peluang pasar baru dan menjalin kemitraan strategis.' },
+  { role: 'IT Development', name: 'Nama Sales 2', image: '/images/manager.jpg', desc: 'Client Relations. Menjaga hubungan erat dan kepuasan klien jangka panjang.' },
+  { role: 'IT Development', name: 'Nama Sales 3', image: '/images/manager.jpg', desc: 'Growth Specialist. Fokus pada strategi pertumbuhan penjualan dan akuisisi.' },
+  { role: 'Consultant Business', name: 'Nama Sales 3', image: '/images/manager.jpg', desc: 'Growth Specialist. Fokus pada strategi pertumbuhan penjualan dan akuisisi.' },
+  { role: 'Consultant Business', name: 'Nama Sales 3', image: '/images/manager.jpg', desc: 'Growth Specialist. Fokus pada strategi pertumbuhan penjualan dan akuisisi.' },
+  { role: 'Consultant Business', name: 'Nama Sales 3', image: '/images/manager.jpg', desc: 'Growth Specialist. Fokus pada strategi pertumbuhan penjualan dan akuisisi.' },
 ]
 
 export default function TentangPage() {
@@ -305,7 +310,11 @@ export default function TentangPage() {
                            <span className="inline-block px-3 py-1 bg-white border border-zinc-200 text-zinc-500 text-xs font-bold tracking-wider uppercase rounded-full mb-3 shadow-sm">
                              {member.role === 'Manajer' ? 'Leadership' : 'Team Member'}
                            </span>
-                           <h3 className="text-3xl md:text-5xl font-bold text-black mb-2 group-hover:text-zinc-600 transition-colors duration-300">
+                           {/* PERUBAHAN DI SINI: Menambahkan style whiteSpace: 'pre-line' agar \n terbaca */}
+                           <h3 
+                             style={{ whiteSpace: 'pre-line' }}
+                             className="text-3xl md:text-5xl font-bold text-black mb-2 group-hover:text-zinc-600 transition-colors duration-300"
+                           >
                              {member.role}
                            </h3>
                         </div>
@@ -319,30 +328,30 @@ export default function TentangPage() {
 
                     {/* --- CIRCLE IMAGE (RIGHT) --- */}
                     <div className="order-1 md:order-2 shrink-0">
-                       <motion.div 
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                          className="relative w-64 h-64 md:w-80 md:h-80 rounded-full"
-                       >
-                          {/* Container Foto Bersih (Tanpa Background Abu Default) */}
-                          <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 border border-zinc-100 bg-white">
-                             <Image 
-                                src={member.image} 
-                                alt={member.role}
-                                fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-110"
-                                style={{ objectPosition: 'center 20%' }}
-                             />
-                             
-                             {/* Overlay Halus saat Hover */}
-                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500 pointer-events-none" />
-                          </div>
-                          
-                          {/* Floating Decor (Animated) */}
-                          <div className="absolute -bottom-2 -right-2 w-14 h-14 bg-white text-black border border-zinc-100 rounded-full flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100 z-10">
-                             <ArrowRight className="w-6 h-6 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                          </div>
-                       </motion.div>
+                        <motion.div 
+                           whileHover={{ scale: 1.05 }}
+                           transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                           className="relative w-64 h-64 md:w-80 md:h-80 rounded-full"
+                        >
+                           {/* Container Foto Bersih (Tanpa Background Abu Default) */}
+                           <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 border border-zinc-100 bg-white">
+                              <Image 
+                                 src={member.image} 
+                                 alt={member.role}
+                                 fill
+                                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-110"
+                                 style={{ objectPosition: 'center 20%' }}
+                              />
+                              
+                              {/* Overlay Halus saat Hover */}
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500 pointer-events-none" />
+                           </div>
+                           
+                           {/* Floating Decor (Animated) */}
+                           <div className="absolute -bottom-2 -right-2 w-14 h-14 bg-white text-black border border-zinc-100 rounded-full flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100 z-10">
+                              <ArrowRight className="w-6 h-6 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                           </div>
+                        </motion.div>
                     </div>
 
                  </motion.div>
@@ -399,54 +408,54 @@ export default function TentangPage() {
                   
                     {/* TIKTOK BUTTON */}
                     <motion.div
-                     whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
-                     className="group relative"
-                   >
-                     <Link
-                       href="https://www.tiktok.com/@kamunara.group"
-                       target="_blank"
-                       className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
-                     >
-                       <svg className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" viewBox="0 0 24 24" fill="currentColor">
-                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.9-.39-2.81-.12-.9.24-1.72.88-2.14 1.71-.49.95-.44 2.18.14 3.07.45.75 1.2 1.29 2.05 1.48.85.19 1.75.06 2.5-.37.53-.3.91-.77 1.13-1.32.13-.39.18-.79.18-1.2V.02z"/>
-                       </svg>
-                       <span className="font-bold">TikTok</span>
-                     </Link>
-                   </motion.div>
+                      whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
+                      className="group relative"
+                    >
+                      <Link
+                        href="https://www.tiktok.com/@kamunara.group"
+                        target="_blank"
+                        className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
+                      >
+                        <svg className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.9-.39-2.81-.12-.9.24-1.72.88-2.14 1.71-.49.95-.44 2.18.14 3.07.45.75 1.2 1.29 2.05 1.48.85.19 1.75.06 2.5-.37.53-.3.91-.77 1.13-1.32.13-.39.18-.79.18-1.2V.02z"/>
+                        </svg>
+                        <span className="font-bold">TikTok</span>
+                      </Link>
+                    </motion.div>
 
-                   {/* INSTAGRAM BUTTON */}
-                   <motion.div
-                     whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
-                     className="group relative"
-                   >
-                     <Link
-                       href="https://www.instagram.com/kamunara.group"
-                       target="_blank"
-                       className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
-                     >
-                       <svg className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                         <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                       </svg>
-                       <span className="font-bold">Instagram</span>
-                     </Link>
-                   </motion.div>
+                    {/* INSTAGRAM BUTTON */}
+                    <motion.div
+                      whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
+                      className="group relative"
+                    >
+                      <Link
+                        href="https://www.instagram.com/kamunara.group"
+                        target="_blank"
+                        className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
+                      >
+                        <svg className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                        </svg>
+                        <span className="font-bold">Instagram</span>
+                      </Link>
+                    </motion.div>
 
-                   {/* FACEBOOK BUTTON */}
-                   <motion.div
-                     whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
-                     className="group relative"
-                   >
-                     <Link
-                       href="https://www.facebook.com/share/g/17gbQKDK8M/?mibextid=wwXIfr"
-                       target="_blank"
-                       className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
-                     >
-                       <Facebook className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
-                       <span className="font-bold">Facebook</span>
-                     </Link>
-                   </motion.div>
+                    {/* FACEBOOK BUTTON */}
+                    <motion.div
+                      whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.14 } }}
+                      className="group relative"
+                    >
+                      <Link
+                        href="https://www.facebook.com/share/g/17gbQKDK8M/?mibextid=wwXIfr"
+                        target="_blank"
+                        className="relative z-10 flex items-center gap-3 px-8 py-4 bg-white text-black border border-zinc-200 rounded-full hover:bg-zinc-100 transition-all shadow-md"
+                      >
+                        <Facebook className="w-5 h-5 transition-transform duration-150 group-hover:scale-125 group-hover:-rotate-3" />
+                        <span className="font-bold">Facebook</span>
+                      </Link>
+                    </motion.div>
                 </div>
               </motion.div>
             </div>
