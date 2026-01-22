@@ -78,9 +78,9 @@ function HeroSection() {
           transition={{ duration: 0.7 }}
           className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
         >
-          Produk
+          PRODUK
           <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">
-            Kami
+            KAMI
           </span>
         </motion.h1>
         <p className="text-xl text-black max-w-3xl mx-auto">
@@ -498,8 +498,8 @@ function ProyekKamiSection() {
           transition={{ duration: 0.7 }}
           className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
         >
-          Proyek
-          <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">Kami</span>
+          PROYEK
+          <span className="block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent">KAMI</span>
         </motion.h2>
         <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
           Berbagai proyek yang telah kami kerjakan untuk membantu transformasi digital bisnis dan institusi

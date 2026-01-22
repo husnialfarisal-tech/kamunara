@@ -111,9 +111,9 @@ export default function TentangPage() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
                 className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
               >
-                Tentang
+                TENTANG
                 <span className="block bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 bg-clip-text text-transparent">
-                  Kamunara
+                  KAMUNARA
                 </span>
               </motion.h1>
               <motion.p 

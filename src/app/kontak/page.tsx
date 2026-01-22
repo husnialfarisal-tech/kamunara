@@ -121,7 +121,7 @@ export default function KontakPage() {
                 >
                   <div>
                     <h2 className="text-3xl md:text-4xl font-bold font-heading text-black mb-4">
-                      Informasi Kontak
+                      INFORMASI KONTAK
                     </h2>
                     <p className="text-zinc-600 text-lg">
                       Pilih channel yang paling mudah untuk Anda
