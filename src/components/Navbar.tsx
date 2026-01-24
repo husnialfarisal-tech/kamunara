@@ -86,13 +86,14 @@ export default function Navbar() {
             {/* 2. TEKS LOGO (MENGGUNAKAN GARET) */}
             <Link href="/" className="relative block z-20">
               <motion.div
-                style={{ 
+                style={{
                   scale: isHomePage ? logoScale : 0.7,
                   y: isHomePage ? logoY : 0,
                   WebkitTextStroke: '1.9px black',
-                  fontFamily: 'var(--font-garet)',
+                  fontFamily: 'var(--font-brand)',
+                  fontWeight: 400,
                 }}
-                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl font-normal"
+                className="text-black tracking-widest uppercase origin-center whitespace-nowrap text-3xl md:text-5xl"
               >
                 KAMUNARA
               </motion.div>

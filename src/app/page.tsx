@@ -72,12 +72,17 @@ export default function LandingPage() {
                 className="inline-flex items-center gap-2 bg-[#f7f9ed] border border-[#c4dcd3] backdrop-blur-md rounded-full px-5 py-2 shadow-sm"
               >
                 <Sparkles className="w-4 h-4 text-[#b5d5d0] animate-pulse" />
-                <span className="text-[#5d7063] text-sm font-bold tracking-wide">
+                <span className="text-[#5d7063] text-sm tracking-wide font-bold"
+                style={{
+                fontFamily: 'var(--font-brand)',
+                fontWeight: 400
+                }}
+                >
                   KAMUNARA
                 </span>
               </motion.div>
 
-              <h1 className="font-heading text-5xl md:text-7xl font-normal text-black leading-tight tracking-tight">
+              <h1 className="font-heading text-5xl md:text-7xl font-bold text-black leading-tight tracking-tight">
                 Transformasi
                 <span className="block bg-gradient-to-r from-[#5d7063] via-[#7d9184] to-[#b5d5d0] bg-clip-text text-transparent">
                   Digital Anda
@@ -93,37 +98,39 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-5 pt-4">
                 <Link href="/home">
                   <motion.button
-                    whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(181, 213, 208, 0.4)" }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 15px 30px -5px rgba(20, 156, 136, 0.4)" }}
                     whileTap={{ scale: 0.97 }}
-                    // Tombol utama menggunakan warna Teal/Mint yang lebih gelap agar kontras
+                    // UPDATE: Warna tombol "Meluncur" sekarang Deep Teal solid (#149c88)
                     className="
-                      bg-[#b5d5d0] hover:bg-[#9cadb0]
-                      text-white font-bold
+                      bg-[#149c88] hover:bg-[#118a78]
+                      text-white font-bold tracking-wide
                       px-8 py-4 rounded-xl
                       flex items-center gap-3
-                      shadow-lg shadow-[#b5d5d0]/20
-                      transition-all border border-[#b5d5d0]
+                      sfhadow-xl shadow-[#149c88]/20
+                      transition-all border border-[#149c88]
                     "
                   >
                     Meluncur
-                    <Rocket className="w-5 h-5" />
+                    {/* Icon roket sedikit diputar agar dinamis */}
+                    <Rocket className="w-5 h-5 fill-white/20" />
                   </motion.button>
                 </Link>
 
                 <Link href="/tentang">
                   <motion.button
-                    whileHover={{ scale: 1.03, borderColor: "[#5d7063]", color: "[#5d7063]" }}
+                    whileHover={{ scale: 1.03, backgroundColor: "rgba(45, 59, 52, 0.05)" }}
                     whileTap={{ scale: 0.97 }}
+                    // UPDATE: Warna tombol "Pelajari" border gelap (#2d3b34) agar kontrasnya tajam
                     className="
-                      border border-zinc-300 hover:border-[#5d7063]
-                      text-zinc-600 hover:text-[#5d7063] font-bold
+                      border-2 border-[#2d3b34]/80 hover:border-[#2d3b34]
+                      text-[#2d3b34] font-bold tracking-wide
                       px-8 py-4 rounded-xl
                       flex items-center gap-3
-                      transition-colors backdrop-blur-sm bg-white
+                      transition-colors bg-transparent
                     "
                   >
                     Pelajari Lebih Lanjut
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-5 h-5 stroke-[3px]" />
                   </motion.button>
                 </Link>
               </div>
@@ -219,7 +226,12 @@ export default function LandingPage() {
                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                      className="h-12 w-[1px] bg-[#c4dcd3]/60 origin-top"
                    />
-                   <span className="text-[10px] uppercase tracking-[0.4em] text-[#5d7063] font-mono font-bold">
+                   <span className="text-[10px] uppercase tracking-[0.4em] text-[#5d7063] font-bold"
+                    style={{
+                    fontFamily: 'var(--font-brand)',
+                    fontWeight: 400
+                    }}
+                      >
                      KAMUNARA
                    </span>
                  </div>

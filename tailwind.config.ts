@@ -13,13 +13,13 @@ const config: Config = {
     extend: {
         fontFamily: {
             // Body text (Paragraf) -> GLAMORE
-            sans: ["var(--font-glamore)", "sans-serif"],
+            sans: ["var(--font-sans)", "sans-serif"],
 
             // Heading (Judul Besar) -> GLAMORE
-            heading: ["var(--font-glamore)", "serif"],
+            heading: ["var(--font-heading)", "serif"],
 
             // Logo -> Garet
-            brand: ["var(--font-garet)", "sans-serif"],
+            brand: ["var(--font-brand)", "sans-serif"],
 
             mono: ["var(--font-mono)", "monospace"],
         },

@@ -61,13 +61,13 @@ export default function KontakPage() {
       } else {
         setFeedback({
           type: 'error',
-          message: data.message || 'Gagal mengirim pesan. Silakan coba lagi.'
+          message: data.message || 'Mohon maaf, untuk saat saat ini fitur ini belum bisa digunakan.'
         })
       }
     } catch {
       setFeedback({
         type: 'error',
-        message: 'Terjadi kesalahan. Silakan coba lagi nanti.'
+        message: 'Mohon maaf, untuk saat saat ini fitur ini belum bisa digunakan.'
       })
     } finally {
       setIsLoading(false)
@@ -95,13 +95,13 @@ export default function KontakPage() {
                 transition={{ duration: 0.7 }}
                 className="text-5xl md:text-7xl font-bold font-heading text-black mb-6 leading-tight"
               >
-                Hubungi
+                HUBUNGI
                 <span className="block bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 bg-clip-text text-transparent">
-                  Kami
+                  KAMI
                 </span>
               </motion.h1>
               <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
-                Kami siap membantu transformasi digital bisnis Anda. Pilih cara yang paling nyaman!
+                Kami siap membantu transformasi digital bisnis Anda. sesuai dengan kemauan anda
               </p>
             </div>
           </section>
