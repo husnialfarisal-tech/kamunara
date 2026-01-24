@@ -3,7 +3,7 @@ name: Deploy Kamunara to Hostinger
 on:
   push:
     branches:
-      - main  # <-- Kita kunci ke 'main' karena ini yang kode fix
+      - main  # <-- Kita kunci ke 'main' karena ini yang kode fix text
 
 jobs:
   web-deploy:
