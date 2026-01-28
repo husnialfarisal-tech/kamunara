@@ -9,7 +9,7 @@ import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/PageTransition";
 
 /* ===============================
-   A. BODY TEXT (PARAGRAF)
+  A. BODY TEXT (PARAGRAF)
 ================================ */
 const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -18,7 +18,7 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 /* ===============================
-   B. HEADING / JUDUL
+  B. HEADING / JUDUL
 ================================ */
 const glamore = localFont({
   src: [
@@ -33,7 +33,7 @@ const glamore = localFont({
 });
 
 /* ===============================
-   C. BRAND / LOGO
+  C. BRAND / LOGO
 ================================ */
 const garet = localFont({
   src: [
@@ -53,7 +53,7 @@ const garet = localFont({
 });
 
 /* ===============================
-   D. MONOSPACE / CODE
+  D. MONOSPACE / CODE
 ================================ */
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],

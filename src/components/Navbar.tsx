@@ -10,7 +10,7 @@ import { useState } from 'react'
 export default function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const isHomePage = pathname === '/' || pathname === '/home'
+  const isHomePage = ['/', '/home', '/home/'].includes(pathname)
   const { scrollY } = useScroll()
 
   // --- LOGIC ANIMASI NAVBAR ---
@@ -25,7 +25,7 @@ export default function Navbar() {
   // --- LOGIC ANIMASI LOGO TEKS (KAMUNARA) ---
   const logoScale = useTransform(scrollY, [0, 250], [1.5, 0.6])
   const logoY = useTransform(scrollY, [0, 250], [380, 0])
-   
+  
   // --- LOGIC ANIMASI LOGO GAMBAR ---
   const imgOpacity = useTransform(scrollY, [0, 150], [1, 0])
   const imgY = useTransform(scrollY, [0, 150], [60, 50])
@@ -33,7 +33,7 @@ export default function Navbar() {
 
   // --- LOGIC ICONS ---
   const iconsY = useTransform(scrollY, [0, 100], [35, 0])
-   
+
   const menuItems = [
     { href: '/home', label: 'Home', icon: <Home className="w-5 h-5" /> },
     { href: '/produk', label: 'Produk', icon: <ShoppingBag className="w-5 h-5" /> },
@@ -64,21 +64,23 @@ export default function Navbar() {
             {/* 1. GAMBAR LOGO (Hanya di Home) */}
             {isHomePage && (
               <motion.div
+                initial={{ opacity: 1, y: 60, scale: 1 }}
                 style={{
                   opacity: imgOpacity,
                   y: imgY,
                   scale: imgScale,
-                  pointerEvents: 'none'
+                  pointerEvents: 'none',
                 }}
                 className="absolute top-0 left-1/2 -translate-x-1/2 z-10"
               >
                 <div className="relative w-72 h-72 md:w-96 md:h-96">
-                   <Image 
-                     src="/images/kamunara_copy.png" 
-                     alt="Kamunara Logo"
-                     fill
-                     className="object-contain"
-                   />
+                  <Image 
+                    src="/images/kamunara_copy.png" 
+                    alt="Kamunara Logo"
+                    fill
+                    priority
+                    className="object-contain"
+                  />
                 </div>
               </motion.div>
             )}
@@ -110,27 +112,27 @@ export default function Navbar() {
             }}
             className="hidden md:flex items-center gap-6 md:w-1/3 justify-end"
           >
-             {menuItems.map((item) => {
-               const isActive = pathname === item.href
-               return (
-                 <Link key={item.href} href={item.href} className="group relative p-2">
-                   <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
-                     {item.icon}
-                     <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap font-brand font-normal">
-                       {item.label}
-                     </span>
-                   </div>
-                 </Link>
-               )
-             })}
+            {menuItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link key={item.href} href={item.href} className="group relative p-2">
+                  <div className={`flex flex-col items-center gap-1 ${isActive ? 'text-black' : 'text-stone-500 hover:text-black'} transition-colors duration-300`}>
+                    {item.icon}
+                    <span className="text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 absolute -bottom-4 transition-opacity duration-300 whitespace-nowrap font-brand font-normal">
+                      {item.label}
+                    </span>
+                  </div>
+                </Link>
+              )
+            })}
           </motion.div>
 
           {/* ================= MOBILE MENU BUTTON ================= */}
           <motion.div 
-             className="md:hidden absolute right-0 z-50"
-             animate={{ opacity: 1 }}
+            className="md:hidden absolute right-0 z-50"
+            animate={{ opacity: 1 }}
           >
-             <button
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-black focus:outline-none cursor-pointer hover:bg-stone-100 rounded-full transition-colors"
             >
@@ -183,9 +185,9 @@ export default function Navbar() {
               </div>
 
               <div className="mt-auto pt-10 border-t border-stone-100">
-                 <p className="text-xs text-stone-400 text-center tracking-widest font-brand font-normal">
-                   © 2025 KAMUNARA
-                 </p>
+                <p className="text-xs text-stone-400 text-center tracking-widest font-brand font-normal">
+                  © 2025 KAMUNARA
+                </p>
               </div>
             </motion.div>
           </>

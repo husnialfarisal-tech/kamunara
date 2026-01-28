@@ -150,7 +150,7 @@ export default function LandingPage() {
                 transition={{ rotate: { duration: 60, repeat: Infinity, ease: "linear" }, scale: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
                 className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-[#f3f7e6] rounded-[3rem] shadow-2xl z-10"
               />
-
+              
               {/* Layer 2: Floating Mint Circle (Middle) */}
               <motion.div
                 animate={{ rotate: -360, y: [0, -20, 0] }}
@@ -187,11 +187,11 @@ export default function LandingPage() {
               {/* THE CORE (Logo Container) - White Clean Glass */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-40">
                  {/* Card Container */}
-                 <motion.div
+                <motion.div
                     animate={{ y: [0, -5, 0] }} // Mild breathing effect
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="bg-white/90 backdrop-blur-md rounded-[2rem] p-6 md:p-8 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] border border-white/60 flex items-center justify-center relative overflow-hidden"
-                 >
+                >
                     {/* Decorative shine overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#f7f9ed]/20 to-transparent skew-x-12 pointer-events-none" />
 
@@ -209,7 +209,7 @@ export default function LandingPage() {
                         priority
                       />
                     </motion.div>
-                 </motion.div>
+                </motion.div>
               </div>
 
               {/* 4. BRAND TEXT (Floating at bottom) */}
@@ -219,22 +219,22 @@ export default function LandingPage() {
                 transition={{ delay: 1, duration: 0.8 }}
                 className="absolute bottom-0 z-30"
               >
-                 <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center gap-2">
                    {/* Connecting Line */}
-                   <motion.div 
-                     animate={{ scaleY: [0, 1, 0], opacity: [0, 0.8, 0] }}
-                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                     className="h-12 w-[1px] bg-[#c4dcd3]/60 origin-top"
-                   />
-                   <span className="text-[10px] uppercase tracking-[0.4em] text-[#5d7063] font-bold"
+                  <motion.div 
+                    animate={{ scaleY: [0, 1, 0], opacity: [0, 0.8, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="h-12 w-[1px] bg-[#c4dcd3]/60 origin-top"
+                  />
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-[#5d7063] font-bold"
                     style={{
                     fontFamily: 'var(--font-brand)',
                     fontWeight: 400
                     }}
                       >
-                     KAMUNARA
-                   </span>
-                 </div>
+                    KAMUNARA
+                  </span>
+                </div>
               </motion.div>
 
             </motion.div>
